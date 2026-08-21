@@ -123,7 +123,7 @@ export const JobDetailPage: React.FC = () => {
   if (isJobLoading) {
     return (
       <div className="flex flex-col items-center justify-center py-24 gap-3">
-        <Spinner size="lg" className="text-indigo-500" />
+        <Spinner size="lg" className="text-purple-400" />
         <p className="text-xs text-slate-400 font-medium">Loading screening workspace...</p>
       </div>
     );
@@ -163,50 +163,50 @@ export const JobDetailPage: React.FC = () => {
       {/* ========================================================================= */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
         {/* Bento Tile 1: Primary Job Focus & Quick Actions */}
-        <div className="lg:col-span-8 bento-card p-6 sm:p-7 flex flex-col justify-between relative overflow-hidden bg-gradient-to-br from-slate-900/90 via-slate-900/70 to-indigo-950/30 border border-slate-800">
-          <div className="space-y-4">
+        <div className="lg:col-span-8 glass-hero p-6 sm:p-7 flex flex-col justify-between relative overflow-hidden">
+          <div className="space-y-4 relative z-10">
             <Link
               to="/"
-              className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-indigo-300 transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-purple-300 transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" /> Back to Screening Hub
             </Link>
 
             <div className="flex flex-wrap items-center gap-2.5">
-              <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+              <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
                 {job.title}
               </h1>
               {job.department && (
-                <Badge variant="primary" size="sm">
+                <span className="glass-badge-cyan">
                   {job.department}
-                </Badge>
+                </span>
               )}
-              <span className="inline-flex items-center gap-1 text-xs px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-300 font-mono font-bold border border-indigo-500/20">
+              <span className="glass-badge-violet font-mono">
                 Threshold: {job.min_score_threshold.toFixed(1)}/10
               </span>
             </div>
 
-            {/* Responsible AI Banner within Bento card */}
-            <div className="p-3 rounded-xl bg-slate-950/60 border border-slate-800 text-[11px] text-slate-300 flex items-center justify-between gap-3">
+            {/* Responsible AI Banner */}
+            <div className="p-3.5 rounded-xl bg-slate-950/60 border border-white/10 text-xs text-slate-300 flex items-center justify-between gap-3 backdrop-blur-md">
               <span className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-indigo-400 shrink-0" />
+                <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
                 <span>Notice: Human decision-support tool. Final hiring determinations require recruiter confirmation.</span>
               </span>
-              <span className="text-indigo-400 font-semibold uppercase tracking-wider text-[10px] shrink-0">
+              <span className="text-purple-400 font-bold uppercase tracking-wider text-[10px] shrink-0">
                 Audited Mode
               </span>
             </div>
           </div>
 
           {/* Action Button Row */}
-          <div className="pt-6 flex flex-wrap items-center gap-3">
+          <div className="pt-6 flex flex-wrap items-center gap-3 relative z-10">
             <Button
               onClick={() => screeningMutation.mutate()}
               isLoading={screeningMutation.isPending}
               variant="primary"
               size="md"
-              leftIcon={<Sparkles className="w-4 h-4 text-amber-300" />}
-              className="bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-600/25"
+              leftIcon={<Sparkles className="w-4 h-4 text-amber-300 animate-pulse" />}
+              className="bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 text-white shadow-glow-violet border border-white/20"
             >
               Start Screening Run
             </Button>
@@ -214,51 +214,51 @@ export const JobDetailPage: React.FC = () => {
             <a
               href={jobsApi.exportCsvUrl(job.id)}
               download
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-medium transition-colors"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white/[0.06] hover:bg-white/[0.12] text-slate-200 border border-white/10 text-xs font-semibold backdrop-blur-md transition-all shadow-glass-sm"
             >
-              <Download className="w-3.5 h-3.5 text-slate-400" />
+              <Download className="w-3.5 h-3.5 text-cyan-300" />
               <span>Export CSV</span>
             </a>
           </div>
         </div>
 
         {/* Bento Tile 2: Live Pipeline Telemetry Gauge */}
-        <div className="lg:col-span-4 bento-card p-6 flex flex-col justify-between bg-slate-900/50 border border-slate-800">
+        <div className="lg:col-span-4 glass-panel p-6 flex flex-col justify-between">
           <div>
-            <div className="flex items-center justify-between pb-3 border-b border-slate-800/80">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                <Layers className="w-3.5 h-3.5 text-indigo-400" />
+            <div className="flex items-center justify-between pb-3.5 border-b border-white/10">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
+                <Layers className="w-3.5 h-3.5 text-purple-400" />
                 <span>Pipeline Telemetry</span>
               </span>
-              <span className="text-xs font-mono font-bold text-emerald-400">
+              <span className="text-xs font-mono font-bold text-emerald-300 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-400/20 shadow-glow-emerald">
                 {shortlistPercent}% Shortlisted
               </span>
             </div>
 
             {/* 4-Cell Telemetry Grid */}
-            <div className="grid grid-cols-2 gap-2.5 mt-3.5">
-              <div className="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800 text-center">
-                <span className="text-lg font-black text-white block">{stats.total_candidates}</span>
+            <div className="grid grid-cols-2 gap-2.5 mt-4">
+              <div className="p-3 glass-inner-box text-center">
+                <span className="text-xl font-black text-white block">{stats.total_candidates}</span>
                 <span className="text-[10px] text-slate-400 uppercase font-medium">Uploaded</span>
               </div>
-              <div className="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800 text-center">
-                <span className="text-lg font-black text-cyan-400 block">{stats.parsed_candidates}</span>
+              <div className="p-3 glass-inner-box text-center">
+                <span className="text-xl font-black text-cyan-300 block">{stats.parsed_candidates}</span>
                 <span className="text-[10px] text-slate-400 uppercase font-medium">Parsed</span>
               </div>
-              <div className="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800 text-center">
-                <span className="text-lg font-black text-indigo-400 block">{stats.scored_candidates}</span>
+              <div className="p-3 glass-inner-box text-center">
+                <span className="text-xl font-black text-purple-300 block">{stats.scored_candidates}</span>
                 <span className="text-[10px] text-slate-400 uppercase font-medium">Scored</span>
               </div>
-              <div className="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800 text-center">
-                <span className="text-lg font-black text-emerald-400 block">{stats.shortlisted_candidates}</span>
+              <div className="p-3 glass-inner-box text-center">
+                <span className="text-xl font-black text-emerald-300 block">{stats.shortlisted_candidates}</span>
                 <span className="text-[10px] text-slate-400 uppercase font-medium">Shortlisted</span>
               </div>
             </div>
           </div>
 
-          <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-500">
+          <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-slate-400">
             <span>Errors: {stats.failed_candidates}</span>
-            <span>Evaluator: Deterministic / LLM</span>
+            <span className="text-purple-300 font-medium">Model: scoring_v1</span>
           </div>
         </div>
       </div>
@@ -268,17 +268,17 @@ export const JobDetailPage: React.FC = () => {
       {/* ========================================================================= */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
         {/* Bento Tile 3: Tech Stack & Criteria Snapshot */}
-        <div className="lg:col-span-5 bento-card p-5 space-y-4 bg-slate-900/50 border border-slate-800">
+        <div className="lg:col-span-5 glass-panel p-5 space-y-4">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-              <Briefcase className="w-3.5 h-3.5 text-indigo-400" />
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
+              <Briefcase className="w-3.5 h-3.5 text-cyan-400" />
               <span>Must-Have Tech Stack</span>
             </span>
             <button
               onClick={() => setIsJdExpanded(!isJdExpanded)}
-              className="text-[11px] text-indigo-400 hover:text-indigo-300 font-medium flex items-center gap-0.5"
+              className="text-[11px] text-purple-300 hover:text-purple-200 font-semibold flex items-center gap-0.5"
             >
-              <span>{isJdExpanded ? 'Collapse' : 'View Full Description'}</span>
+              <span>{isJdExpanded ? 'Collapse' : 'View Description'}</span>
               <ChevronRight className={`w-3 h-3 transition-transform ${isJdExpanded ? 'rotate-90' : ''}`} />
             </button>
           </div>
@@ -288,9 +288,9 @@ export const JobDetailPage: React.FC = () => {
             {job.must_have_skills.map((skill, idx) => (
               <span
                 key={idx}
-                className="inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-lg bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 font-medium"
+                className="inline-flex items-center gap-1.5 text-xs px-3 py-1 rounded-xl bg-purple-500/10 text-purple-200 border border-purple-400/20 font-medium backdrop-blur-md shadow-glass-sm"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-indigo-400" />
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
                 {skill}
               </span>
             ))}
@@ -298,26 +298,26 @@ export const JobDetailPage: React.FC = () => {
 
           {/* Expanded Job Description Box */}
           {isJdExpanded && (
-            <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 text-xs text-slate-300 max-h-56 overflow-y-auto leading-relaxed font-mono whitespace-pre-wrap">
+            <div className="p-3.5 rounded-xl bg-slate-950/80 border border-white/10 text-xs text-slate-300 max-h-56 overflow-y-auto leading-relaxed font-mono whitespace-pre-wrap">
               {job.description}
             </div>
           )}
         </div>
 
         {/* Bento Tile 4: Multi-File Resume Dropzone */}
-        <div className="lg:col-span-7 bento-card p-5 bg-slate-900/50 border border-slate-800 space-y-3">
+        <div className="lg:col-span-7 glass-panel p-5 space-y-3">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-              <UploadCloud className="w-3.5 h-3.5 text-indigo-400" />
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
+              <UploadCloud className="w-3.5 h-3.5 text-cyan-400" />
               <span>Multi-File Resume Ingestion</span>
             </span>
-            <span className="text-[11px] text-slate-500">Supports .PDF & .TXT up to 15MB</span>
+            <span className="text-[11px] text-slate-400">Supports .PDF & .TXT up to 15MB</span>
           </div>
 
           <Dropzone onUpload={handleUploadResumes} isLoading={isUploading} />
 
           {uploadResults && (
-            <div className="p-3 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1.5 text-xs">
+            <div className="p-3 rounded-xl bg-slate-950/80 border border-white/10 space-y-1.5 text-xs">
               {uploadResults.uploadedCount > 0 && (
                 <p className="text-emerald-400 font-medium">
                   ✓ Successfully queued {uploadResults.uploadedCount} resume(s) for background parsing.
@@ -342,21 +342,21 @@ export const JobDetailPage: React.FC = () => {
       {/* BENTO GRID: ROW 3 (Workspace Navigation & Command Center Hub) */}
       {/* ========================================================================= */}
       <div className="space-y-4">
-        {/* View Switcher Floating Pills */}
-        <div className="flex items-center justify-between flex-wrap gap-3 p-1.5 rounded-2xl bg-slate-900/80 border border-slate-800 backdrop-blur-xl">
+        {/* View Switcher Floating Glass Pills */}
+        <div className="flex items-center justify-between flex-wrap gap-3 p-1.5 rounded-2xl bg-slate-900/50 border border-white/10 backdrop-blur-2xl shadow-glass-md">
           <div className="flex items-center gap-1.5">
             <button
               onClick={() => setActiveView('shortlist')}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
                 activeView === 'shortlist'
-                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                  ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-glow-violet border border-white/20'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.04]'
               }`}
             >
               <Award className="w-3.5 h-3.5 text-amber-300" />
               <span>Ranked Shortlist</span>
               {shortlist && (
-                <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-slate-950 text-emerald-400 font-mono">
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-950/80 text-emerald-300 font-mono">
                   {shortlist.shortlisted_count}
                 </span>
               )}
@@ -366,13 +366,13 @@ export const JobDetailPage: React.FC = () => {
               onClick={() => setActiveView('candidates')}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
                 activeView === 'candidates'
-                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                  ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-glow-violet border border-white/20'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.04]'
               }`}
             >
-              <Users className="w-3.5 h-3.5 text-cyan-400" />
+              <Users className="w-3.5 h-3.5 text-cyan-300" />
               <span>Candidate Pool</span>
-              <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-slate-950 text-slate-300 font-mono">
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-950/80 text-slate-300 font-mono">
                 {stats.total_candidates}
               </span>
             </button>
@@ -381,11 +381,11 @@ export const JobDetailPage: React.FC = () => {
               onClick={() => setActiveView('audit')}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
                 activeView === 'audit'
-                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                  ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-glow-violet border border-white/20'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.04]'
               }`}
             >
-              <Clock className="w-3.5 h-3.5 text-slate-400" />
+              <Clock className="w-3.5 h-3.5 text-slate-300" />
               <span>Audit Activity Log</span>
             </button>
           </div>
@@ -397,23 +397,23 @@ export const JobDetailPage: React.FC = () => {
         {activeView === 'shortlist' && (
           <div className="space-y-4">
             {/* Filter & Rule Control Strip */}
-            <div className="bento-card p-4 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-slate-900/60 border border-slate-800">
+            <div className="glass-panel p-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div>
-                <span className="text-xs font-bold text-emerald-400 flex items-center gap-1.5">
-                  <Award className="w-4 h-4" /> Auditable Decision Rule:
+                <span className="text-xs font-bold text-emerald-300 flex items-center gap-1.5">
+                  <Award className="w-4 h-4 text-emerald-400" /> Auditable Decision Rule:
                 </span>
                 <p className="text-xs text-slate-300 mt-0.5">
-                  Qualifying Condition: <code className="px-1.5 py-0.5 rounded bg-slate-950 font-mono text-indigo-300 text-[11px]">Fit Score &gt;= {job.min_score_threshold.toFixed(1)}</code> and <code className="px-1.5 py-0.5 rounded bg-slate-950 font-mono text-emerald-300 text-[11px]">Recommendation == 'shortlist'</code>
+                  Qualifying Condition: <code className="px-2 py-0.5 rounded-md bg-slate-950/80 font-mono text-purple-300 text-[11px] border border-white/10">Fit Score &gt;= {job.min_score_threshold.toFixed(1)}</code> and <code className="px-2 py-0.5 rounded-md bg-slate-950/80 font-mono text-emerald-300 text-[11px] border border-white/10">Recommendation == 'shortlist'</code>
                 </p>
               </div>
 
               {/* Sub-Tier Filter Buttons */}
-              <div className="flex items-center gap-1.5 bg-slate-950/80 p-1 rounded-xl border border-slate-800">
+              <div className="flex items-center gap-1.5 bg-slate-950/80 p-1.5 rounded-2xl border border-white/10 backdrop-blur-md">
                 <button
                   onClick={() => setShortlistFilter('shortlisted')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5 ${
+                  className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
                     shortlistFilter === 'shortlisted'
-                      ? 'bg-emerald-600 text-white shadow-sm'
+                      ? 'bg-emerald-600 text-white shadow-glow-emerald'
                       : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
@@ -423,9 +423,9 @@ export const JobDetailPage: React.FC = () => {
 
                 <button
                   onClick={() => setShortlistFilter('review')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5 ${
+                  className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
                     shortlistFilter === 'review'
-                      ? 'bg-amber-600 text-white shadow-sm'
+                      ? 'bg-amber-600 text-white shadow-[0_0_15px_rgba(245,158,11,0.3)]'
                       : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
@@ -435,9 +435,9 @@ export const JobDetailPage: React.FC = () => {
 
                 <button
                   onClick={() => setShortlistFilter('do_not_shortlist')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5 ${
+                  className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
                     shortlistFilter === 'do_not_shortlist'
-                      ? 'bg-rose-600 text-white shadow-sm'
+                      ? 'bg-rose-600 text-white shadow-[0_0_15px_rgba(244,63,94,0.3)]'
                       : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
@@ -450,7 +450,7 @@ export const JobDetailPage: React.FC = () => {
             {/* List Results */}
             {isShortlistLoading && (
               <div className="flex justify-center py-16">
-                <Spinner size="md" className="text-indigo-500" />
+                <Spinner size="md" className="text-purple-400" />
               </div>
             )}
 
@@ -459,7 +459,7 @@ export const JobDetailPage: React.FC = () => {
                 {shortlistFilter === 'shortlisted' && (
                   <>
                     {shortlist.shortlisted.length === 0 ? (
-                      <div className="bento-card text-center py-12 px-6 space-y-3">
+                      <div className="glass-panel text-center py-12 px-6 space-y-3">
                         <Award className="w-8 h-8 mx-auto text-slate-500" />
                         <p className="text-sm font-semibold text-slate-300">
                           No candidates currently meet the minimum threshold ({job.min_score_threshold.toFixed(1)}/10).
@@ -484,7 +484,7 @@ export const JobDetailPage: React.FC = () => {
                 {shortlistFilter === 'review' && (
                   <>
                     {shortlist.review.length === 0 ? (
-                      <div className="bento-card text-center py-12 px-6 space-y-2">
+                      <div className="glass-panel text-center py-12 px-6 space-y-2">
                         <CheckCircle2 className="w-8 h-8 mx-auto text-emerald-400/50" />
                         <p className="text-sm font-semibold text-slate-300">No candidates requiring manual recruiter review.</p>
                       </div>
@@ -504,7 +504,7 @@ export const JobDetailPage: React.FC = () => {
                 {shortlistFilter === 'do_not_shortlist' && (
                   <>
                     {shortlist.do_not_shortlist.length === 0 ? (
-                      <div className="bento-card text-center py-12 px-6 space-y-2">
+                      <div className="glass-panel text-center py-12 px-6 space-y-2">
                         <p className="text-sm font-semibold text-slate-300">No candidates in this tier.</p>
                       </div>
                     ) : (
@@ -532,13 +532,13 @@ export const JobDetailPage: React.FC = () => {
             {/* Search & Filter Bar */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div className="relative flex-1 max-w-sm">
-                <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
+                <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
                 <input
                   type="text"
                   placeholder="Search candidates by name, email, or file..."
                   value={candidateSearch}
                   onChange={(e) => setCandidateSearch(e.target.value)}
-                  className="w-full pl-9 pr-3 py-1.5 bg-slate-900/80 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+                  className="w-full pl-9 pr-3.5 py-2 glass-input rounded-xl text-xs"
                 />
               </div>
 
@@ -546,33 +546,33 @@ export const JobDetailPage: React.FC = () => {
                 <select
                   value={candidateStatusFilter}
                   onChange={(e) => setCandidateStatusFilter(e.target.value)}
-                  className="px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-300 focus:outline-none focus:border-indigo-500"
+                  className="px-3 py-2 glass-input rounded-xl text-xs"
                 >
-                  <option value="">All Statuses</option>
-                  <option value="parsed">Parsed</option>
-                  <option value="scored">Scored</option>
-                  <option value="processing">Processing</option>
-                  <option value="failed">Failed</option>
+                  <option value="" className="bg-slate-900">All Statuses</option>
+                  <option value="parsed" className="bg-slate-900">Parsed</option>
+                  <option value="scored" className="bg-slate-900">Scored</option>
+                  <option value="processing" className="bg-slate-900">Processing</option>
+                  <option value="failed" className="bg-slate-900">Failed</option>
                 </select>
 
                 <select
                   value={candidateSortBy}
                   onChange={(e) => setCandidateSortBy(e.target.value)}
-                  className="px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-xl text-xs text-slate-300 focus:outline-none focus:border-indigo-500"
+                  className="px-3 py-2 glass-input rounded-xl text-xs"
                 >
-                  <option value="score">Sort by Fit Score</option>
-                  <option value="created_at">Sort by Upload Date</option>
-                  <option value="candidate_name">Sort by Candidate Name</option>
+                  <option value="score" className="bg-slate-900">Sort by Fit Score</option>
+                  <option value="created_at" className="bg-slate-900">Sort by Upload Date</option>
+                  <option value="candidate_name" className="bg-slate-900">Sort by Candidate Name</option>
                 </select>
               </div>
             </div>
 
-            {/* Candidate Table Bento Card */}
-            <div className="bento-card overflow-hidden">
+            {/* Candidate Table Glass Panel */}
+            <div className="glass-panel overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs border-collapse">
                   <thead>
-                    <tr className="border-b border-slate-800 bg-slate-950/70 text-slate-400 font-semibold uppercase tracking-wider text-[10px]">
+                    <tr className="border-b border-white/10 bg-slate-950/70 text-slate-400 font-semibold uppercase tracking-wider text-[10px]">
                       <th className="py-3.5 px-4">Candidate / Filename</th>
                       <th className="py-3.5 px-4">Experience</th>
                       <th className="py-3.5 px-4">Parsed Skills</th>
@@ -581,11 +581,11 @@ export const JobDetailPage: React.FC = () => {
                       <th className="py-3.5 px-4 text-right">Actions</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-800/60 text-slate-300">
+                  <tbody className="divide-y divide-white/5 text-slate-300">
                     {isCandidatesLoading && (
                       <tr>
                         <td colSpan={6} className="py-12 text-center text-slate-500">
-                          <Spinner size="md" className="mx-auto text-indigo-500 mb-2" />
+                          <Spinner size="md" className="mx-auto text-purple-400 mb-2" />
                           <span>Loading candidate pool...</span>
                         </td>
                       </tr>
@@ -606,12 +606,12 @@ export const JobDetailPage: React.FC = () => {
                       return (
                         <tr
                           key={cand.id}
-                          className="hover:bg-slate-800/40 transition-colors cursor-pointer"
+                          className="hover:bg-white/[0.04] transition-colors cursor-pointer"
                           onClick={() => handleOpenCandidateDrawer(cand.id)}
                         >
                           <td className="py-3.5 px-4">
                             <div className="flex items-center gap-3">
-                              <div className="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 text-indigo-400 font-bold flex items-center justify-center text-xs shrink-0">
+                              <div className="w-8 h-8 rounded-full bg-purple-500/20 border border-purple-400/30 text-purple-200 font-bold flex items-center justify-center text-xs shrink-0 shadow-glass-sm">
                                 {getInitials(cand.candidate_name)}
                               </div>
                               <div>
@@ -625,7 +625,7 @@ export const JobDetailPage: React.FC = () => {
 
                           <td className="py-3.5 px-4 whitespace-nowrap">
                             {cand.total_experience_years !== null && cand.total_experience_years !== undefined ? (
-                              <span>~{cand.total_experience_years.toFixed(1)} yrs</span>
+                              <span className="font-mono">~{cand.total_experience_years.toFixed(1)} yrs</span>
                             ) : (
                               <span className="text-slate-500 italic">N/A</span>
                             )}
@@ -679,7 +679,7 @@ export const JobDetailPage: React.FC = () => {
                               variant="outline"
                               size="sm"
                               onClick={() => handleOpenCandidateDrawer(cand.id)}
-                              leftIcon={<Eye className="w-3.5 h-3.5" />}
+                              leftIcon={<Eye className="w-3.5 h-3.5 text-purple-300" />}
                             >
                               Inspect
                             </Button>
@@ -698,9 +698,9 @@ export const JobDetailPage: React.FC = () => {
         {/* VIEW 3: AUDIT ACTIVITY LOG */}
         {/* ----------------------------------------------------------------------- */}
         {activeView === 'audit' && (
-          <div className="bento-card p-5 space-y-4 bg-slate-900/60 border border-slate-800">
+          <div className="glass-panel p-5 space-y-4">
             <h3 className="text-sm font-bold text-white flex items-center gap-2">
-              <Clock className="w-4 h-4 text-indigo-400" />
+              <Clock className="w-4 h-4 text-cyan-400" />
               <span>Immutable Audit Trail</span>
             </h3>
 
@@ -711,7 +711,7 @@ export const JobDetailPage: React.FC = () => {
                 auditEvents.map((evt) => (
                   <div
                     key={evt.id}
-                    className="p-3 rounded-xl bg-slate-950/70 border border-slate-800 text-xs flex items-start justify-between gap-4"
+                    className="p-3.5 glass-inner-box text-xs flex items-start justify-between gap-4"
                   >
                     <div className="space-y-1">
                       <div className="flex items-center gap-2">
@@ -724,7 +724,7 @@ export const JobDetailPage: React.FC = () => {
                         {JSON.stringify(evt.details)}
                       </p>
                     </div>
-                    <span className="text-[11px] text-slate-500 whitespace-nowrap">
+                    <span className="text-[11px] text-slate-500 whitespace-nowrap font-mono">
                       {formatDate(evt.timestamp)}
                     </span>
                   </div>

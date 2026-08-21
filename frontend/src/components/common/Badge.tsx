@@ -19,24 +19,24 @@ export const Badge: React.FC<BadgeProps> = ({
   className,
 }) => {
   const variantStyles = {
-    default: 'bg-slate-800 text-slate-300 border-slate-700',
-    primary: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/30',
-    success: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30',
-    warning: 'bg-amber-500/10 text-amber-400 border-amber-500/30',
-    danger: 'bg-rose-500/10 text-rose-400 border-rose-500/30',
-    info: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/30',
-    purple: 'bg-purple-500/10 text-purple-400 border-purple-500/30',
+    default: 'bg-white/[0.05] backdrop-blur-md text-slate-300 border-white/10 shadow-glass-sm',
+    primary: 'bg-indigo-500/15 backdrop-blur-md text-indigo-200 border-indigo-400/30 shadow-[0_0_12px_rgba(99,102,241,0.2)]',
+    success: 'bg-emerald-500/15 backdrop-blur-md text-emerald-200 border-emerald-400/30 shadow-[0_0_12px_rgba(16,185,129,0.2)]',
+    warning: 'bg-amber-500/15 backdrop-blur-md text-amber-200 border-amber-400/30 shadow-[0_0_12px_rgba(245,158,11,0.2)]',
+    danger: 'bg-rose-500/15 backdrop-blur-md text-rose-200 border-rose-400/30 shadow-[0_0_12px_rgba(244,63,94,0.2)]',
+    info: 'bg-cyan-500/15 backdrop-blur-md text-cyan-200 border-cyan-400/30 shadow-[0_0_12px_rgba(6,182,212,0.2)]',
+    purple: 'bg-purple-500/15 backdrop-blur-md text-purple-200 border-purple-400/30 shadow-[0_0_12px_rgba(168,85,247,0.2)]',
   };
 
   const sizeStyles = {
-    sm: 'px-2 py-0.5 text-[11px] gap-1',
-    md: 'px-2.5 py-1 text-xs gap-1.5',
+    sm: 'px-2.5 py-0.5 text-[11px] gap-1.5 font-medium',
+    md: 'px-3 py-1 text-xs gap-1.5 font-semibold',
   };
 
   return (
     <span
       className={clsx(
-        'inline-flex items-center font-medium rounded-full border tracking-wide transition-colors',
+        'inline-flex items-center rounded-full border tracking-wide transition-all duration-200',
         variantStyles[variant],
         sizeStyles[size],
         className
@@ -44,7 +44,7 @@ export const Badge: React.FC<BadgeProps> = ({
     >
       {dot && (
         <span
-          className={clsx('w-1.5 h-1.5 rounded-full shrink-0', dotColor || 'bg-current')}
+          className={clsx('w-1.5 h-1.5 rounded-full shrink-0 shadow-sm', dotColor || 'bg-current')}
         />
       )}
       <span>{children}</span>
