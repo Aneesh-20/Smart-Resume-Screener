@@ -1,0 +1,37 @@
+# Python & Virtualenv
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+ENV/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+
+# Database & Uploads
+*.db
+*.sqlite
+*.sqlite3
+uploads/
+backend/uploads/
+*.log
+
+# Node & Frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+.vite/
+
+# Environment & Secrets
+.env
+.env.local
+.env.production
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.swp
