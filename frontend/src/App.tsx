@@ -5,6 +5,7 @@ import { Navbar } from './components/layout/Navbar';
 import { JobsListPage } from './pages/JobsListPage';
 import { JobDetailPage } from './pages/JobDetailPage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { InteractiveBackground3D } from './components/3d/InteractiveBackground3D';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -19,18 +20,21 @@ export const App: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 selection:bg-indigo-500 selection:text-white">
+        <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 selection:bg-indigo-500 selection:text-white relative overflow-x-hidden">
+          {/* Interactive 3D Starfield Constellation Background */}
+          <InteractiveBackground3D />
+
           <Navbar />
-          <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
             <Routes>
               <Route path="/" element={<JobsListPage />} />
               <Route path="/jobs/:jobId" element={<JobDetailPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </main>
-          <footer className="border-t border-slate-800/60 py-6 text-center text-xs text-slate-500">
+          <footer className="border-t border-slate-800/60 py-6 text-center text-xs text-slate-500 relative z-10 bg-slate-950/80 backdrop-blur-md">
             <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-              <p>Smart Resume Screener • Explainable AI Candidate Evaluation</p>
+              <p>Smart Resume Screener • Explainable 3D AI Candidate Intelligence</p>
               <p className="text-[11px] text-slate-600">
                 Notice: Recruiter decision-support system. Final hiring determinations require human authorization.
               </p>
