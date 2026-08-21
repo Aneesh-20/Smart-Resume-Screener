@@ -3,7 +3,6 @@ import { ShortlistCandidateItem } from '../../types';
 import { ScoreBadge } from '../common/ScoreBadge';
 import { Badge } from '../common/Badge';
 import { Button } from '../common/Button';
-import { Card } from '../common/Card';
 import { ScoreBreakdownBars } from './ScoreBreakdownBars';
 import { getRecommendationBadge } from '../../utils/scoreColors';
 import { CheckCircle2, AlertTriangle, ArrowRight, Cpu, Briefcase } from 'lucide-react';
@@ -22,12 +21,12 @@ export const ShortlistCard: React.FC<ShortlistCardProps> = ({
   const recBadge = getRecommendationBadge(candidate.recommendation);
 
   return (
-    <Card variant="interactive" padding="md" className="space-y-4">
+    <div className="bento-card-interactive p-5 space-y-4 bg-slate-900/60 border border-slate-800">
       {/* Card Header */}
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="flex items-start gap-3.5">
-          {/* Rank Badge */}
-          <div className="w-9 h-9 rounded-xl bg-slate-800/90 border border-slate-700 text-indigo-400 font-mono font-bold text-sm flex items-center justify-center shrink-0 shadow-inner">
+          {/* Rank Badge with glowing ring */}
+          <div className="w-10 h-10 rounded-xl bg-slate-950/80 border border-indigo-500/30 text-indigo-300 font-mono font-black text-sm flex items-center justify-center shrink-0 shadow-md shadow-indigo-500/10">
             #{rank}
           </div>
 
@@ -50,7 +49,7 @@ export const ShortlistCard: React.FC<ShortlistCardProps> = ({
                 {recBadge.label}
               </Badge>
               {candidate.is_fallback && (
-                <span className="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                <span className="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/20">
                   <Cpu className="w-2.5 h-2.5" /> Fallback
                 </span>
               )}
@@ -80,10 +79,10 @@ export const ShortlistCard: React.FC<ShortlistCardProps> = ({
         {candidate.summary_justification}
       </div>
 
-      {/* Key Skills & Quick Breakdown */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
+      {/* Key Skills & Quick Breakdown Bento Grid Sub-blocks */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 pt-1">
         {/* Left: Matched Strengths & Gaps Highlights */}
-        <div className="space-y-2.5">
+        <div className="p-3.5 rounded-xl bg-slate-950/50 border border-slate-800/80 space-y-2.5">
           {candidate.matched_requirements.length > 0 && (
             <div className="space-y-1">
               <span className="text-[11px] font-semibold text-emerald-400 flex items-center gap-1">
@@ -116,7 +115,7 @@ export const ShortlistCard: React.FC<ShortlistCardProps> = ({
         </div>
 
         {/* Right: Score Breakdown Progress Bars */}
-        <div className="p-3.5 rounded-xl bg-slate-950/40 border border-slate-800/80">
+        <div className="p-3.5 rounded-xl bg-slate-950/50 border border-slate-800/80 flex flex-col justify-center">
           <ScoreBreakdownBars breakdown={candidate.score_breakdown} compact />
         </div>
       </div>
@@ -140,6 +139,6 @@ export const ShortlistCard: React.FC<ShortlistCardProps> = ({
           View Full Evidence & Profile
         </Button>
       </div>
-    </Card>
+    </div>
   );
 };
