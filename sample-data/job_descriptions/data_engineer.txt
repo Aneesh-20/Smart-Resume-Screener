@@ -1,0 +1,18 @@
+Job Title: Senior Data Engineer
+Department: Data & Analytics
+Minimum Fit Threshold: 7.0/10
+Must-Have Skills: Python, SQL, Apache Spark, PostgreSQL, Docker, AWS
+
+Role Overview:
+We are looking for a Senior Data Engineer to architect and operate our real-time and batch data processing pipelines, data warehouse, and analytics infrastructure.
+
+Key Responsibilities:
+- Design robust ETL/ELT pipelines processing terabytes of event data daily using Apache Spark, Python, and SQL.
+- Model dimensional data warehouses in PostgreSQL and Snowflake.
+- Manage containerized data services using Docker, Airflow, and AWS ECS.
+- Ensure data quality, governance, and auditability across streaming pipelines.
+
+Requirements:
+- 4+ years of data engineering experience.
+- Strong proficiency in Python, SQL, and distributed compute frameworks (Spark/PySpark).
+- Experience with AWS cloud storage and database services.

@@ -1,0 +1,26 @@
+Job Title: Senior Full-Stack Engineer
+Department: Engineering - Core Platform
+Minimum Fit Threshold: 7.5/10
+Must-Have Skills: Python, FastAPI, React, TypeScript, PostgreSQL, Docker
+
+Role Overview:
+We are seeking an experienced Senior Full-Stack Engineer to design, build, and scale our next-generation enterprise SaaS platform. In this role, you will lead end-to-end technical initiatives across modern web frontends, resilient backend microservices, and cloud infrastructure.
+
+Key Responsibilities:
+- Architect, build, and maintain high-performance asynchronous REST and GraphQL APIs using Python (FastAPI/SQLAlchemy) and PostgreSQL.
+- Develop interactive, accessible, and performant web applications using React 18+, TypeScript, Tailwind CSS, and state management libraries.
+- Containerize services with Docker, manage CI/CD deployment pipelines, and maintain observability in cloud environments (AWS/GCP).
+- Partner with product managers and designers to deliver customer-facing features with intuitive user experiences.
+- Mentor mid-level and junior engineers through code reviews, architectural discussions, and technical design documents.
+
+Required Qualifications & Must-Haves:
+- 5+ years of professional software engineering experience building production web applications.
+- Strong proficiency in modern Python (Python 3.10+, FastAPI or Django, async programming).
+- Deep experience in React, TypeScript, and modern frontend component design.
+- Advanced relational database design and optimization experience with PostgreSQL.
+- Practical experience containerizing applications with Docker and deploying to cloud infrastructure.
+
+Preferred & Nice-to-Have Qualifications:
+- Experience with Redis caching, background task workers (Celery/RQ), and message queues (Kafka).
+- Experience integrating OpenAI or similar LLMs into production workflows with structured outputs.
+- B.S. or M.S. in Computer Science, Software Engineering, or equivalent practical experience.

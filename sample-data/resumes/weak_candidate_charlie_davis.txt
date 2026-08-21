@@ -1,0 +1,30 @@
+Charlie Davis
+Email: charlie.davis@example.com
+Phone: (312) 555-0914
+Location: Chicago, IL
+
+SUMMARY
+Enthusiastic Digital Marketing Coordinator and Content Specialist with 1 year of experience administering WordPress websites, creating promotional campaigns, and managing social media channels. Looking for an entry-level role in tech.
+
+SKILLS
+- Marketing: SEO, Google Analytics, Social Media Management, Content Creation, Email Newsletters
+- Technical: WordPress, Basic HTML, CSS, Microsoft Excel, Canva, Google Docs
+
+EXPERIENCE
+Marketing Coordinator
+Sunrise Digital Marketing | Chicago, IL
+2023-01 to Present
+- Updated blog posts, imagery, and product pages on client WordPress sites using basic HTML and CSS templates.
+- Analyzed weekly traffic reports and email engagement rates using Google Analytics and Excel.
+- Drafted marketing copy and created graphic assets in Canva for weekly newsletter campaigns.
+
+Customer Support Associate
+Metro Retail Supplies | Chicago, IL
+2022-04 to 2022-12
+- Handled inbound customer inquiries via email and telephone regarding order shipments and inventory.
+- Processed refunds and maintained customer records in CRM software.
+
+EDUCATION
+Bachelor of Arts in Communications
+University of Illinois | Urbana-Champaign, IL
+Graduation Year: 2022

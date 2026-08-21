@@ -1,0 +1,44 @@
+Alice Chen
+Email: alice.chen@example.com
+Phone: (415) 555-0192
+Location: San Francisco, CA
+Links: https://github.com/alicechen-dev, https://linkedin.com/in/alicechen-tech
+
+PROFESSIONAL SUMMARY
+Senior Full-Stack Engineer with 6 years of experience architecting distributed cloud applications, high-throughput REST APIs, and reactive web applications. Passionate about clean architecture, developer tooling, and scalable system design.
+
+CORE SKILLS
+- Programming Languages: Python, TypeScript, JavaScript, SQL, HTML5, CSS3
+- Frameworks & Libraries: FastAPI, React, Next.js, Django, Tailwind CSS, SQLAlchemy
+- Databases & Storage: PostgreSQL, Redis, MongoDB, SQLite
+- DevOps & Cloud: Docker, Kubernetes, AWS (ECS, S3, RDS), CI/CD, Git
+
+PROFESSIONAL EXPERIENCE
+Senior Full-Stack Engineer
+Apex Cloud Technologies | San Francisco, CA
+2021-06 to Present
+- Spearheaded the redesign of core customer dashboard using React 18, TypeScript, and Tailwind CSS, reducing page load times by 42%.
+- Built high-concurrency microservices using Python 3.11 and FastAPI backed by PostgreSQL, handling over 12,000 requests per minute with 99.98% uptime.
+- Implemented asynchronous task workers and caching with Redis, reducing database read latency by 65%.
+- Containerized development and production environments using Docker and orchestrated deployments on AWS ECS with GitHub Actions CI/CD.
+- Mentored a team of 4 software engineers and established rigorous unit testing and automated code review guidelines.
+
+Full-Stack Software Engineer
+Nexis Data Solutions | San Jose, CA
+2018-08 to 2021-05
+- Developed modular RESTful APIs using Python, FastAPI, and SQLAlchemy with PostgreSQL for enterprise data analytics.
+- Built interactive frontend data visualization dashboards in React, TypeScript, and Chart.js.
+- Automated deployment scripts with Docker and maintained integration test suites achieving 88% code coverage.
+- Optimized slow PostgreSQL queries, indexing strategy, and connection pooling, boosting query execution performance by 3.5x.
+
+EDUCATION
+Master of Science in Computer Science
+Stanford University | Stanford, CA
+Graduation Year: 2018
+
+Bachelor of Science in Software Engineering
+University of California, Berkeley | Berkeley, CA
+Graduation Year: 2016
+
+CERTIFICATIONS
+- AWS Certified Solutions Architect - Associate (2022)

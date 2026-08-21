@@ -1,0 +1,34 @@
+Bob Martinez
+Email: bob.martinez@example.com
+Phone: (512) 555-0843
+Location: Austin, TX
+Links: https://github.com/bobmartinez-code
+
+PROFESSIONAL SUMMARY
+Frontend-leaning Software Developer with 3 years of professional experience building dynamic single-page web applications with React and TypeScript. Eager to expand full-stack backend skills with Python and cloud infrastructure.
+
+SKILLS
+- Frontend: React, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS, Redux
+- Backend & DB: Node.js, Express, basic Python, Flask, MySQL, SQLite
+- Tools: Git, Webpack, Vite, Jira, Linux
+
+EXPERIENCE
+Frontend Developer
+Vanguard Web Studio | Austin, TX
+2021-09 to Present
+- Developed responsive customer-facing web applications using React, TypeScript, and Tailwind CSS for e-commerce clients.
+- Collaborated with UX designers to translate Figma prototypes into pixel-perfect, accessible UI components.
+- Integrated third-party REST APIs and payment gateways into the frontend checkout workflow.
+- Created internal utility scripts in Python and Flask to automate data formatting for MySQL databases.
+
+Junior Web Developer
+BrightPath Media | Dallas, TX
+2020-06 to 2021-08
+- Maintained company website and client landing pages using JavaScript, HTML5, CSS3, and React.
+- Fixed UI bugs, improved cross-browser compatibility, and increased Google Lighthouse scores by 25 points.
+- Assisted backend developers with API endpoint testing and MySQL database migrations.
+
+EDUCATION
+Bachelor of Science in Information Technology
+University of Texas at Austin | Austin, TX
+Graduation Year: 2020
