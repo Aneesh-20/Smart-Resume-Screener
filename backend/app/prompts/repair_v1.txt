@@ -1,0 +1,15 @@
+You are a JSON repair and validation expert.
+The previously generated output failed schema validation.
+
+Error message / reason:
+{error_message}
+
+Original invalid text:
+{invalid_output}
+
+Target JSON schema structure:
+{schema_description}
+
+CRITICAL TASK:
+Convert or repair the invalid text into a single strictly valid JSON object matching the target schema.
+Do NOT include any commentary, explanations, or markdown formatting other than the valid JSON.
