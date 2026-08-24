@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { jobsApi, CreateJobInput } from '../api/jobs';
 import { Button } from '../components/common/Button';
 import { Modal } from '../components/common/Modal';
@@ -15,6 +15,7 @@ import {
 
 export const JobsListPage: React.FC = () => {
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -83,6 +84,32 @@ export const JobsListPage: React.FC = () => {
   const totalCandidates = jobs?.reduce((sum, j) => sum + (j.stats?.total_candidates || 0), 0) || 0;
   const totalScored = jobs?.reduce((sum, j) => sum + (j.stats?.scored_candidates || 0), 0) || 0;
   const totalShortlisted = jobs?.reduce((sum, j) => sum + (j.stats?.shortlisted_candidates || 0), 0) || 0;
+
+  // Primary active job (find job with candidates, or fallback to first job)
+  const primaryJob = jobs?.find((j) => (j.stats?.total_candidates || 0) > 0) || (jobs && jobs.length > 0 ? jobs[0] : null);
+
+  const scrollToWorkspaces = () => {
+    setSearchQuery('');
+    const el = document.getElementById('screening-workspaces');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleStatCardClick = (type: 'jobs' | 'candidates' | 'scored' | 'shortlisted') => {
+    if (type === 'jobs' || !primaryJob) {
+      scrollToWorkspaces();
+      return;
+    }
+
+    if (type === 'candidates') {
+      navigate(`/jobs/${primaryJob.id}?tab=candidates`);
+    } else if (type === 'scored') {
+      navigate(`/jobs/${primaryJob.id}?tab=candidates&status=scored`);
+    } else if (type === 'shortlisted') {
+      navigate(`/jobs/${primaryJob.id}?tab=shortlist`);
+    }
+  };
 
   const filteredJobs = jobs?.filter((job) => {
     const q = searchQuery.toLowerCase();
@@ -185,66 +212,94 @@ export const JobsListPage: React.FC = () => {
       </div>
 
       {/* ========================================================================= */}
-      {/* BRUTAL BENTO GRID: STATS METRICS STRIP */}
+      {/* BRUTAL BENTO GRID: STATS METRICS STRIP (CLICKABLE REDIRECTION CARDS) */}
       {/* ========================================================================= */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="brutal-card p-4 bg-white hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000000] transition-all">
+        {/* Card 1: Active Jobs */}
+        <button
+          onClick={() => handleStatCardClick('jobs')}
+          title="Scroll to Active Screening Workspaces"
+          className="brutal-card p-4 bg-white hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[7px_7px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_0px_#000000] transition-all cursor-pointer text-left group"
+        >
           <div className="flex items-center justify-between text-xs">
-            <span className="font-black text-stone-900 uppercase">Active Jobs</span>
-            <div className="p-1.5 rounded-lg bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] text-white border-2 border-black shadow-[1.5px_1.5px_0px_0px_#000000]">
+            <span className="font-black text-stone-900 uppercase group-hover:text-[#ff0844] transition-colors">
+              Active Jobs
+            </span>
+            <div className="p-1.5 rounded-lg bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] text-white border-2 border-black shadow-[1.5px_1.5px_0px_0px_#000000] group-hover:scale-105 transition-transform">
               <Briefcase className="w-3.5 h-3.5" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
             <span className="text-3xl font-black text-stone-950 tracking-tight">{totalJobs}</span>
-            <span className="text-[11px] font-bold text-stone-600">workflows</span>
+            <span className="text-[11px] font-bold text-stone-600">workflows ↗</span>
           </div>
-        </div>
+        </button>
 
-        <div className="brutal-card p-4 bg-white hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000000] transition-all">
+        {/* Card 2: Candidate Pool */}
+        <button
+          onClick={() => handleStatCardClick('candidates')}
+          title="Go to Candidate Pool"
+          className="brutal-card p-4 bg-white hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[7px_7px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_0px_#000000] transition-all cursor-pointer text-left group"
+        >
           <div className="flex items-center justify-between text-xs">
-            <span className="font-black text-stone-900 uppercase">Candidate Pool</span>
-            <div className="p-1.5 rounded-lg bg-amber-100 text-amber-900 border-2 border-black shadow-[1.5px_1.5px_0px_0px_#000000]">
+            <span className="font-black text-stone-900 uppercase group-hover:text-amber-800 transition-colors">
+              Candidate Pool
+            </span>
+            <div className="p-1.5 rounded-lg bg-amber-100 text-amber-900 border-2 border-black shadow-[1.5px_1.5px_0px_0px_#000000] group-hover:scale-105 transition-transform">
               <Users className="w-3.5 h-3.5" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
             <span className="text-3xl font-black text-stone-950 tracking-tight">{totalCandidates}</span>
-            <span className="text-[11px] font-bold text-amber-700">uploaded</span>
+            <span className="text-[11px] font-bold text-amber-700">uploaded ↗</span>
           </div>
-        </div>
+        </button>
 
-        <div className="brutal-card p-4 bg-white hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000000] transition-all">
+        {/* Card 3: Scored Resumes */}
+        <button
+          onClick={() => handleStatCardClick('scored')}
+          title="Go to Scored Resumes"
+          className="brutal-card p-4 bg-white hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[7px_7px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_0px_#000000] transition-all cursor-pointer text-left group"
+        >
           <div className="flex items-center justify-between text-xs">
-            <span className="font-black text-stone-900 uppercase">Scored Resumes</span>
-            <div className="p-1.5 rounded-lg bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] text-white border-2 border-black shadow-[1.5px_1.5px_0px_0px_#000000]">
+            <span className="font-black text-stone-900 uppercase group-hover:text-[#ff0844] transition-colors">
+              Scored Resumes
+            </span>
+            <div className="p-1.5 rounded-lg bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] text-white border-2 border-black shadow-[1.5px_1.5px_0px_0px_#000000] group-hover:scale-105 transition-transform">
               <TrendingUp className="w-3.5 h-3.5" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
             <span className="text-3xl font-black text-[#ff0844] tracking-tight">{totalScored}</span>
-            <span className="text-[11px] font-bold text-stone-600">evaluated</span>
+            <span className="text-[11px] font-bold text-stone-600">evaluated ↗</span>
           </div>
-        </div>
+        </button>
 
-        <div className="brutal-card p-4 bg-white hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000000] transition-all">
+        {/* Card 4: Shortlisted */}
+        <button
+          onClick={() => handleStatCardClick('shortlisted')}
+          title="Go to Ranked Shortlist"
+          className="brutal-card p-4 bg-white hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[7px_7px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_0px_#000000] transition-all cursor-pointer text-left group"
+        >
           <div className="flex items-center justify-between text-xs">
-            <span className="font-black text-stone-900 uppercase">Shortlisted</span>
-            <div className="p-1.5 rounded-lg bg-emerald-100 text-emerald-900 border-2 border-black shadow-[1.5px_1.5px_0px_0px_#000000]">
+            <span className="font-black text-stone-900 uppercase group-hover:text-emerald-800 transition-colors">
+              Shortlisted
+            </span>
+            <div className="p-1.5 rounded-lg bg-emerald-100 text-emerald-900 border-2 border-black shadow-[1.5px_1.5px_0px_0px_#000000] group-hover:scale-105 transition-transform">
               <Award className="w-3.5 h-3.5" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
             <span className="text-3xl font-black text-emerald-700 tracking-tight">{totalShortlisted}</span>
-            <span className="text-[11px] font-bold text-emerald-800">high fit</span>
+            <span className="text-[11px] font-bold text-emerald-800">high fit ↗</span>
           </div>
-        </div>
+        </button>
       </div>
 
       {/* ========================================================================= */}
       {/* BRUTAL BENTO GRID: JOB CARDS GRID */}
       {/* ========================================================================= */}
-      <div>
+      <div id="screening-workspaces">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-base font-black text-stone-950 flex items-center gap-2">
             <Compass className="w-4 h-4 text-[#ff0844]" />

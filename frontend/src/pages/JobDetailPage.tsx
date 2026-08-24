@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, useSearchParams, Link } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { jobsApi } from '../api/jobs';
 import { candidatesApi } from '../api/candidates';
@@ -21,14 +21,30 @@ import {
 
 export const JobDetailPage: React.FC = () => {
   const { jobId } = useParams<{ jobId: string }>();
+  const [searchParams, setSearchParams] = useSearchParams();
   const queryClient = useQueryClient();
 
-  const [activeView, setActiveView] = useState<'shortlist' | 'candidates' | 'audit'>('shortlist');
+  const tabParam = searchParams.get('tab') as 'shortlist' | 'candidates' | 'audit' | null;
+  const statusParam = searchParams.get('status') || '';
+
+  const [activeView, setActiveView] = useState<'shortlist' | 'candidates' | 'audit'>(
+    tabParam === 'candidates' || tabParam === 'audit' ? tabParam : 'shortlist'
+  );
   const [shortlistFilter, setShortlistFilter] = useState<'shortlisted' | 'review' | 'do_not_shortlist'>('shortlisted');
   const [candidateSearch, setCandidateSearch] = useState('');
-  const [candidateStatusFilter, setCandidateStatusFilter] = useState<string>('');
+  const [candidateStatusFilter, setCandidateStatusFilter] = useState<string>(statusParam);
   const [candidateSortBy, setCandidateSortBy] = useState<string>('score');
   const [isJdExpanded, setIsJdExpanded] = useState(false);
+
+  // Sync tab with URL search params if present
+  useEffect(() => {
+    if (tabParam && (tabParam === 'shortlist' || tabParam === 'candidates' || tabParam === 'audit')) {
+      setActiveView(tabParam);
+    }
+    if (statusParam) {
+      setCandidateStatusFilter(statusParam);
+    }
+  }, [tabParam, statusParam]);
 
   // Selected candidate for drawer
   const [selectedCandidateId, setSelectedCandidateId] = useState<string | null>(null);
@@ -118,6 +134,11 @@ export const JobDetailPage: React.FC = () => {
   const handleOpenCandidateDrawer = (candidateId: string) => {
     setSelectedCandidateId(candidateId);
     setIsDrawerOpen(true);
+  };
+
+  const handleTabChange = (view: 'shortlist' | 'candidates' | 'audit') => {
+    setActiveView(view);
+    setSearchParams({ tab: view });
   };
 
   if (isJobLoading) {
@@ -221,7 +242,7 @@ export const JobDetailPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Bento Tile 2: Live Pipeline Telemetry Gauge */}
+        {/* Bento Tile 2: Live Pipeline Telemetry Gauge (Interactive Clickable Cells) */}
         <div className="lg:col-span-4 brutal-card p-6 flex flex-col justify-between bg-white">
           <div>
             <div className="flex items-center justify-between pb-3.5 border-b-2 border-stone-900">
@@ -234,24 +255,55 @@ export const JobDetailPage: React.FC = () => {
               </span>
             </div>
 
-            {/* 4-Cell Telemetry Grid */}
+            {/* 4-Cell Clickable Telemetry Grid */}
             <div className="grid grid-cols-2 gap-2.5 mt-4">
-              <div className="p-3 glass-inner-box text-center">
+              <button
+                onClick={() => {
+                  handleTabChange('candidates');
+                  setCandidateStatusFilter('');
+                }}
+                title="View All Uploaded Candidates"
+                className="p-3 glass-inner-box text-center hover:bg-stone-100 hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer"
+              >
                 <span className="text-xl font-black text-stone-950 block">{stats.total_candidates}</span>
                 <span className="text-[10px] text-stone-600 uppercase font-black">Uploaded</span>
-              </div>
-              <div className="p-3 glass-inner-box text-center">
+              </button>
+
+              <button
+                onClick={() => {
+                  handleTabChange('candidates');
+                  setCandidateStatusFilter('parsed');
+                }}
+                title="Filter Parsed Candidates"
+                className="p-3 glass-inner-box text-center hover:bg-rose-50 hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer"
+              >
                 <span className="text-xl font-black text-[#ff0844] block">{stats.parsed_candidates}</span>
                 <span className="text-[10px] text-stone-600 uppercase font-black">Parsed</span>
-              </div>
-              <div className="p-3 glass-inner-box text-center">
+              </button>
+
+              <button
+                onClick={() => {
+                  handleTabChange('candidates');
+                  setCandidateStatusFilter('scored');
+                }}
+                title="Filter Scored Candidates"
+                className="p-3 glass-inner-box text-center hover:bg-amber-50 hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer"
+              >
                 <span className="text-xl font-black text-amber-700 block">{stats.scored_candidates}</span>
                 <span className="text-[10px] text-stone-600 uppercase font-black">Scored</span>
-              </div>
-              <div className="p-3 glass-inner-box text-center">
+              </button>
+
+              <button
+                onClick={() => {
+                  handleTabChange('shortlist');
+                  setShortlistFilter('shortlisted');
+                }}
+                title="View Ranked Shortlist"
+                className="p-3 glass-inner-box text-center hover:bg-emerald-50 hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer"
+              >
                 <span className="text-xl font-black text-emerald-700 block">{stats.shortlisted_candidates}</span>
                 <span className="text-[10px] text-stone-600 uppercase font-black">Shortlisted</span>
-              </div>
+              </button>
             </div>
           </div>
 
@@ -340,12 +392,12 @@ export const JobDetailPage: React.FC = () => {
       {/* ========================================================================= */}
       {/* BRUTAL BENTO GRID: ROW 3 (Workspace Navigation & Command Center Hub) */}
       {/* ========================================================================= */}
-      <div className="space-y-4">
+      <div className="space-y-4" id="screening-workspace-views">
         {/* View Switcher Floating Pills */}
         <div className="flex items-center justify-between flex-wrap gap-3 p-1.5 rounded-2xl bg-white border-[2.5px] border-black shadow-[3px_3px_0px_0px_#000000]">
           <div className="flex items-center gap-1.5">
             <button
-              onClick={() => setActiveView('shortlist')}
+              onClick={() => handleTabChange('shortlist')}
               className={`px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-2 border-2 border-black cursor-pointer ${
                 activeView === 'shortlist'
                   ? 'bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] text-white shadow-[2px_2px_0px_0px_#000000]'
@@ -362,7 +414,7 @@ export const JobDetailPage: React.FC = () => {
             </button>
 
             <button
-              onClick={() => setActiveView('candidates')}
+              onClick={() => handleTabChange('candidates')}
               className={`px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-2 border-2 border-black cursor-pointer ${
                 activeView === 'candidates'
                   ? 'bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] text-white shadow-[2px_2px_0px_0px_#000000]'
@@ -377,7 +429,7 @@ export const JobDetailPage: React.FC = () => {
             </button>
 
             <button
-              onClick={() => setActiveView('audit')}
+              onClick={() => handleTabChange('audit')}
               className={`px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-2 border-2 border-black cursor-pointer ${
                 activeView === 'audit'
                   ? 'bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] text-white shadow-[2px_2px_0px_0px_#000000]'
