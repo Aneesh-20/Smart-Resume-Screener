@@ -113,7 +113,7 @@ export const JobsListPage: React.FC = () => {
             <div>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-stone-950 tracking-tight leading-tight">
                 Resume Intelligence <br className="hidden sm:inline" />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-40% to-[#ff7300]">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300]">
                   Command Center
                 </span>
               </h1>
@@ -191,7 +191,7 @@ export const JobsListPage: React.FC = () => {
         <div className="brutal-card p-4 bg-white hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000000] transition-all">
           <div className="flex items-center justify-between text-xs">
             <span className="font-black text-stone-900 uppercase">Active Jobs</span>
-            <div className="p-1.5 rounded-lg bg-gradient-to-r from-[#ff0844] via-[#ff2a54] to-[#ff7300] text-white border-2 border-black shadow-[1.5px_1.5px_0px_0px_#000000]">
+            <div className="p-1.5 rounded-lg bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] text-white border-2 border-black shadow-[1.5px_1.5px_0px_0px_#000000]">
               <Briefcase className="w-3.5 h-3.5" />
             </div>
           </div>
@@ -217,7 +217,7 @@ export const JobsListPage: React.FC = () => {
         <div className="brutal-card p-4 bg-white hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000000] transition-all">
           <div className="flex items-center justify-between text-xs">
             <span className="font-black text-stone-900 uppercase">Scored Resumes</span>
-            <div className="p-1.5 rounded-lg bg-gradient-to-r from-[#ff0844] via-[#ff2a54] to-[#ff7300] text-white border-2 border-black shadow-[1.5px_1.5px_0px_0px_#000000]">
+            <div className="p-1.5 rounded-lg bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] text-white border-2 border-black shadow-[1.5px_1.5px_0px_0px_#000000]">
               <TrendingUp className="w-3.5 h-3.5" />
             </div>
           </div>
@@ -279,7 +279,7 @@ export const JobsListPage: React.FC = () => {
         {/* Empty State */}
         {!isLoading && !error && filteredJobs && filteredJobs.length === 0 && (
           <div className="brutal-card text-center py-16 px-6 space-y-4">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-r from-[#ff0844] via-[#ff2a54] to-[#ff7300] text-white border-2 border-black shadow-[3px_3px_0px_0px_#000000] flex items-center justify-center mx-auto">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] text-white border-2 border-black shadow-[3px_3px_0px_0px_#000000] flex items-center justify-center mx-auto">
               <Briefcase className="w-7 h-7" />
             </div>
             <div>

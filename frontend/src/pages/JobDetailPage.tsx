@@ -213,9 +213,9 @@ export const JobDetailPage: React.FC = () => {
             <a
               href={jobsApi.exportCsvUrl(job.id)}
               download
-              className="inline-flex items-center gap-1.5 px-4.5 py-2 rounded-2xl bg-white hover:bg-stone-50 text-stone-950 border-[2.5px] border-black text-xs font-black transition-all shadow-[3px_3px_0px_0px_#000000] hover:shadow-[5px_5px_0px_0px_#000000] hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0.5 active:translate-y-0.5 active:shadow-[1px_1px_0px_0px_#000000]"
+              className="inline-flex items-center gap-1.5 px-4.5 py-2 rounded-2xl bg-white hover:bg-gradient-to-r hover:from-[#ff0844] hover:via-[#ff2a54] hover:via-60% hover:to-[#ff7300] hover:text-white text-stone-950 border-[2.5px] border-black text-xs font-black transition-all shadow-[3px_3px_0px_0px_#000000] hover:shadow-[5px_5px_0px_0px_#000000] hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0.5 active:translate-y-0.5 active:shadow-[1px_1px_0px_0px_#000000]"
             >
-              <Download className="w-3.5 h-3.5 text-stone-700" />
+              <Download className="w-3.5 h-3.5" />
               <span>Export CSV</span>
             </a>
           </div>
@@ -348,7 +348,7 @@ export const JobDetailPage: React.FC = () => {
               onClick={() => setActiveView('shortlist')}
               className={`px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-2 border-2 border-black cursor-pointer ${
                 activeView === 'shortlist'
-                  ? 'bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-40% to-[#ff7300] text-white shadow-[2px_2px_0px_0px_#000000]'
+                  ? 'bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] text-white shadow-[2px_2px_0px_0px_#000000]'
                   : 'bg-white text-stone-700 hover:bg-stone-100 shadow-none'
               }`}
             >
@@ -365,7 +365,7 @@ export const JobDetailPage: React.FC = () => {
               onClick={() => setActiveView('candidates')}
               className={`px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-2 border-2 border-black cursor-pointer ${
                 activeView === 'candidates'
-                  ? 'bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-40% to-[#ff7300] text-white shadow-[2px_2px_0px_0px_#000000]'
+                  ? 'bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] text-white shadow-[2px_2px_0px_0px_#000000]'
                   : 'bg-white text-stone-700 hover:bg-stone-100 shadow-none'
               }`}
             >
@@ -380,7 +380,7 @@ export const JobDetailPage: React.FC = () => {
               onClick={() => setActiveView('audit')}
               className={`px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-2 border-2 border-black cursor-pointer ${
                 activeView === 'audit'
-                  ? 'bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-40% to-[#ff7300] text-white shadow-[2px_2px_0px_0px_#000000]'
+                  ? 'bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] text-white shadow-[2px_2px_0px_0px_#000000]'
                   : 'bg-white text-stone-700 hover:bg-stone-100 shadow-none'
               }`}
             >
@@ -436,7 +436,7 @@ export const JobDetailPage: React.FC = () => {
                   onClick={() => setShortlistFilter('do_not_shortlist')}
                   className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 border border-stone-900 cursor-pointer ${
                     shortlistFilter === 'do_not_shortlist'
-                      ? 'bg-gradient-to-r from-[#ff0844] via-[#ff2a54] to-[#ff7300] text-white shadow-[2px_2px_0px_0px_#000000]'
+                      ? 'bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] text-white shadow-[2px_2px_0px_0px_#000000]'
                       : 'bg-white text-stone-700 hover:text-stone-950'
                   }`}
                 >
@@ -610,7 +610,7 @@ export const JobDetailPage: React.FC = () => {
                         >
                           <td className="py-3.5 px-4">
                             <div className="flex items-center gap-3">
-                              <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#ff0844] to-[#ff7300] border-2 border-black text-white font-black flex items-center justify-center text-xs shrink-0 shadow-[1px_1px_0px_0px_#000000]">
+                              <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] border-2 border-black text-white font-black flex items-center justify-center text-xs shrink-0 shadow-[1px_1px_0px_0px_#000000]">
                                 {getInitials(cand.candidate_name)}
                               </div>
                               <div>

@@ -27,7 +27,7 @@ export const ShortlistCard: React.FC<ShortlistCardProps> = ({
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="flex items-start gap-3.5">
           {/* Rank Badge with brutalist border */}
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-100 to-amber-100 border-2 border-stone-900 shadow-[2px_2px_0px_0px_#1c1917] text-rose-950 font-mono font-black text-sm flex items-center justify-center shrink-0">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] border-2 border-black shadow-[2px_2px_0px_0px_#000000] text-white font-mono font-black text-sm flex items-center justify-center shrink-0">
             #{rank}
           </div>
 
@@ -77,7 +77,7 @@ export const ShortlistCard: React.FC<ShortlistCardProps> = ({
 
       {/* Summary Justification */}
       <div className="p-3.5 rounded-xl bg-stone-50 border-2 border-stone-900 shadow-[2px_2px_0px_0px_#1c1917] text-xs text-stone-800 leading-relaxed font-bold">
-        <span className="font-black text-rose-700 block mb-0.5">Match Rationale:</span>
+        <span className="font-black text-[#ff0844] block mb-0.5">Match Rationale:</span>
         {candidate.summary_justification}
       </div>
 
