@@ -14,6 +14,13 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
   const [isMounted, setIsMounted] = useState(true);
   const [progress, setProgress] = useState(0);
 
+  // Dynamic Status Text based on progress
+  const getStatusText = (pct: number) => {
+    if (pct < 40) return '⚡ Initializing AI Engine';
+    if (pct < 80) return '🛡️ Calibrating Audit Guards';
+    return '🚀 Workspace Ready';
+  };
+
   useEffect(() => {
     // Animate progress percentage from 0 to 100%
     const startTime = performance.now();
@@ -73,7 +80,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
         {/* Glowing Ambient Halo */}
         <div className="absolute -top-12 -right-12 w-32 h-32 bg-gradient-to-br from-[#ff0844]/20 to-[#ff7300]/20 rounded-full blur-2xl pointer-events-none" />
 
-        {/* Logo Badge matching the user's icon */}
+        {/* Logo Badge */}
         <div className="relative group">
           <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] border-[3px] border-black shadow-[4px_4px_0px_0px_#000000] flex items-center justify-center text-white transition-transform duration-300 group-hover:scale-105">
             <FileSearch className="w-10 h-10 sm:w-12 sm:h-12 text-white stroke-[2.5]" />
@@ -94,7 +101,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
           </p>
         </div>
 
-        {/* Animated Progress Bar & Percentage */}
+        {/* Animated Progress Bar & Dynamic Status Indicator */}
         <div className="w-full max-w-xs space-y-2 pt-2">
           <div className="h-3 w-full rounded-full bg-stone-100 border-2 border-black overflow-hidden shadow-[2px_2px_0px_0px_#000000] p-0.5">
             <div
@@ -106,7 +113,9 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
           </div>
 
           <div className="flex items-center justify-between text-[11px] font-black uppercase tracking-wider px-1">
-            <span className="text-[#ff0844]">Loading Workspace</span>
+            <span className="text-[#ff0844] transition-all duration-200">
+              {getStatusText(progress)}
+            </span>
             <span className="font-mono text-stone-950 font-black">{progress}%</span>
           </div>
         </div>
