@@ -9,37 +9,37 @@ export function getScoreColor(score: number): {
 } {
   if (score >= 8.0) {
     return {
-      bg: 'bg-emerald-500/10',
-      text: 'text-emerald-400',
-      border: 'border-emerald-500/30',
-      ring: 'ring-emerald-500/20',
-      gradient: 'from-emerald-500 to-teal-400',
+      bg: 'bg-emerald-50/90',
+      text: 'text-emerald-800',
+      border: 'border-emerald-300',
+      ring: 'ring-emerald-400/30',
+      gradient: 'from-emerald-600 to-teal-600',
     };
   }
   if (score >= 6.5) {
     return {
-      bg: 'bg-indigo-500/10',
-      text: 'text-indigo-400',
-      border: 'border-indigo-500/30',
-      ring: 'ring-indigo-500/20',
-      gradient: 'from-indigo-500 to-blue-400',
+      bg: 'bg-rose-50/90',
+      text: 'text-rose-800',
+      border: 'border-rose-300',
+      ring: 'ring-rose-400/30',
+      gradient: 'from-rose-500 to-amber-600',
     };
   }
   if (score >= 5.0) {
     return {
-      bg: 'bg-amber-500/10',
-      text: 'text-amber-400',
-      border: 'border-amber-500/30',
-      ring: 'ring-amber-500/20',
-      gradient: 'from-amber-500 to-orange-400',
+      bg: 'bg-amber-50/90',
+      text: 'text-amber-800',
+      border: 'border-amber-300',
+      ring: 'ring-amber-400/30',
+      gradient: 'from-amber-500 to-orange-500',
     };
   }
   return {
-    bg: 'bg-rose-500/10',
-    text: 'text-rose-400',
-    border: 'border-rose-500/30',
-    ring: 'ring-rose-500/20',
-    gradient: 'from-rose-500 to-pink-500',
+    bg: 'bg-rose-50/90',
+    text: 'text-rose-700',
+    border: 'border-rose-300',
+    ring: 'ring-rose-400/30',
+    gradient: 'from-rose-600 to-pink-600',
   };
 }
 
@@ -54,26 +54,26 @@ export function getRecommendationBadge(rec: Recommendation): {
     case 'shortlist':
       return {
         label: 'Shortlist',
-        color: 'text-emerald-400',
-        bgColor: 'bg-emerald-500/10',
-        borderColor: 'border-emerald-500/30',
-        dotColor: 'bg-emerald-400',
+        color: 'text-emerald-800',
+        bgColor: 'bg-emerald-50',
+        borderColor: 'border-emerald-200',
+        dotColor: 'bg-emerald-600',
       };
     case 'review':
       return {
         label: 'Review Needed',
-        color: 'text-amber-400',
-        bgColor: 'bg-amber-500/10',
-        borderColor: 'border-amber-500/30',
-        dotColor: 'bg-amber-400',
+        color: 'text-amber-800',
+        bgColor: 'bg-amber-50',
+        borderColor: 'border-amber-200',
+        dotColor: 'bg-amber-600',
       };
     case 'do_not_shortlist':
       return {
         label: 'Do Not Shortlist',
-        color: 'text-rose-400',
-        bgColor: 'bg-rose-500/10',
-        borderColor: 'border-rose-500/30',
-        dotColor: 'bg-rose-400',
+        color: 'text-rose-800',
+        bgColor: 'bg-rose-50',
+        borderColor: 'border-rose-200',
+        dotColor: 'bg-rose-600',
       };
   }
 }
@@ -87,14 +87,14 @@ export function getStatusBadge(status: CandidateStatus): {
 } {
   switch (status) {
     case 'queued':
-      return { label: 'Queued', color: 'text-slate-400', bgColor: 'bg-slate-800', dotColor: 'bg-slate-400' };
+      return { label: 'Queued', color: 'text-stone-600', bgColor: 'bg-stone-100', dotColor: 'bg-stone-400' };
     case 'processing':
-      return { label: 'Processing', color: 'text-indigo-400', bgColor: 'bg-indigo-500/10', dotColor: 'bg-indigo-400', animate: true };
+      return { label: 'Processing', color: 'text-amber-700', bgColor: 'bg-amber-50', dotColor: 'bg-amber-500', animate: true };
     case 'parsed':
-      return { label: 'Parsed', color: 'text-cyan-400', bgColor: 'bg-cyan-500/10', dotColor: 'bg-cyan-400' };
+      return { label: 'Parsed', color: 'text-rose-700', bgColor: 'bg-rose-50', dotColor: 'bg-rose-500' };
     case 'scored':
-      return { label: 'Scored', color: 'text-emerald-400', bgColor: 'bg-emerald-500/10', dotColor: 'bg-emerald-400' };
+      return { label: 'Scored', color: 'text-emerald-800', bgColor: 'bg-emerald-50', dotColor: 'bg-emerald-600' };
     case 'failed':
-      return { label: 'Failed', color: 'text-rose-400', bgColor: 'bg-rose-500/10', dotColor: 'bg-rose-400' };
+      return { label: 'Failed', color: 'text-rose-700', bgColor: 'bg-rose-50', dotColor: 'bg-rose-600' };
   }
 }

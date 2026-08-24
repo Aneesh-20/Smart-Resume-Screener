@@ -19,13 +19,13 @@ export const Badge: React.FC<BadgeProps> = ({
   className,
 }) => {
   const variantStyles = {
-    default: 'bg-white/[0.05] backdrop-blur-md text-slate-300 border-white/10 shadow-glass-sm',
-    primary: 'bg-indigo-500/15 backdrop-blur-md text-indigo-200 border-indigo-400/30 shadow-[0_0_12px_rgba(99,102,241,0.2)]',
-    success: 'bg-emerald-500/15 backdrop-blur-md text-emerald-200 border-emerald-400/30 shadow-[0_0_12px_rgba(16,185,129,0.2)]',
-    warning: 'bg-amber-500/15 backdrop-blur-md text-amber-200 border-amber-400/30 shadow-[0_0_12px_rgba(245,158,11,0.2)]',
-    danger: 'bg-rose-500/15 backdrop-blur-md text-rose-200 border-rose-400/30 shadow-[0_0_12px_rgba(244,63,94,0.2)]',
-    info: 'bg-cyan-500/15 backdrop-blur-md text-cyan-200 border-cyan-400/30 shadow-[0_0_12px_rgba(6,182,212,0.2)]',
-    purple: 'bg-purple-500/15 backdrop-blur-md text-purple-200 border-purple-400/30 shadow-[0_0_12px_rgba(168,85,247,0.2)]',
+    default: 'bg-stone-100/90 text-stone-700 border-stone-200 shadow-sm',
+    primary: 'bg-rose-50/90 text-rose-800 border-rose-200/90 shadow-sm',
+    success: 'bg-emerald-50/90 text-emerald-800 border-emerald-200/90 shadow-sm',
+    warning: 'bg-amber-50/90 text-amber-800 border-amber-200/90 shadow-sm',
+    danger: 'bg-rose-50/90 text-rose-800 border-rose-200/90 shadow-sm',
+    info: 'bg-sky-50/90 text-sky-800 border-sky-200/90 shadow-sm',
+    purple: 'bg-purple-50/90 text-purple-800 border-purple-200/90 shadow-sm',
   };
 
   const sizeStyles = {

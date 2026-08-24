@@ -43,28 +43,28 @@ export const RawTextModal: React.FC<RawTextModalProps> = ({
       <div className="space-y-4">
         <div className="flex items-center justify-between gap-3">
           <div className="relative flex-1">
-            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
+            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-stone-400" />
             <input
               type="text"
               placeholder="Search in extracted resume text..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-3 py-1.5 bg-slate-950/80 border border-slate-800 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+              className="w-full pl-9 pr-3 py-1.5 glass-input rounded-xl text-xs"
             />
           </div>
           <Button
             variant="outline"
             size="sm"
             onClick={handleCopy}
-            leftIcon={copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+            leftIcon={copied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
           >
             {copied ? 'Copied' : 'Copy All'}
           </Button>
         </div>
 
-        <div className="max-h-96 overflow-y-auto p-4 rounded-xl bg-slate-950/90 border border-slate-800/80 font-mono text-xs text-slate-300 whitespace-pre-wrap leading-relaxed">
+        <div className="max-h-96 overflow-y-auto p-4 rounded-xl bg-stone-900 text-stone-100 font-mono text-xs whitespace-pre-wrap leading-relaxed shadow-inner">
           {searchQuery && filteredLines.length === 0 ? (
-            <p className="text-slate-500 italic">No matches found for "{searchQuery}".</p>
+            <p className="text-stone-400 italic">No matches found for "{searchQuery}".</p>
           ) : (
             filteredLines.join('\n')
           )}

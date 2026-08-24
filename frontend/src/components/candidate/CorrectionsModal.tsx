@@ -84,95 +84,95 @@ export const CorrectionsModal: React.FC<CorrectionsModalProps> = ({
     >
       <div className="space-y-4">
         {error && (
-          <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-300 text-xs flex items-center gap-2">
-            <AlertCircle className="w-4 h-4 shrink-0 text-rose-400" />
+          <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-xs flex items-center gap-2">
+            <AlertCircle className="w-4 h-4 shrink-0 text-rose-600" />
             <span>{error}</span>
           </div>
         )}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-1.5">
-            <label className="block text-xs font-semibold text-slate-300">Candidate Name</label>
+            <label className="block text-xs font-bold text-stone-800">Candidate Name</label>
             <input
               type="text"
               value={candidateName}
               onChange={(e) => setCandidateName(e.target.value)}
-              className="w-full px-3 py-2 bg-slate-950/80 border border-slate-800 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+              className="w-full px-3 py-2 glass-input rounded-xl text-xs"
               placeholder="e.g. Alice Chen"
             />
           </div>
 
           <div className="space-y-1.5">
-            <label className="block text-xs font-semibold text-slate-300">Total Experience (Years)</label>
+            <label className="block text-xs font-bold text-stone-800">Total Experience (Years)</label>
             <input
               type="number"
               step="0.5"
               value={totalYears}
               onChange={(e) => setTotalYears(e.target.value)}
-              className="w-full px-3 py-2 bg-slate-950/80 border border-slate-800 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+              className="w-full px-3 py-2 glass-input rounded-xl text-xs font-mono"
               placeholder="e.g. 5.5"
             />
           </div>
 
           <div className="space-y-1.5">
-            <label className="block text-xs font-semibold text-slate-300">Email Address</label>
+            <label className="block text-xs font-bold text-stone-800">Email Address</label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-3 py-2 bg-slate-950/80 border border-slate-800 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+              className="w-full px-3 py-2 glass-input rounded-xl text-xs"
               placeholder="candidate@example.com"
             />
           </div>
 
           <div className="space-y-1.5">
-            <label className="block text-xs font-semibold text-slate-300">Phone Number</label>
+            <label className="block text-xs font-bold text-stone-800">Phone Number</label>
             <input
               type="text"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              className="w-full px-3 py-2 bg-slate-950/80 border border-slate-800 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+              className="w-full px-3 py-2 glass-input rounded-xl text-xs"
               placeholder="(555) 123-4567"
             />
           </div>
 
           <div className="space-y-1.5 sm:col-span-2">
-            <label className="block text-xs font-semibold text-slate-300">Location</label>
+            <label className="block text-xs font-bold text-stone-800">Location</label>
             <input
               type="text"
               value={location}
               onChange={(e) => setLocation(e.target.value)}
-              className="w-full px-3 py-2 bg-slate-950/80 border border-slate-800 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+              className="w-full px-3 py-2 glass-input rounded-xl text-xs"
               placeholder="City, State"
             />
           </div>
         </div>
 
         <div className="space-y-1.5">
-          <label className="block text-xs font-semibold text-slate-300">
+          <label className="block text-xs font-bold text-stone-800">
             Skills (comma separated)
           </label>
           <input
             type="text"
             value={skillsText}
             onChange={(e) => setSkillsText(e.target.value)}
-            className="w-full px-3 py-2 bg-slate-950/80 border border-slate-800 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+            className="w-full px-3 py-2 glass-input rounded-xl text-xs"
             placeholder="Python, React, TypeScript, PostgreSQL"
           />
         </div>
 
         <div className="space-y-1.5">
-          <label className="block text-xs font-semibold text-slate-300">Summary / Notes</label>
+          <label className="block text-xs font-bold text-stone-800">Summary / Notes</label>
           <textarea
             rows={3}
             value={summary}
             onChange={(e) => setSummary(e.target.value)}
-            className="w-full px-3 py-2 bg-slate-950/80 border border-slate-800 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+            className="w-full px-3 py-2 glass-input rounded-xl text-xs"
             placeholder="Candidate professional summary or recruiter notes..."
           />
         </div>
 
-        <div className="pt-3 border-t border-slate-800 flex items-center justify-between">
+        <div className="pt-3 border-t border-stone-200 flex items-center justify-between">
           <Button variant="ghost" size="sm" onClick={onClose} disabled={isLoading}>
             Cancel
           </Button>

@@ -21,19 +21,19 @@ export const Button: React.FC<ButtonProps> = ({
   disabled,
   ...props
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-950 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer active:scale-[0.98]';
+  const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-stone-100 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer active:scale-[0.98]';
 
   const variantStyles = {
-    primary: 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-600/20 focus:ring-indigo-500',
-    secondary: 'bg-slate-800 hover:bg-slate-700 text-slate-100 border border-slate-700 focus:ring-slate-600',
-    outline: 'border border-slate-700 hover:bg-slate-800/60 text-slate-300 hover:text-white focus:ring-slate-600',
-    danger: 'bg-rose-600/20 hover:bg-rose-600/30 text-rose-300 border border-rose-500/30 hover:border-rose-500/50 focus:ring-rose-500',
-    ghost: 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/40 focus:ring-slate-600',
+    primary: 'bg-gradient-to-r from-rose-600 via-rose-500 to-amber-600 hover:from-rose-700 hover:to-amber-700 text-white shadow-md shadow-rose-500/20 border border-rose-400/40 focus:ring-rose-500',
+    secondary: 'bg-white hover:bg-stone-50 text-stone-700 border border-stone-300 shadow-sm focus:ring-stone-400',
+    outline: 'bg-white/80 hover:bg-white text-stone-700 border border-stone-300/90 hover:border-rose-400/60 shadow-sm focus:ring-rose-400',
+    danger: 'bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 focus:ring-rose-500',
+    ghost: 'text-stone-600 hover:text-stone-900 hover:bg-stone-100/70 focus:ring-stone-400',
   };
 
   const sizeStyles = {
-    sm: 'px-2.5 py-1.5 text-xs gap-1.5',
-    md: 'px-3.5 py-2 text-sm gap-2',
+    sm: 'px-3 py-1.5 text-xs gap-1.5',
+    md: 'px-4 py-2 text-sm gap-2',
     lg: 'px-5 py-2.5 text-base gap-2.5',
   };
 

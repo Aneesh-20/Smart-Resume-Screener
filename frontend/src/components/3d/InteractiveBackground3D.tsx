@@ -26,7 +26,7 @@ export const InteractiveBackground3D: React.FC = () => {
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
       container.appendChild(renderer.domElement);
 
-      const particleCount = 150;
+      const particleCount = 120;
       const geometry = new THREE.BufferGeometry();
       const positions = new Float32Array(particleCount * 3);
 
@@ -39,11 +39,10 @@ export const InteractiveBackground3D: React.FC = () => {
       geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
       const material = new THREE.PointsMaterial({
-        color: 0x6366f1,
-        size: 2.2,
+        color: 0xfb7185, // Rose Gold
+        size: 2.5,
         transparent: true,
-        opacity: 0.35,
-        blending: THREE.AdditiveBlending,
+        opacity: 0.28,
       });
 
       const particles = new THREE.Points(geometry, material);
@@ -108,7 +107,7 @@ export const InteractiveBackground3D: React.FC = () => {
   return (
     <div
       ref={mountRef}
-      className="fixed inset-0 pointer-events-none z-0 opacity-70"
+      className="fixed inset-0 pointer-events-none z-0 opacity-60"
     />
   );
 };

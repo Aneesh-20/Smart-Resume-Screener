@@ -12,7 +12,6 @@ export const InteractiveHero3D: React.FC = () => {
     let animationFrameId: number;
 
     try {
-      // Scene, Camera, Renderer
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(
         45,
@@ -27,27 +26,26 @@ export const InteractiveHero3D: React.FC = () => {
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       container.appendChild(renderer.domElement);
 
-      // 3D Neural Particle Core & Wireframe Icosahedron
       const coreGroup = new THREE.Group();
       scene.add(coreGroup);
 
-      // 1. Outer Wireframe Globe
+      // 1. Outer Wireframe Globe (Rose Gold)
       const sphereGeo = new THREE.IcosahedronGeometry(7, 2);
       const wireMat = new THREE.MeshBasicMaterial({
-        color: 0x6366f1, // Indigo
+        color: 0xf43f5e,
         wireframe: true,
         transparent: true,
-        opacity: 0.18,
+        opacity: 0.2,
       });
       const wireMesh = new THREE.Mesh(sphereGeo, wireMat);
       coreGroup.add(wireMesh);
 
-      // 2. Inner Glowing Torus Rings
+      // 2. Inner Glowing Torus Rings (Amber & Rose)
       const torusGeo = new THREE.TorusGeometry(8.5, 0.12, 16, 100);
       const torusMat = new THREE.MeshBasicMaterial({
-        color: 0x818cf8,
+        color: 0xf59e0b,
         transparent: true,
-        opacity: 0.4,
+        opacity: 0.35,
       });
       const torusMesh = new THREE.Mesh(torusGeo, torusMat);
       torusMesh.rotation.x = Math.PI / 3;
@@ -55,7 +53,7 @@ export const InteractiveHero3D: React.FC = () => {
 
       const torusGeo2 = new THREE.TorusGeometry(6, 0.08, 16, 100);
       const torusMat2 = new THREE.MeshBasicMaterial({
-        color: 0x38bdf8, // Cyan
+        color: 0xfb7185,
         transparent: true,
         opacity: 0.3,
       });
@@ -68,9 +66,9 @@ export const InteractiveHero3D: React.FC = () => {
       const positions = new Float32Array(particleCount * 3);
       const colors = new Float32Array(particleCount * 3);
 
-      const colorA = new THREE.Color(0x6366f1);
-      const colorB = new THREE.Color(0x38bdf8);
-      const colorC = new THREE.Color(0xa855f7);
+      const colorA = new THREE.Color(0xf43f5e); // Rose
+      const colorB = new THREE.Color(0xf59e0b); // Amber
+      const colorC = new THREE.Color(0xfb923c); // Warm Peach
 
       for (let i = 0; i < particleCount; i++) {
         const radius = 5 + Math.random() * 5.5;
@@ -92,17 +90,15 @@ export const InteractiveHero3D: React.FC = () => {
       particleGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
       const particleMat = new THREE.PointsMaterial({
-        size: 0.35,
+        size: 0.4,
         vertexColors: true,
         transparent: true,
-        opacity: 0.8,
-        blending: THREE.AdditiveBlending,
+        opacity: 0.75,
       });
 
       const particles = new THREE.Points(particleGeo, particleMat);
       coreGroup.add(particles);
 
-      // Mouse Interaction
       let mouseX = 0;
       let mouseY = 0;
       let targetX = 0;
@@ -168,7 +164,6 @@ export const InteractiveHero3D: React.FC = () => {
         torusMat2.dispose();
       };
     } catch {
-      // Graceful fallback for non-WebGL environments
       return () => {
         if (animationFrameId) cancelAnimationFrame(animationFrameId);
       };
@@ -178,7 +173,7 @@ export const InteractiveHero3D: React.FC = () => {
   return (
     <div
       ref={mountRef}
-      className="absolute inset-0 pointer-events-none opacity-80 mix-blend-screen"
+      className="absolute inset-0 pointer-events-none opacity-85"
       style={{ width: '100%', height: '100%' }}
     />
   );
