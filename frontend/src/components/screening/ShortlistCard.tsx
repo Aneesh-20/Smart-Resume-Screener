@@ -26,14 +26,14 @@ export const ShortlistCard: React.FC<ShortlistCardProps> = ({
       {/* Card Header */}
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="flex items-start gap-3.5">
-          {/* Rank Badge with brutalist border */}
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] border-2 border-black shadow-[2px_2px_0px_0px_#000000] text-white font-mono font-black text-sm flex items-center justify-center shrink-0">
+          {/* Rank Badge with clean Nordic border */}
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-[#0284c7] via-[#0ea5e9] to-[#38bdf8] border-2 border-slate-900 shadow-[2px_2px_0px_0px_#0f172a] text-white font-mono font-black text-sm flex items-center justify-center shrink-0">
             #{rank}
           </div>
 
           <div>
             <div className="flex items-center gap-2 flex-wrap">
-              <h3 className="text-base font-black text-stone-950 tracking-tight">
+              <h3 className="text-base font-black text-slate-950 tracking-tight">
                 {candidate.candidate_name || candidate.original_filename}
               </h3>
               <Badge
@@ -50,17 +50,17 @@ export const ShortlistCard: React.FC<ShortlistCardProps> = ({
                 {recBadge.label}
               </Badge>
               {candidate.is_fallback && (
-                <span className="inline-flex items-center gap-1 text-[10px] font-black px-2 py-0.5 rounded-md bg-amber-100 text-amber-950 border border-stone-900 shadow-[1px_1px_0px_0px_#1c1917]">
+                <span className="inline-flex items-center gap-1 text-[10px] font-black px-2 py-0.5 rounded-md bg-amber-100 text-amber-950 border border-slate-900 shadow-[1px_1px_0px_0px_#0f172a]">
                   <Cpu className="w-2.5 h-2.5 text-amber-700" /> Fallback
                 </span>
               )}
             </div>
 
-            <div className="flex items-center gap-3 text-xs text-stone-600 font-bold mt-1">
+            <div className="flex items-center gap-3 text-xs text-slate-600 font-bold mt-1">
               <span>{candidate.original_filename}</span>
               {candidate.total_experience_years && (
-                <span className="flex items-center gap-1 text-stone-900 font-bold">
-                  <Briefcase className="w-3 h-3 text-stone-500" />
+                <span className="flex items-center gap-1 text-slate-900 font-bold">
+                  <Briefcase className="w-3 h-3 text-slate-500" />
                   ~{candidate.total_experience_years.toFixed(1)} yrs exp
                 </span>
               )}
@@ -76,15 +76,15 @@ export const ShortlistCard: React.FC<ShortlistCardProps> = ({
       </div>
 
       {/* Summary Justification */}
-      <div className="p-3.5 rounded-xl bg-stone-50 border-2 border-stone-900 shadow-[2px_2px_0px_0px_#1c1917] text-xs text-stone-800 leading-relaxed font-bold">
-        <span className="font-black text-[#ff0844] block mb-0.5">Match Rationale:</span>
+      <div className="p-3.5 rounded-xl bg-slate-50 border-2 border-slate-900 shadow-[2px_2px_0px_0px_#0f172a] text-xs text-slate-800 leading-relaxed font-bold">
+        <span className="font-black text-[#0284c7] block mb-0.5">Match Rationale:</span>
         {candidate.summary_justification}
       </div>
 
       {/* Key Skills & Quick Breakdown Grid Sub-blocks */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 pt-1">
         {/* Left: Matched Strengths & Gaps Highlights */}
-        <div className="p-3.5 rounded-xl bg-white border-2 border-stone-900 shadow-[2px_2px_0px_0px_#1c1917] space-y-2.5">
+        <div className="p-3.5 rounded-xl bg-white border-2 border-slate-900 shadow-[2px_2px_0px_0px_#0f172a] space-y-2.5">
           {candidate.matched_requirements.length > 0 && (
             <div className="space-y-1">
               <span className="text-[11px] font-black text-emerald-800 flex items-center gap-1">
@@ -92,8 +92,8 @@ export const ShortlistCard: React.FC<ShortlistCardProps> = ({
               </span>
               <div className="space-y-1">
                 {candidate.matched_requirements.slice(0, 2).map((m, idx) => (
-                  <p key={idx} className="text-xs font-bold text-stone-800 truncate">
-                    • <strong className="text-stone-950 font-black">{m.requirement}</strong>: <span className="text-stone-600 italic text-[11px]">"{m.evidence.substring(0, 75)}..."</span>
+                  <p key={idx} className="text-xs font-bold text-slate-800 truncate">
+                    • <strong className="text-slate-950 font-black">{m.requirement}</strong>: <span className="text-slate-600 italic text-[11px]">"{m.evidence.substring(0, 75)}..."</span>
                   </p>
                 ))}
               </div>
@@ -107,8 +107,8 @@ export const ShortlistCard: React.FC<ShortlistCardProps> = ({
               </span>
               <div className="space-y-1">
                 {candidate.gaps.slice(0, 2).map((g, idx) => (
-                  <p key={idx} className="text-xs font-bold text-stone-700 truncate">
-                    • <span className="text-stone-950 font-black">{g.requirement}</span> ({g.reason})
+                  <p key={idx} className="text-xs font-bold text-slate-700 truncate">
+                    • <span className="text-slate-950 font-black">{g.requirement}</span> ({g.reason})
                   </p>
                 ))}
               </div>
@@ -117,13 +117,13 @@ export const ShortlistCard: React.FC<ShortlistCardProps> = ({
         </div>
 
         {/* Right: Score Breakdown Progress Bars */}
-        <div className="p-3.5 rounded-xl bg-white border-2 border-stone-900 shadow-[2px_2px_0px_0px_#1c1917] flex flex-col justify-center">
+        <div className="p-3.5 rounded-xl bg-white border-2 border-slate-900 shadow-[2px_2px_0px_0px_#0f172a] flex flex-col justify-center">
           <ScoreBreakdownBars breakdown={candidate.score_breakdown} compact />
         </div>
       </div>
 
       {/* Card Footer: Skills pills & View details button */}
-      <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t-2 border-stone-900">
+      <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t-2 border-slate-900">
         <div className="flex flex-wrap items-center gap-1.5">
           {candidate.skills_preview.map((skill, idx) => (
             <Badge key={idx} variant="primary" size="sm">

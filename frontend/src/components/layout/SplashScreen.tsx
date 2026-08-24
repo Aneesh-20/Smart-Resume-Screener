@@ -22,7 +22,6 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
   };
 
   useEffect(() => {
-    // Animate progress percentage from 0 to 100%
     const startTime = performance.now();
     let animationFrameId: number;
 
@@ -40,12 +39,10 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
 
     animationFrameId = requestAnimationFrame(updateProgress);
 
-    // Start fade out slightly before completion
     const fadeTimer = setTimeout(() => {
       setIsFadingOut(true);
     }, durationMs - 350);
 
-    // Completely unmount splash after duration
     const finishTimer = setTimeout(() => {
       setIsMounted(false);
       if (onFinish) onFinish();
@@ -62,50 +59,50 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-[#faf7f5] transition-all duration-350 select-none ${
+      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-[#f8fafc] transition-all duration-350 select-none ${
         isFadingOut ? 'opacity-0 scale-105 pointer-events-none' : 'opacity-100 scale-100'
       }`}
       style={{
         backgroundImage: `
-          radial-gradient(at 0% 0%, rgba(255, 8, 68, 0.18) 0px, transparent 50%),
-          radial-gradient(at 100% 0%, rgba(255, 115, 0, 0.18) 0px, transparent 45%),
-          radial-gradient(at 50% 50%, rgba(254, 243, 199, 0.3) 0px, transparent 60%),
-          radial-gradient(at 0% 100%, rgba(255, 107, 0, 0.15) 0px, transparent 50%)
+          radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.22) 0px, transparent 50%),
+          radial-gradient(at 100% 0%, rgba(2, 132, 199, 0.18) 0px, transparent 45%),
+          radial-gradient(at 50% 50%, rgba(224, 242, 254, 0.45) 0px, transparent 60%),
+          radial-gradient(at 0% 100%, rgba(14, 165, 233, 0.16) 0px, transparent 50%)
         `,
       }}
     >
       {/* Centered Brutalist Splash Card */}
-      <div className="relative p-8 sm:p-10 rounded-3xl bg-white border-[3px] border-black shadow-[8px_8px_0px_0px_#000000] max-w-md w-[90%] flex flex-col items-center text-center space-y-6 animate-in zoom-in-90 duration-300">
+      <div className="relative p-8 sm:p-10 rounded-3xl bg-white border-[3px] border-slate-900 shadow-[8px_8px_0px_0px_#0f172a] max-w-md w-[90%] flex flex-col items-center text-center space-y-6 animate-in zoom-in-90 duration-300">
         
         {/* Glowing Ambient Halo */}
-        <div className="absolute -top-12 -right-12 w-32 h-32 bg-gradient-to-br from-[#ff0844]/20 to-[#ff7300]/20 rounded-full blur-2xl pointer-events-none" />
+        <div className="absolute -top-12 -right-12 w-32 h-32 bg-gradient-to-br from-[#0284c7]/20 to-[#38bdf8]/20 rounded-full blur-2xl pointer-events-none" />
 
         {/* Logo Badge */}
         <div className="relative group">
-          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] border-[3px] border-black shadow-[4px_4px_0px_0px_#000000] flex items-center justify-center text-white transition-transform duration-300 group-hover:scale-105">
+          <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-gradient-to-r from-[#0284c7] via-[#0ea5e9] to-[#38bdf8] border-[3px] border-slate-900 shadow-[4px_4px_0px_0px_#0f172a] flex items-center justify-center text-white transition-transform duration-300 group-hover:scale-105">
             <FileSearch className="w-10 h-10 sm:w-12 sm:h-12 text-white stroke-[2.5]" />
           </div>
 
-          <div className="absolute -top-2 -right-2 p-1.5 rounded-full bg-white border-2 border-black shadow-[2px_2px_0px_0px_#000000] text-[#ff0844]">
+          <div className="absolute -top-2 -right-2 p-1.5 rounded-full bg-white border-2 border-slate-900 shadow-[2px_2px_0px_0px_#0f172a] text-[#0284c7]">
             <Sparkles className="w-4 h-4 animate-spin" />
           </div>
         </div>
 
         {/* Title & Subtitle */}
         <div className="space-y-1.5">
-          <h1 className="text-2xl sm:text-3xl font-black text-stone-950 tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight">
             Smart Resume Screener
           </h1>
-          <p className="text-xs sm:text-sm font-bold text-stone-600">
+          <p className="text-xs sm:text-sm font-bold text-slate-600">
             Auditable Candidate Intelligence Engine
           </p>
         </div>
 
         {/* Animated Progress Bar & Dynamic Status Indicator */}
         <div className="w-full max-w-xs space-y-2 pt-2">
-          <div className="h-3 w-full rounded-full bg-stone-100 border-2 border-black overflow-hidden shadow-[2px_2px_0px_0px_#000000] p-0.5">
+          <div className="h-3 w-full rounded-full bg-slate-100 border-2 border-slate-900 overflow-hidden shadow-[2px_2px_0px_0px_#0f172a] p-0.5">
             <div
-              className="h-full rounded-full bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] transition-all duration-75"
+              className="h-full rounded-full bg-gradient-to-r from-[#0284c7] via-[#0ea5e9] to-[#38bdf8] transition-all duration-75"
               style={{
                 width: `${progress}%`,
               }}
@@ -113,10 +110,10 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
           </div>
 
           <div className="flex items-center justify-between text-[11px] font-black uppercase tracking-wider px-1">
-            <span className="text-[#ff0844] transition-all duration-200">
+            <span className="text-[#0284c7] transition-all duration-200">
               {getStatusText(progress)}
             </span>
-            <span className="font-mono text-stone-950 font-black">{progress}%</span>
+            <span className="font-mono text-slate-950 font-black">{progress}%</span>
           </div>
         </div>
       </div>

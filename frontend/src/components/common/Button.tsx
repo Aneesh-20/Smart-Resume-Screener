@@ -21,15 +21,15 @@ export const Button: React.FC<ButtonProps> = ({
   disabled,
   ...props
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center font-black rounded-2xl border-[2.5px] border-black transition-all duration-150 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer active:translate-x-0.5 active:translate-y-0.5 active:shadow-[1px_1px_0px_0px_#000000]';
+  const baseStyles = 'inline-flex items-center justify-center font-black rounded-2xl border-[2.5px] border-slate-900 transition-all duration-150 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer active:translate-x-0.5 active:translate-y-0.5 active:shadow-[1px_1px_0px_0px_#0f172a]';
 
   const variantStyles = {
-    primary: 'bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] hover:from-[#e50039] hover:to-[#ea580c] text-white shadow-[3.5px_3.5px_0px_0px_#000000] hover:shadow-[5.5px_5.5px_0px_0px_#000000] hover:-translate-x-0.5 hover:-translate-y-0.5',
-    sunset: 'bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] hover:from-[#e50039] hover:to-[#ea580c] text-white shadow-[3.5px_3.5px_0px_0px_#000000] hover:shadow-[5.5px_5.5px_0px_0px_#000000] hover:-translate-x-0.5 hover:-translate-y-0.5',
-    secondary: 'bg-white hover:bg-rose-50/70 text-stone-950 shadow-[3px_3px_0px_0px_#000000] hover:shadow-[5px_5px_0px_0px_#000000] hover:-translate-x-0.5 hover:-translate-y-0.5',
-    outline: 'bg-white hover:bg-gradient-to-r hover:from-[#ff0844] hover:via-[#ff2a54] hover:via-60% hover:to-[#ff7300] hover:text-white text-stone-950 shadow-[3px_3px_0px_0px_#000000] hover:shadow-[5px_5px_0px_0px_#000000] hover:-translate-x-0.5 hover:-translate-y-0.5',
-    danger: 'bg-rose-100 hover:bg-rose-200 text-rose-950 shadow-[3px_3px_0px_0px_#000000] hover:shadow-[5px_5px_0px_0px_#000000] hover:-translate-x-0.5 hover:-translate-y-0.5',
-    ghost: 'border-transparent hover:border-black text-stone-700 hover:text-stone-950 hover:bg-stone-100 shadow-none hover:shadow-[2px_2px_0px_0px_#000000]',
+    primary: 'bg-gradient-to-r from-[#0284c7] via-[#0ea5e9] to-[#38bdf8] hover:from-[#0369a1] hover:to-[#0284c7] text-white shadow-[3.5px_3.5px_0px_0px_#0f172a] hover:shadow-[5.5px_5.5px_0px_0px_#0f172a] hover:-translate-x-0.5 hover:-translate-y-0.5',
+    sunset: 'bg-gradient-to-r from-[#0284c7] via-[#0ea5e9] to-[#38bdf8] hover:from-[#0369a1] hover:to-[#0284c7] text-white shadow-[3.5px_3.5px_0px_0px_#0f172a] hover:shadow-[5.5px_5.5px_0px_0px_#0f172a] hover:-translate-x-0.5 hover:-translate-y-0.5',
+    secondary: 'bg-white hover:bg-sky-50 text-slate-950 shadow-[3px_3px_0px_0px_#0f172a] hover:shadow-[5px_5px_0px_0px_#0f172a] hover:-translate-x-0.5 hover:-translate-y-0.5',
+    outline: 'bg-white hover:bg-gradient-to-r hover:from-[#0284c7] hover:via-[#0ea5e9] hover:to-[#38bdf8] hover:text-white text-slate-950 shadow-[3px_3px_0px_0px_#0f172a] hover:shadow-[5px_5px_0px_0px_#0f172a] hover:-translate-x-0.5 hover:-translate-y-0.5',
+    danger: 'bg-rose-50 hover:bg-rose-100 text-rose-950 shadow-[3px_3px_0px_0px_#0f172a] hover:shadow-[5px_5px_0px_0px_#0f172a] hover:-translate-x-0.5 hover:-translate-y-0.5',
+    ghost: 'border-transparent hover:border-slate-900 text-slate-700 hover:text-slate-950 hover:bg-slate-100 shadow-none hover:shadow-[2px_2px_0px_0px_#0f172a]',
   };
 
   const sizeStyles = {

@@ -132,15 +132,15 @@ export const JobsListPage: React.FC = () => {
           <InteractiveHero3D />
 
           <div className="space-y-4 relative z-10">
-            <div className="glass-badge-rosegold">
-              <Sparkles className="w-3.5 h-3.5 text-[#ff0844] animate-pulse" />
+            <div className="glass-badge-cyan">
+              <Sparkles className="w-3.5 h-3.5 text-[#0284c7] animate-pulse" />
               <span>Auditable AI Candidate Screening</span>
             </div>
 
             <div>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-stone-950 tracking-tight leading-tight">
                 Resume Intelligence <br className="hidden sm:inline" />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300]">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0284c7] via-[#0ea5e9] to-[#38bdf8]">
                   Command Center
                 </span>
               </h1>
@@ -177,7 +177,7 @@ export const JobsListPage: React.FC = () => {
           <div>
             <div className="flex items-center justify-between pb-3.5 border-b-2 border-stone-900">
               <span className="text-xs font-black uppercase tracking-wider text-stone-900 flex items-center gap-2">
-                <Cpu className="w-4 h-4 text-[#ff0844]" />
+                <Cpu className="w-4 h-4 text-[#0284c7]" />
                 <span>Evaluation Framework</span>
               </span>
               <span className="glass-badge-emerald">
@@ -188,7 +188,7 @@ export const JobsListPage: React.FC = () => {
             <div className="mt-4 space-y-2.5">
               <div className="p-3 glass-inner-box flex items-center justify-between text-xs">
                 <span className="text-stone-700 font-bold">Scoring Standard</span>
-                <span className="font-mono font-black text-[#ff0844]">
+                <span className="font-mono font-black text-[#0284c7]">
                   1.0 – 10.0 Normalized
                 </span>
               </div>
@@ -222,10 +222,10 @@ export const JobsListPage: React.FC = () => {
           className="brutal-card p-4 bg-white hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[7px_7px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_0px_#000000] transition-all cursor-pointer text-left group"
         >
           <div className="flex items-center justify-between text-xs">
-            <span className="font-black text-stone-900 uppercase group-hover:text-[#ff0844] transition-colors">
+            <span className="font-black text-stone-900 uppercase group-hover:text-[#0284c7] transition-colors">
               Active Jobs
             </span>
-            <div className="p-1.5 rounded-lg bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] text-white border-2 border-black shadow-[1.5px_1.5px_0px_0px_#000000] group-hover:scale-105 transition-transform">
+            <div className="p-1.5 rounded-lg bg-gradient-to-r from-[#0284c7] via-[#0ea5e9] to-[#38bdf8] text-white border-2 border-black shadow-[1.5px_1.5px_0px_0px_#000000] group-hover:scale-105 transition-transform">
               <Briefcase className="w-3.5 h-3.5" />
             </div>
           </div>
@@ -262,15 +262,15 @@ export const JobsListPage: React.FC = () => {
           className="brutal-card p-4 bg-white hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[7px_7px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0px_0px_#000000] transition-all cursor-pointer text-left group"
         >
           <div className="flex items-center justify-between text-xs">
-            <span className="font-black text-stone-900 uppercase group-hover:text-[#ff0844] transition-colors">
+            <span className="font-black text-stone-900 uppercase group-hover:text-[#0284c7] transition-colors">
               Scored Resumes
             </span>
-            <div className="p-1.5 rounded-lg bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] text-white border-2 border-black shadow-[1.5px_1.5px_0px_0px_#000000] group-hover:scale-105 transition-transform">
+            <div className="p-1.5 rounded-lg bg-gradient-to-r from-[#0284c7] via-[#0ea5e9] to-[#38bdf8] text-white border-2 border-black shadow-[1.5px_1.5px_0px_0px_#000000] group-hover:scale-105 transition-transform">
               <TrendingUp className="w-3.5 h-3.5" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-black text-[#ff0844] tracking-tight">{totalScored}</span>
+            <span className="text-3xl font-black text-[#0284c7] tracking-tight">{totalScored}</span>
             <span className="text-[11px] font-bold text-stone-600">evaluated ↗</span>
           </div>
         </button>
@@ -302,7 +302,7 @@ export const JobsListPage: React.FC = () => {
       <div id="screening-workspaces">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-base font-black text-stone-950 flex items-center gap-2">
-            <Compass className="w-4 h-4 text-[#ff0844]" />
+            <Compass className="w-4 h-4 text-[#0284c7]" />
             <span>Screening Workspaces</span>
           </h2>
           {searchQuery && (
@@ -315,7 +315,7 @@ export const JobsListPage: React.FC = () => {
         {/* Loading State */}
         {isLoading && (
           <div className="flex flex-col items-center justify-center py-20 gap-3">
-            <Spinner size="lg" className="text-[#ff0844]" />
+            <Spinner size="lg" className="text-[#0284c7]" />
             <p className="text-xs font-bold text-stone-600">Loading screening workflows...</p>
           </div>
         )}
@@ -334,7 +334,7 @@ export const JobsListPage: React.FC = () => {
         {/* Empty State */}
         {!isLoading && !error && filteredJobs && filteredJobs.length === 0 && (
           <div className="brutal-card text-center py-16 px-6 space-y-4">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] text-white border-2 border-black shadow-[3px_3px_0px_0px_#000000] flex items-center justify-center mx-auto">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-r from-[#0284c7] via-[#0ea5e9] to-[#38bdf8] text-white border-2 border-black shadow-[3px_3px_0px_0px_#000000] flex items-center justify-center mx-auto">
               <Briefcase className="w-7 h-7" />
             </div>
             <div>
@@ -379,12 +379,12 @@ export const JobsListPage: React.FC = () => {
                               {job.department}
                             </span>
                           )}
-                          <h3 className="text-base font-black text-stone-950 group-hover:text-[#ff0844] transition-colors">
+                          <h3 className="text-base font-black text-stone-950 group-hover:text-[#0284c7] transition-colors">
                             {job.title}
                           </h3>
                         </div>
 
-                        <span className="glass-badge-rosegold font-mono font-black">
+                        <span className="glass-badge-cyan font-mono font-black">
                           Min {job.min_score_threshold.toFixed(1)}/10
                         </span>
                       </div>
@@ -402,7 +402,7 @@ export const JobsListPage: React.FC = () => {
                               key={idx}
                               className="inline-flex items-center gap-1 text-[10px] font-bold px-2.5 py-0.5 rounded-md bg-stone-100 text-stone-900 border border-stone-900 shadow-[1px_1px_0px_0px_#1c1917]"
                             >
-                              <span className="w-1.5 h-1.5 rounded-full bg-[#ff0844]" />
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#0284c7]" />
                               {skill}
                             </span>
                           ))}
@@ -425,7 +425,7 @@ export const JobsListPage: React.FC = () => {
                           <span className="text-[10px] text-stone-600 font-bold">Total</span>
                         </div>
                         <div className="p-2 glass-inner-box">
-                          <span className="block font-black text-[#ff0844] text-xs">
+                          <span className="block font-black text-[#0284c7] text-xs">
                             {stats.scored_candidates}
                           </span>
                           <span className="text-[10px] text-stone-600 font-bold">Scored</span>
@@ -440,7 +440,7 @@ export const JobsListPage: React.FC = () => {
 
                       <div className="flex items-center justify-between text-[11px] font-bold text-stone-600 pt-1">
                         <span>Created {formatDate(job.created_at)}</span>
-                        <span className="inline-flex items-center gap-1 font-black text-[#ff0844] group-hover:translate-x-1 transition-transform">
+                        <span className="inline-flex items-center gap-1 font-black text-[#0284c7] group-hover:translate-x-1 transition-transform">
                           Open Hub <ArrowRight className="w-3.5 h-3.5" />
                         </span>
                       </div>
@@ -475,7 +475,7 @@ export const JobsListPage: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
                 <label className="block text-xs font-black text-stone-900">
-                  Job Title <span className="text-[#ff0844]">*</span>
+                  Job Title <span className="text-[#0284c7]">*</span>
                 </label>
                 <input
                   type="text"
@@ -536,7 +536,7 @@ export const JobsListPage: React.FC = () => {
 
             <div className="space-y-1.5">
               <label className="block text-xs font-black text-stone-900">
-                Job Description <span className="text-[#ff0844]">*</span>
+                Job Description <span className="text-[#0284c7]">*</span>
               </label>
               <textarea
                 required

@@ -170,7 +170,7 @@ export const JobDetailPage: React.FC = () => {
             "{details.title || job?.title}"
           </span>
           {details.threshold !== undefined && (
-            <span className="px-2.5 py-0.5 rounded-md bg-rose-50 border border-stone-900 font-black text-[#ff0844]">
+            <span className="px-2.5 py-0.5 rounded-md bg-rose-50 border border-stone-900 font-black text-[#0284c7]">
               Threshold: {details.threshold}/10
             </span>
           )}
@@ -215,7 +215,7 @@ export const JobDetailPage: React.FC = () => {
   if (isJobLoading) {
     return (
       <div className="flex flex-col items-center justify-center py-24 gap-3">
-        <Spinner size="lg" className="text-[#ff0844]" />
+        <Spinner size="lg" className="text-[#0284c7]" />
         <p className="text-xs font-bold text-stone-600">Loading screening workspace...</p>
       </div>
     );
@@ -224,7 +224,7 @@ export const JobDetailPage: React.FC = () => {
   if (jobError || !job) {
     return (
       <div className="p-8 text-center space-y-4 brutal-card bg-white">
-        <AlertCircle className="w-10 h-10 text-[#ff0844] mx-auto" />
+        <AlertCircle className="w-10 h-10 text-[#0284c7] mx-auto" />
         <h2 className="text-lg font-black text-stone-900">Job not found</h2>
         <p className="text-xs font-bold text-stone-500">The requested screening job could not be loaded.</p>
         <Link to="/">
@@ -259,7 +259,7 @@ export const JobDetailPage: React.FC = () => {
           <div className="space-y-4 relative z-10">
             <Link
               to="/"
-              className="inline-flex items-center gap-1.5 text-xs text-stone-700 hover:text-[#ff0844] transition-colors font-black"
+              className="inline-flex items-center gap-1.5 text-xs text-stone-700 hover:text-[#0284c7] transition-colors font-black"
             >
               <ArrowLeft className="w-3.5 h-3.5" /> Back to Screening Hub
             </Link>
@@ -273,7 +273,7 @@ export const JobDetailPage: React.FC = () => {
                   {job.department}
                 </span>
               )}
-              <span className="glass-badge-rosegold font-mono font-black">
+              <span className="glass-badge-violet font-mono font-black">
                 Threshold: {job.min_score_threshold.toFixed(1)}/10
               </span>
             </div>
@@ -284,7 +284,7 @@ export const JobDetailPage: React.FC = () => {
                 <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
                 <span>Notice: Human decision-support tool. Final hiring determinations require recruiter confirmation.</span>
               </span>
-              <span className="text-[#ff0844] font-black uppercase tracking-wider text-[10px] shrink-0">
+              <span className="text-[#0284c7] font-black uppercase tracking-wider text-[10px] shrink-0">
                 Audited Mode
               </span>
             </div>
@@ -297,7 +297,7 @@ export const JobDetailPage: React.FC = () => {
               isLoading={screeningMutation.isPending}
               variant="primary"
               size="md"
-              leftIcon={<Sparkles className="w-4 h-4 text-amber-200 animate-pulse" />}
+              leftIcon={<Sparkles className="w-4 h-4 text-sky-200 animate-pulse" />}
             >
               Start Screening Run
             </Button>
@@ -305,7 +305,7 @@ export const JobDetailPage: React.FC = () => {
             <a
               href={jobsApi.exportCsvUrl(job.id)}
               download
-              className="inline-flex items-center gap-1.5 px-4.5 py-2 rounded-2xl bg-white hover:bg-gradient-to-r hover:from-[#ff0844] hover:via-[#ff2a54] hover:via-60% hover:to-[#ff7300] hover:text-white text-stone-950 border-[2.5px] border-black text-xs font-black transition-all shadow-[3px_3px_0px_0px_#000000] hover:shadow-[5px_5px_0px_0px_#000000] hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0.5 active:translate-y-0.5 active:shadow-[1px_1px_0px_0px_#000000]"
+              className="inline-flex items-center gap-1.5 px-4.5 py-2 rounded-2xl bg-white hover:bg-gradient-to-r hover:from-[#0284c7] hover:via-[#ff2a54] hover:via-60% hover:to-[#ff7300] hover:text-white text-stone-950 border-[2.5px] border-black text-xs font-black transition-all shadow-[3px_3px_0px_0px_#000000] hover:shadow-[5px_5px_0px_0px_#000000] hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0.5 active:translate-y-0.5 active:shadow-[1px_1px_0px_0px_#000000]"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Export CSV</span>
@@ -318,7 +318,7 @@ export const JobDetailPage: React.FC = () => {
           <div>
             <div className="flex items-center justify-between pb-3.5 border-b-2 border-stone-900">
               <span className="text-xs font-black uppercase tracking-wider text-stone-900 flex items-center gap-1.5">
-                <Layers className="w-3.5 h-3.5 text-[#ff0844]" />
+                <Layers className="w-3.5 h-3.5 text-[#0284c7]" />
                 <span>Pipeline Telemetry</span>
               </span>
               <span className="text-xs font-mono font-black text-emerald-950 bg-emerald-100 px-2.5 py-0.5 rounded-full border-2 border-stone-900 shadow-[1.5px_1.5px_0px_0px_#000000]">
@@ -348,7 +348,7 @@ export const JobDetailPage: React.FC = () => {
                 title="Filter Parsed Candidates"
                 className="p-3 glass-inner-box text-center hover:bg-rose-50 hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer"
               >
-                <span className="text-xl font-black text-[#ff0844] block">{stats.parsed_candidates}</span>
+                <span className="text-xl font-black text-[#0284c7] block">{stats.parsed_candidates}</span>
                 <span className="text-[10px] text-stone-600 uppercase font-black">Parsed</span>
               </button>
 
@@ -380,7 +380,7 @@ export const JobDetailPage: React.FC = () => {
 
           <div className="pt-3 border-t-2 border-stone-900 flex items-center justify-between text-[11px] font-bold text-stone-600">
             <span>Errors: {stats.failed_candidates}</span>
-            <span className="text-[#ff0844] font-black">Model: scoring_v1</span>
+            <span className="text-[#0284c7] font-black">Model: scoring_v1</span>
           </div>
         </div>
       </div>
@@ -393,12 +393,12 @@ export const JobDetailPage: React.FC = () => {
         <div className="lg:col-span-5 brutal-card p-5 space-y-4 bg-white">
           <div className="flex items-center justify-between">
             <span className="text-xs font-black uppercase tracking-wider text-stone-900 flex items-center gap-1.5">
-              <Briefcase className="w-3.5 h-3.5 text-[#ff0844]" />
+              <Briefcase className="w-3.5 h-3.5 text-[#0284c7]" />
               <span>Must-Have Tech Stack</span>
             </span>
             <button
               onClick={() => setIsJdExpanded(!isJdExpanded)}
-              className="text-[11px] text-[#ff0844] hover:text-[#e50039] font-black flex items-center gap-0.5 cursor-pointer"
+              className="text-[11px] text-[#0284c7] hover:text-[#0369a1] font-black flex items-center gap-0.5 cursor-pointer"
             >
               <span>{isJdExpanded ? 'Collapse' : 'View Description'}</span>
               <ChevronRight className={`w-3 h-3 transition-transform ${isJdExpanded ? 'rotate-90' : ''}`} />
@@ -412,7 +412,7 @@ export const JobDetailPage: React.FC = () => {
                 key={idx}
                 className="inline-flex items-center gap-1.5 text-xs px-3 py-1 rounded-xl bg-stone-100 text-stone-900 border-2 border-stone-900 font-bold shadow-[2px_2px_0px_0px_#000000]"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-[#ff0844]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#0284c7]" />
                 {skill}
               </span>
             ))}
@@ -430,7 +430,7 @@ export const JobDetailPage: React.FC = () => {
         <div className="lg:col-span-7 brutal-card p-5 space-y-3 bg-white">
           <div className="flex items-center justify-between">
             <span className="text-xs font-black uppercase tracking-wider text-stone-900 flex items-center gap-1.5">
-              <UploadCloud className="w-3.5 h-3.5 text-[#ff0844]" />
+              <UploadCloud className="w-3.5 h-3.5 text-[#0284c7]" />
               <span>Multi-File Resume Ingestion</span>
             </span>
             <span className="text-[11px] font-bold text-stone-500">Supports .PDF & .TXT up to 15MB</span>
@@ -447,7 +447,7 @@ export const JobDetailPage: React.FC = () => {
               )}
               {uploadResults.errors.length > 0 && (
                 <div className="space-y-0.5">
-                  <span className="font-black text-[#ff0844] block">Upload issues / skipped files:</span>
+                  <span className="font-black text-[#0284c7] block">Upload issues / skipped files:</span>
                   {uploadResults.errors.map((err, idx) => (
                     <p key={idx} className="text-rose-800 font-bold text-[11px]">
                       • {err.filename}: {err.error}
@@ -471,11 +471,11 @@ export const JobDetailPage: React.FC = () => {
               onClick={() => handleTabChange('shortlist')}
               className={`px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-2 border-2 border-black cursor-pointer ${
                 activeView === 'shortlist'
-                  ? 'bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] text-white shadow-[2px_2px_0px_0px_#000000]'
+                  ? 'bg-gradient-to-r from-[#0284c7] via-[#0ea5e9] to-[#38bdf8] text-white shadow-[2px_2px_0px_0px_#000000]'
                   : 'bg-white text-stone-700 hover:bg-stone-100 shadow-none'
               }`}
             >
-              <Award className="w-3.5 h-3.5 text-amber-200" />
+              <Award className="w-3.5 h-3.5 text-sky-200" />
               <span>Ranked Shortlist</span>
               {shortlist && (
                 <span className="text-[10px] px-2 py-0.5 rounded-full bg-stone-900 text-white font-mono font-black">
@@ -488,7 +488,7 @@ export const JobDetailPage: React.FC = () => {
               onClick={() => handleTabChange('candidates')}
               className={`px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-2 border-2 border-black cursor-pointer ${
                 activeView === 'candidates'
-                  ? 'bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] text-white shadow-[2px_2px_0px_0px_#000000]'
+                  ? 'bg-gradient-to-r from-[#0284c7] via-[#0ea5e9] to-[#38bdf8] text-white shadow-[2px_2px_0px_0px_#000000]'
                   : 'bg-white text-stone-700 hover:bg-stone-100 shadow-none'
               }`}
             >
@@ -503,7 +503,7 @@ export const JobDetailPage: React.FC = () => {
               onClick={() => handleTabChange('audit')}
               className={`px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-2 border-2 border-black cursor-pointer ${
                 activeView === 'audit'
-                  ? 'bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] text-white shadow-[2px_2px_0px_0px_#000000]'
+                  ? 'bg-gradient-to-r from-[#0284c7] via-[#0ea5e9] to-[#38bdf8] text-white shadow-[2px_2px_0px_0px_#000000]'
                   : 'bg-white text-stone-700 hover:bg-stone-100 shadow-none'
               }`}
             >
@@ -525,7 +525,7 @@ export const JobDetailPage: React.FC = () => {
                   <Award className="w-4 h-4 text-emerald-600" /> Auditable Decision Rule:
                 </span>
                 <p className="text-xs font-bold text-stone-700 mt-0.5">
-                  Qualifying Condition: <code className="px-2 py-0.5 rounded-md bg-stone-100 font-mono text-[#ff0844] text-[11px] border border-stone-900">Fit Score &gt;= {job.min_score_threshold.toFixed(1)}</code> and <code className="px-2 py-0.5 rounded-md bg-stone-100 font-mono text-emerald-800 text-[11px] border border-stone-900">Recommendation == 'shortlist'</code>
+                  Qualifying Condition: <code className="px-2 py-0.5 rounded-md bg-stone-100 font-mono text-[#0284c7] text-[11px] border border-stone-900">Fit Score &gt;= {job.min_score_threshold.toFixed(1)}</code> and <code className="px-2 py-0.5 rounded-md bg-stone-100 font-mono text-emerald-800 text-[11px] border border-stone-900">Recommendation == 'shortlist'</code>
                 </p>
               </div>
 
@@ -559,7 +559,7 @@ export const JobDetailPage: React.FC = () => {
                   onClick={() => setShortlistFilter('do_not_shortlist')}
                   className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 border border-stone-900 cursor-pointer ${
                     shortlistFilter === 'do_not_shortlist'
-                      ? 'bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] text-white shadow-[2px_2px_0px_0px_#000000]'
+                      ? 'bg-gradient-to-r from-[#0284c7] via-[#0ea5e9] to-[#38bdf8] text-white shadow-[2px_2px_0px_0px_#000000]'
                       : 'bg-white text-stone-700 hover:text-stone-950'
                   }`}
                 >
@@ -572,7 +572,7 @@ export const JobDetailPage: React.FC = () => {
             {/* List Results */}
             {isShortlistLoading && (
               <div className="flex justify-center py-16">
-                <Spinner size="md" className="text-[#ff0844]" />
+                <Spinner size="md" className="text-[#0284c7]" />
               </div>
             )}
 
@@ -707,7 +707,7 @@ export const JobDetailPage: React.FC = () => {
                     {isCandidatesLoading && (
                       <tr>
                         <td colSpan={6} className="py-12 text-center text-stone-500">
-                          <Spinner size="md" className="mx-auto text-[#ff0844] mb-2" />
+                          <Spinner size="md" className="mx-auto text-[#0284c7] mb-2" />
                           <span className="font-bold">Loading candidate pool...</span>
                         </td>
                       </tr>
@@ -733,7 +733,7 @@ export const JobDetailPage: React.FC = () => {
                         >
                           <td className="py-3.5 px-4">
                             <div className="flex items-center gap-3">
-                              <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] border-2 border-black text-white font-black flex items-center justify-center text-xs shrink-0 shadow-[1px_1px_0px_0px_#000000]">
+                              <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#0284c7] via-[#0ea5e9] to-[#38bdf8] border-2 border-black text-white font-black flex items-center justify-center text-xs shrink-0 shadow-[1px_1px_0px_0px_#000000]">
                                 {getInitials(cand.candidate_name)}
                               </div>
                               <div>
@@ -801,7 +801,7 @@ export const JobDetailPage: React.FC = () => {
                               variant="outline"
                               size="sm"
                               onClick={() => handleOpenCandidateDrawer(cand.id)}
-                              leftIcon={<Eye className="w-3.5 h-3.5 text-[#ff0844]" />}
+                              leftIcon={<Eye className="w-3.5 h-3.5 text-[#0284c7]" />}
                             >
                               Inspect
                             </Button>
@@ -824,7 +824,7 @@ export const JobDetailPage: React.FC = () => {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b-2 border-stone-900">
               <div>
                 <h3 className="text-sm font-black text-stone-950 flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-[#ff0844]" />
+                  <Clock className="w-4 h-4 text-[#0284c7]" />
                   <span>Immutable Audit Trail</span>
                 </h3>
                 <p className="text-xs font-bold text-stone-600 mt-0.5">
