@@ -18,6 +18,23 @@ Built with a strict **Responsible AI & Anti-Bias architecture**, the engine stri
 
 ---
 
+## 🎬 Live Product Demonstration & Video Walkthrough
+
+> [!TIP]
+> Watch the end-to-end Smart Resume Screener workflow in action below, demonstrating multi-resume ingestion, deterministic scoring, 3D interactive visualizations, and auditable candidate export.
+
+https://github.com/Aneesh-20/Smart-Resume-Screener/raw/main/docs/demo/demo_walkthrough.mp4
+
+<div align="center">
+  <video src="https://github.com/Aneesh-20/Smart-Resume-Screener/raw/main/docs/demo/demo_walkthrough.mp4" width="100%" controls="controls">
+    <p>Your browser does not support video playback. <a href="https://github.com/Aneesh-20/Smart-Resume-Screener/raw/main/docs/demo/demo_walkthrough.mp4">Click here to play or download the demo video (<code>demo_walkthrough.mp4</code>)</a>.</p>
+  </video>
+</div>
+
+*Direct Video Link*: [▶ **Play / Download Demo Video (`docs/demo/demo_walkthrough.mp4`)**](https://github.com/Aneesh-20/Smart-Resume-Screener/raw/main/docs/demo/demo_walkthrough.mp4)
+
+---
+
 ## 🏛️ System Architecture
 
 ```mermaid
@@ -75,25 +92,59 @@ CRITICAL INSTRUCTIONS & CONSTRAINTS:
 REQUIRED JSON SCHEMA:
 {
   "candidate_name": "string or null",
-  "contact": { "email": "string or null", "phone": "string or null", "location": "string or null", "links": ["string"] },
-  "skills": [{ "name": "string", "normalized_name": "string", "category": "technical | tool | domain | soft | language | other", "evidence": "string or null" }],
-  "experience": [{ "title": "string or null", "company": "string or null", "start_date": "YYYY-MM or null", "end_date": "YYYY-MM or null", "is_current": false, "highlights": ["string"], "skills": ["string"], "evidence": "string or null" }],
-  "education": [{ "institution": "string or null", "degree": "string or null", "field_of_study": "string or null", "end_year": 2020, "evidence": "string or null" }],
-  "certifications": [{ "name": "string", "issuer": "string or null", "year": 2022, "evidence": "string or null" }],
+  "contact": {
+    "email": "string or null",
+    "phone": "string or null",
+    "location": "string or null",
+    "links": ["string"]
+  },
+  "skills": [
+    {
+      "name": "string",
+      "normalized_name": "string",
+      "category": "technical | tool | domain | soft | language | other",
+      "evidence": "string or null"
+    }
+  ],
+  "experience": [
+    {
+      "title": "string or null",
+      "company": "string or null",
+      "start_date": "YYYY-MM or null",
+      "end_date": "YYYY-MM or null",
+      "is_current": false,
+      "highlights": ["string"],
+      "skills": ["string"],
+      "evidence": "string or null"
+    }
+  ],
+  "education": [
+    {
+      "institution": "string or null",
+      "degree": "string or null",
+      "field_of_study": "string or null",
+      "end_year": 2020,
+      "evidence": "string or null"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "string",
+      "issuer": "string or null",
+      "year": 2022,
+      "evidence": "string or null"
+    }
+  ],
   "summary": "string or null",
   "total_experience_years": 5.5,
   "warnings": ["string"]
 }
-
-=== UNTRUSTED RESUME TEXT START ===
-{resume_text}
-=== UNTRUSTED RESUME TEXT END ===
 ```
 
 ---
 
-### 2. Candidate Fit Evaluation & Scoring Prompt (`scoring_v1.txt`)
-Evaluates candidate match against explicit job requirements with strict demographic blindness and mathematical breakdown point totals:
+### 2. Candidate Evaluation & Fit Scoring Prompt (`scoring_v1.txt`)
+Evaluates candidate evidence against job specifications with a mathematically bounded 4-part scoring rubric ($1.0 - 10.0$):
 
 ```text
 You are a structured hiring-assistance analyst evaluating candidate fit for a specific job role. You are an advisor to human recruiters, not an autonomous hiring decision-maker.
