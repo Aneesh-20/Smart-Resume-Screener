@@ -16,7 +16,7 @@ import { getRecommendationBadge, getStatusBadge } from '../../src/utils/scoreCol
 import {
   Briefcase, ArrowLeft, Download, Sparkles, UploadCloud, Users,
   Award, AlertCircle, CheckCircle2, Search, Eye, Clock,
-  Layers, ShieldCheck, ChevronRight
+  Layers, ShieldCheck, ChevronRight, Check, Code
 } from 'lucide-react';
 
 export const JobDetailPage: React.FC = () => {
@@ -35,6 +35,7 @@ export const JobDetailPage: React.FC = () => {
   const [candidateStatusFilter, setCandidateStatusFilter] = useState<string>(statusParam);
   const [candidateSortBy, setCandidateSortBy] = useState<string>('score');
   const [isJdExpanded, setIsJdExpanded] = useState(false);
+  const [showRawAuditJson, setShowRawAuditJson] = useState<Record<string, boolean>>({});
 
   // Sync tab with URL search params if present
   useEffect(() => {
@@ -139,6 +140,76 @@ export const JobDetailPage: React.FC = () => {
   const handleTabChange = (view: 'shortlist' | 'candidates' | 'audit') => {
     setActiveView(view);
     setSearchParams({ tab: view });
+  };
+
+  const toggleRawJson = (id: string) => {
+    setShowRawAuditJson((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
+
+  // Helper to render human-readable audit event summaries
+  const renderAuditDetails = (evt: { id: string; event_type: string; actor: string; details: any }) => {
+    const details = evt.details || {};
+    const isRaw = showRawAuditJson[evt.id];
+
+    if (isRaw) {
+      return (
+        <pre className="p-2.5 rounded-lg bg-stone-900 text-stone-100 text-[11px] font-mono overflow-x-auto mt-2 border border-black">
+          {JSON.stringify(details, null, 2)}
+        </pre>
+      );
+    }
+
+    if (evt.event_type === 'job_created') {
+      return (
+        <div className="flex flex-wrap items-center gap-2 mt-1 text-xs">
+          <span className="text-stone-700 font-bold">Configured Workflow:</span>
+          <span className="px-2.5 py-0.5 rounded-md bg-stone-100 border border-stone-900 font-black text-stone-950">
+            "{details.title || job?.title}"
+          </span>
+          {details.threshold !== undefined && (
+            <span className="px-2.5 py-0.5 rounded-md bg-rose-50 border border-stone-900 font-black text-[#ff0844]">
+              Threshold: {details.threshold}/10
+            </span>
+          )}
+          {details.department && (
+            <span className="px-2.5 py-0.5 rounded-md bg-amber-50 border border-stone-900 font-bold text-amber-900">
+              Dept: {details.department}
+            </span>
+          )}
+        </div>
+      );
+    }
+
+    if (evt.event_type === 'screening_run_started' || evt.event_type === 'screening_run_completed') {
+      return (
+        <div className="flex flex-wrap items-center gap-2 mt-1 text-xs">
+          <span className="text-stone-700 font-bold">Screening Execution:</span>
+          {details.candidates_count !== undefined && (
+            <span className="px-2 py-0.5 rounded-md bg-emerald-50 border border-stone-900 font-bold text-emerald-900">
+              {details.candidates_count} Resumes Processed
+            </span>
+          )}
+          <span className="px-2 py-0.5 rounded-md bg-stone-100 border border-stone-900 font-mono text-[11px]">
+            Model: scoring_v1
+          </span>
+        </div>
+      );
+    }
+
+    // Default fallback formatter
+    return (
+      <div className="flex flex-wrap items-center gap-2 mt-1 text-xs">
+        {Object.entries(details).map(([k, v]) => (
+          <span key={k} className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-stone-100 border border-stone-900 text-stone-800 font-bold text-[11px]">
+            <span className="text-stone-500 font-normal">{k}:</span>
+            <span>{typeof v === 'object' ? JSON.stringify(v) : String(v)}</span>
+          </span>
+        ))}
+      </div>
+    );
   };
 
   if (isJobLoading) {
@@ -750,34 +821,62 @@ export const JobDetailPage: React.FC = () => {
         {/* ----------------------------------------------------------------------- */}
         {activeView === 'audit' && (
           <div className="brutal-card p-5 space-y-4 bg-white">
-            <h3 className="text-sm font-black text-stone-950 flex items-center gap-2">
-              <Clock className="w-4 h-4 text-[#ff0844]" />
-              <span>Immutable Audit Trail</span>
-            </h3>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b-2 border-stone-900">
+              <div>
+                <h3 className="text-sm font-black text-stone-950 flex items-center gap-2">
+                  <Clock className="w-4 h-4 text-[#ff0844]" />
+                  <span>Immutable Audit Trail</span>
+                </h3>
+                <p className="text-xs font-bold text-stone-600 mt-0.5">
+                  Verifiable compliance log tracking every recruiter configuration, AI screening evaluation, and candidate override.
+                </p>
+              </div>
 
-            <div className="space-y-2.5">
+              <span className="glass-badge-emerald shrink-0">
+                <Check className="w-3.5 h-3.5" /> Cryptographically Auditable
+              </span>
+            </div>
+
+            <div className="space-y-3">
               {!auditEvents || auditEvents.length === 0 ? (
-                <p className="text-xs font-bold text-stone-500 italic py-6 text-center">No audit events recorded yet.</p>
+                <div className="p-8 text-center glass-inner-box">
+                  <Clock className="w-8 h-8 text-stone-400 mx-auto mb-2" />
+                  <p className="text-xs font-bold text-stone-500 italic">No audit events recorded yet for this workspace.</p>
+                </div>
               ) : (
                 auditEvents.map((evt) => (
                   <div
                     key={evt.id}
-                    className="p-3.5 glass-inner-box text-xs flex items-start justify-between gap-4"
+                    className="p-4 glass-inner-box text-xs space-y-2 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_0px_#1c1917] transition-all"
                   >
-                    <div className="space-y-1">
-                      <div className="flex items-center gap-2">
-                        <Badge variant="primary" size="sm">
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="px-2.5 py-0.5 rounded-md bg-stone-900 text-white font-mono font-black text-[11px] border border-black shadow-[1px_1px_0px_0px_#000000]">
                           {evt.event_type}
-                        </Badge>
-                        <span className="text-stone-600 font-bold">by {evt.actor}</span>
+                        </span>
+                        <span className="text-stone-700 font-bold text-xs">
+                          Action taken by <strong className="text-stone-950 font-black">{evt.actor}</strong>
+                        </span>
                       </div>
-                      <p className="text-stone-800 font-mono font-bold text-[11px]">
-                        {JSON.stringify(evt.details)}
-                      </p>
+
+                      <div className="flex items-center gap-2 shrink-0">
+                        <button
+                          onClick={() => toggleRawJson(evt.id)}
+                          title="Toggle JSON view"
+                          className="px-2 py-0.5 rounded-md bg-stone-100 hover:bg-stone-200 border border-stone-900 text-stone-700 font-mono text-[10px] flex items-center gap-1 cursor-pointer"
+                        >
+                          <Code className="w-3 h-3 text-stone-500" />
+                          <span>{showRawAuditJson[evt.id] ? 'Formatted' : 'JSON'}</span>
+                        </button>
+
+                        <span className="text-[11px] text-stone-600 whitespace-nowrap font-mono font-bold">
+                          {formatDate(evt.timestamp)}
+                        </span>
+                      </div>
                     </div>
-                    <span className="text-[11px] text-stone-600 whitespace-nowrap font-mono font-bold">
-                      {formatDate(evt.timestamp)}
-                    </span>
+
+                    {/* Human-readable formatted details */}
+                    {renderAuditDetails(evt)}
                   </div>
                 ))
               )}
