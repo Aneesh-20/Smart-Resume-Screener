@@ -6,6 +6,10 @@
   :root {
     color-scheme: light;
   }
+
+  .dark {
+    color-scheme: dark;
+  }
   
   body {
     background-color: #faf7f5;
@@ -18,11 +22,22 @@
     background-attachment: fixed;
     color: #1c1917;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  body.dark {
+    background-color: #09090b;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(255, 8, 68, 0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(255, 115, 0, 0.15) 0px, transparent 45%),
+      radial-gradient(at 50% 50%, rgba(30, 27, 75, 0.4) 0px, transparent 60%),
+      radial-gradient(at 0% 100%, rgba(255, 8, 68, 0.1) 0px, transparent 50%);
+    color: #f8fafc;
   }
 }
 
 /* ========================================================================= */
-/* BRUTAL-MORPHISM DESIGN SYSTEM WITH 60% SUNSET-FIRE ACCENTS */
+/* BRUTAL-MORPHISM DESIGN SYSTEM (LIGHT & DARK MODE COMPATIBLE) */
 /* ========================================================================= */
 
 .brutal-card, .glass-panel, .bento-card {
@@ -35,6 +50,13 @@
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.dark .brutal-card, .dark .glass-panel, .dark .bento-card {
+  background-color: #18181b;
+  border-color: #3f3f46;
+  box-shadow: 4px 4px 0px 0px #000000;
+  color: #f8fafc;
+}
+
 .brutal-card-interactive, .glass-panel-interactive, .bento-card-interactive {
   position: relative;
   overflow: hidden;
@@ -45,14 +67,30 @@
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.dark .brutal-card-interactive, .dark .glass-panel-interactive, .dark .bento-card-interactive {
+  background-color: #18181b;
+  border-color: #3f3f46;
+  box-shadow: 4px 4px 0px 0px #000000;
+  color: #f8fafc;
+}
+
 .brutal-card-interactive:hover, .glass-panel-interactive:hover, .bento-card-interactive:hover {
   transform: translate(-3px, -3px);
   box-shadow: 7px 7px 0px 0px #1c1917;
 }
 
+.dark .brutal-card-interactive:hover, .dark .glass-panel-interactive:hover, .dark .bento-card-interactive:hover {
+  box-shadow: 7px 7px 0px 0px #000000;
+  border-color: #71717a;
+}
+
 .brutal-card-interactive:active, .glass-panel-interactive:active, .bento-card-interactive:active {
   transform: translate(2px, 2px);
   box-shadow: 2px 2px 0px 0px #1c1917;
+}
+
+.dark .brutal-card-interactive:active, .dark .glass-panel-interactive:active, .dark .bento-card-interactive:active {
+  box-shadow: 2px 2px 0px 0px #000000;
 }
 
 .brutal-hero, .glass-hero, .bento-card-glow {
@@ -62,6 +100,12 @@
   background: linear-gradient(135deg, #ffffff 0%, #fff1f2 50%, #fff7ed 100%);
   border: 2.5px solid #1c1917;
   box-shadow: 6px 6px 0px 0px #1c1917;
+}
+
+.dark .brutal-hero, .dark .glass-hero, .dark .bento-card-glow {
+  background: linear-gradient(135deg, #18181b 0%, #271419 50%, #29180d 100%);
+  border-color: #3f3f46;
+  box-shadow: 6px 6px 0px 0px #000000;
 }
 
 /* 60% Sunset Fire Brutal Button */
@@ -100,6 +144,13 @@
   transition: all 0.15s ease;
 }
 
+.dark .brutal-pill, .dark .glass-pill {
+  background-color: #18181b;
+  border-color: #3f3f46;
+  color: #f8fafc;
+  box-shadow: 2px 2px 0px 0px #000000;
+}
+
 .glass-badge-violet, .glass-badge-rosegold {
   display: inline-flex;
   align-items: center;
@@ -112,6 +163,13 @@
   font-size: 0.75rem;
   font-weight: 800;
   box-shadow: 2px 2px 0px 0px #1c1917;
+}
+
+.dark .glass-badge-violet, .dark .glass-badge-rosegold {
+  background-color: #3f121e;
+  border-color: #881337;
+  color: #fecdd3;
+  box-shadow: 2px 2px 0px 0px #000000;
 }
 
 .glass-badge-cyan, .glass-badge-amber {
@@ -128,6 +186,13 @@
   box-shadow: 2px 2px 0px 0px #1c1917;
 }
 
+.dark .glass-badge-cyan, .dark .glass-badge-amber {
+  background-color: #381a0e;
+  border-color: #7c2d12;
+  color: #fed7aa;
+  box-shadow: 2px 2px 0px 0px #000000;
+}
+
 .glass-badge-emerald {
   display: inline-flex;
   align-items: center;
@@ -142,11 +207,24 @@
   box-shadow: 2px 2px 0px 0px #1c1917;
 }
 
+.dark .glass-badge-emerald {
+  background-color: #064e3b;
+  border-color: #047857;
+  color: #a7f3d0;
+  box-shadow: 2px 2px 0px 0px #000000;
+}
+
 .glass-inner-box {
   border-radius: 0.875rem;
   background-color: #faf7f5;
   border: 2px solid #1c1917;
   box-shadow: 2px 2px 0px 0px #1c1917;
+}
+
+.dark .glass-inner-box {
+  background-color: #121215;
+  border-color: #3f3f46;
+  box-shadow: 2px 2px 0px 0px #000000;
 }
 
 .glass-input {
@@ -158,8 +236,19 @@
   font-weight: 700;
 }
 
+.dark .glass-input {
+  background-color: #18181b;
+  border-color: #3f3f46;
+  color: #f8fafc;
+  box-shadow: 3px 3px 0px 0px #000000;
+}
+
 .glass-input::placeholder {
   color: #a8a29e;
+}
+
+.dark .glass-input::placeholder {
+  color: #71717a;
 }
 
 .glass-input:focus {
@@ -167,6 +256,11 @@
   box-shadow: 5px 5px 0px 0px #ff0844;
   transform: translate(-1px, -1px);
   outline: none;
+}
+
+.dark .glass-input:focus {
+  border-color: #71717a;
+  box-shadow: 5px 5px 0px 0px #ff0844;
 }
 
 /* Custom Brutalist scrollbar with Sunset gradient thumb */
@@ -180,10 +274,19 @@
   border-left: 2px solid #1c1917;
 }
 
+.dark ::-webkit-scrollbar-track {
+  background: #09090b;
+  border-left-color: #3f3f46;
+}
+
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #ff0844 0%, #ff2a54 60%, #ff7300 100%);
   border-radius: 0px;
   border: 2px solid #1c1917;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  border-color: #000000;
 }
 
 ::-webkit-scrollbar-thumb:hover {
