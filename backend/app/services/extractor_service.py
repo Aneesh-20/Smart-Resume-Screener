@@ -1,5 +1,11 @@
 import os
-import fitz  # PyMuPDF
+try:
+    import fitz  # PyMuPDF
+except ImportError:
+    try:
+        import pymupdf as fitz
+    except ImportError:
+        fitz = None
 from typing import Tuple, List
 from app.core.errors import ParseError, UnsupportedFileError
 from app.core.logging import logger

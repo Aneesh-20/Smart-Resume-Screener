@@ -340,10 +340,13 @@ class DeterministicFallbackAdapter:
         else:
             rec = "do_not_shortlist"
 
+        missing_str = ", ".join(missing_must)
+        skills_status = "Candidate satisfies all required skills." if not missing_must else f"Has gaps in must-have criteria: {missing_str}."
+
         justification = (
             f"[Fallback Engine Assessment] Candidate scores {fit_score}/10 based on {len(relevant_candidate_skills)} matching skills "
             f"and ~{candidate_payload.total_experience_years or 'N/A'} years of experience. "
-            f"{'Candidate satisfies all required skills.' if not missing_must else f'Has gaps in must-have criteria: {', '.join(missing_must)}.'}"
+            f"{skills_status}"
         )
 
         return CandidateAssessmentPayload(

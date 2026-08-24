@@ -1,5 +1,10 @@
-import pytest
 import os
+import sys
+
+# Ensure backend root is on sys.path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
@@ -64,8 +69,10 @@ def sample_resume_text():
         os.path.dirname(__file__),
         "../../sample-data/resumes/strong_candidate_alice_chen.txt"
     )
-    with open(sample_path, "r", encoding="utf-8") as f:
-        return f.read()
+    if os.path.exists(sample_path):
+        with open(sample_path, "r", encoding="utf-8") as f:
+            return f.read()
+    return "Alice Chen\nSenior Full-Stack Engineer\nSkills: Python, FastAPI, React, TypeScript, PostgreSQL, Docker, AWS"
 
 
 @pytest.fixture
@@ -74,5 +81,7 @@ def sample_job_description():
         os.path.dirname(__file__),
         "../../sample-data/job_descriptions/senior_fullstack_engineer.txt"
     )
-    with open(sample_path, "r", encoding="utf-8") as f:
-        return f.read()
+    if os.path.exists(sample_path):
+        with open(sample_path, "r", encoding="utf-8") as f:
+            return f.read()
+    return "Senior Full-Stack Engineer\nRequirements: 5+ years experience with Python, FastAPI, React, TypeScript, and modern cloud deployment."
