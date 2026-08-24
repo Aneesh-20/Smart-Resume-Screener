@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FileSearch, Sparkles, Plus } from 'lucide-react';
-import { ResponsibleNotice } from './ResponsibleNotice';
+import { FileSearch, Plus } from 'lucide-react';
 
 interface NavbarProps {
   onCreateJobClick?: () => void;
@@ -21,14 +20,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onCreateJobClick }) => {
               </div>
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <span className="font-extrabold text-base tracking-tight text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:via-purple-200 group-hover:to-cyan-200 transition-all">
-                  Smart Resume Screener
-                </span>
-                <span className="glass-badge-violet text-[10px]">
-                  <Sparkles className="w-2.5 h-2.5 text-purple-300" /> AI 3D
-                </span>
-              </div>
+              <span className="font-extrabold text-base tracking-tight text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:via-purple-200 group-hover:to-cyan-200 transition-all">
+                Smart Resume Screener
+              </span>
               <p className="text-[11px] text-slate-400 -mt-0.5">Auditable Candidate Intelligence Engine</p>
             </div>
           </Link>
@@ -48,7 +42,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onCreateJobClick }) => {
         </div>
 
         <div className="flex items-center gap-3">
-          <ResponsibleNotice compact />
           {onCreateJobClick && (
             <button
               onClick={onCreateJobClick}
