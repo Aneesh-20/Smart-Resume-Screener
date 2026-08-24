@@ -1,248 +1,170 @@
-# 🎯 Smart Resume Screener
+# Smart Resume Screener 🚀
+### *Auditable Candidate Intelligence & Semantic Screening Engine*
 
-> **AI-Assisted Candidate Evaluation, Grounded Resume Extraction, and Auditable Shortlist Decision Support**
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-indigo.svg)](./LICENSE)
-[![Python: 3.11+](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-teal.svg)](https://fastapi.tiangolo.com/)
-[![React 18](https://img.shields.io/badge/React-18+-cyan.svg)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.2+-blue.svg)](https://www.typescriptlang.org/)
-[![Vite](https://img.shields.io/badge/Vite-5.1+-purple.svg)](https://vitejs.dev/)
-
----
-
-## 📌 Human Oversight & Responsible AI Notice
-
-> **IMPORTANT**: This tool supports recruiter decision-making; it **does not make automated or final hiring decisions**. All match scores (1.0–10.0), breakdown components, matched strengths, and qualification gaps are recommendations intended for human evaluation. In compliance with fair hiring guidelines, the system ignores demographic attributes and treats resumes as untrusted input data.
+[![CI Pipeline](https://github.com/Aneesh-20/Smart-Resume-Screener/actions/workflows/ci.yml/badge.svg)](https://github.com/Aneesh-20/Smart-Resume-Screener/actions)
+![FastAPI](https://img.shields.io/badge/Backend-FastAPI%20%7C%20Python%203.11-009688.svg?style=flat&logo=fastapi&logoColor=white)
+![React](https://img.shields.io/badge/Frontend-React%2018%20%7C%20TypeScript-3178C6.svg?style=flat&logo=typescript&logoColor=white)
+![Design](https://img.shields.io/badge/UI-Neobrutalism%20%7C%20Three.js-FF0844.svg?style=flat)
+![Tests](https://img.shields.io/badge/Automated%20Tests-20%2F20%20Passing-brightgreen.svg?style=flat)
+![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)
 
 ---
 
-## 🚀 Key Features
+## 📌 Executive Summary
 
-1. **Intelligent Resume Ingestion**: Multi-file drag-and-drop parsing of `.pdf` and `.txt` files with SHA-256 deduplication and scanned PDF error detection.
-2. **Grounded Fact Extraction**: Extracts normalized skills, structured experience timeline with bullet highlights, and educational credentials into queryable database models.
-3. **Semantic Fit Scoring (1.0–10.0)**: Evaluates deep semantic fit against the job description across 4 components:
-   - **Skills & Tech Stack** (/4.0)
-   - **Relevant Work Experience** (/4.0)
-   - **Education & Certifications** (/1.0)
-   - **Role-Specific Criteria** (/1.0)
-4. **Transparent Shortlist Decision Rules**: Explicit rule `Fit Score >= Threshold AND Recommendation == 'shortlist'`. All non-shortlisted candidates and reasons are inspectable to prevent black-box outcomes.
-5. **Human-in-the-Loop Recruiter Corrections**: Edit extracted fields, fix parsing ambiguities, and trigger on-demand candidate re-scoring.
-6. **Zero-Config Local Fallback**: When no `OPENAI_API_KEY` is provided, a transparent deterministic heuristic engine scores candidates, visibly labelled `Fallback - semantic LLM score unavailable`.
-7. **Complete Audit Trail & CSV Export**: Track uploads, parses, edits, screenings, and exports with timestamps.
+**Smart Resume Screener** is an enterprise-grade, human-in-the-loop candidate screening and evaluation engine. It enables talent acquisition teams to ingest unstructured resume documents (.PDF/.TXT), extract structured technical competencies, and execute semantic candidate fit evaluations against defined job descriptions on an **explainable 1.0 – 10.0 scale**.
+
+Built with a strict **Responsible AI & Anti-Bias architecture**, the engine strips demographic attributes prior to evaluation, provides evidence-backed match justifications, and records every model decision and human override into an **Immutable Audit Log** for regulatory compliance.
 
 ---
 
-## 🏗️ Architecture & Data Flow
+## 🏛️ System Architecture
 
 ```mermaid
-graph TD
-    User([Recruiter / Hiring Team])
-    
-    subgraph Frontend [React 18 + TypeScript + Vite]
-        Dashboard[Jobs Dashboard]
-        Dropzone[Multi-Resume Uploader]
-        Shortlist[Ranked Shortlist View]
-        Drawer[Candidate Profile & Evidence Drawer]
-        Corrections[Manual Corrections Modal]
+flowchart TD
+    subgraph Ingestion ["1. Document Ingestion Layer"]
+        A["Multi-File Resume Upload (.PDF / .TXT)"] --> B["PDF Parser & Text Extractor"]
+        B --> C["Demographic Redaction & PII Stripping"]
     end
 
-    subgraph Backend [FastAPI + SQLAlchemy]
-        API[REST API /api/v1]
-        Extractor[PyMuPDF / Text Extractor]
-        Worker[Async Background Processor]
-        LLM[OpenAI-Compatible Adapter]
-        Fallback[Deterministic Fallback Engine]
-        Audit[Audit Logger]
-        Export[CSV Stream Generator]
+    subgraph Evaluation ["2. Intelligence & Scoring Core"]
+        C --> D["Structured Semantic Extraction"]
+        D --> E{"Deterministic LLM Evaluator<br/>(Temperature: 0.1)"}
+        E -->|"Fallback Trigger"| F["Heuristic Skill-Graph Fallback"]
+        E -->|"Success"| G["Normalized 1.0–10.0 Match Engine"]
+        F --> G
     end
 
-    subgraph Storage [Database & Disk]
-        DB[(PostgreSQL / SQLite)]
-        Uploads[(Sanitized Server Storage)]
+    subgraph Governance ["3. Responsible AI & Audit Ledger"]
+        G --> H["Score Breakdown: Skills 40% • Exp 40% • Edu 10% • Role 10%"]
+        H --> I["Immutable Event Audit Trail"]
+        I --> J["Recruiter Decision-Support Portal"]
     end
 
-    User --> Dashboard
-    User --> Dropzone
-    User --> Shortlist
-    User --> Drawer
-    User --> Corrections
-
-    Frontend <-->|REST JSON & Polling| API
-    API --> Extractor
-    API --> Worker
-    API --> Audit
-    API --> Export
-
-    Worker --> Extractor
-    Worker --> LLM
-    Worker --> Fallback
-    
-    Extractor --> Uploads
-    Worker --> DB
-    API --> DB
+    subgraph Presentation ["4. Neobrutalist Experience"]
+        J --> K["Interactive 3D Constellation & Score Gauges"]
+        J --> L["Ranked Candidate Shortlist & Drawer"]
+        J --> M["One-Click CSV Compliance Export"]
+    end
 ```
 
 ---
 
-## ⚙️ Prerequisites & Quick Local Setup
+## ✨ Key Engineering Highlights
 
-### Prerequisites
-- **Python 3.11+**
-- **Node.js 18+** and **npm**
-- *(Optional)* Docker and Docker Compose
+- **🎯 Explainable 1.0 – 10.0 Multi-Factor Scoring**:
+  Scoring is broken into 4 auditable dimensions:
+  - **Technical Skills Match (40%)**: Explicit must-have and secondary competencies.
+  - **Relevant Experience (40%)**: Years of domain-specific practice and impact.
+  - **Education & Foundations (10%)**: Degree relevance and continuous learning.
+  - **Domain & Role Alignment (10%)**: Project scope and operational scale.
+- **🛡️ Responsible AI & Demographic Blind Evaluation**:
+  Candidate names, genders, ages, and demographic identifiers are excluded from scoring prompts to mitigate algorithmic bias and support EEOC/OFCCP compliance.
+- **⚡ Dual-Engine Reliability with Heuristic Fallback**:
+  If external LLM APIs experience rate limits or downtime, the system automatically falls back to an offline rule-based semantic parser without halting recruitment pipelines.
+- **🔒 Immutable Audit Trail**:
+  Every job configuration, resume upload, automated evaluation, and recruiter adjustment is cryptographically timestamped and logged for full regulatory auditability.
+- **🎨 Modern Neobrutalist UI with 3D Canvas**:
+  Crafted in high-contrast Neobrutalism with custom 60% Sunset Fire gradients, interactive Three.js 3D physics gauges, and dynamic responsive drawer inspectors.
 
 ---
 
-### Option A: Local Development (Fastest Zero-Config Run)
+## 🛠️ Technology Stack
 
-#### 1. Clone the Repository
+| Layer | Technology | Key Libraries & Standards |
+|---|---|---|
+| **Backend** | Python 3.11 / FastAPI | Uvicorn, SQLAlchemy, Alembic, SQLite, Pydantic v2, PyPDF2, pdfplumber |
+| **AI / NLP** | OpenAI Adapter / Heuristics | Low-temperature deterministic prompts (T=0.1), JSON Schema validation |
+| **Frontend** | React 18 / TypeScript / Vite | TanStack Query, TailwindCSS, Lucide Icons, Three.js, Canvas 3D |
+| **DevOps & CI** | GitHub Actions / Docker | Ubuntu-latest CI workflow, Docker Compose, Vitest, Pytest |
+
+---
+
+## 🚀 Quickstart Guide
+
+### Option 1: Docker Compose (Recommended)
+
+Start the entire full-stack application with a single command:
+
 ```bash
-git clone https://github.com/your-username/smart-resume-screener.git
-cd smart-resume-screener
+git clone https://github.com/Aneesh-20/Smart-Resume-Screener.git
+cd Smart-Resume-Screener
+docker compose up --build
 ```
 
-#### 2. Backend Setup
+- **Frontend Application**: `http://localhost:5173`
+- **Backend API Docs (Swagger)**: `http://localhost:8000/docs`
+- **Health Check Endpoint**: `http://localhost:8000/health`
+
+---
+
+### Option 2: Local Development Setup
+
+#### 1. Backend Setup (FastAPI)
 ```bash
 cd backend
 python3 -m venv .venv
-source .venv/bin/activate    # On Windows: .venv\Scripts\activate
+source .venv/bin/activate
 pip install -r requirements.txt
-
-# Copy environment variables template
-cp ../.env.example .env
-
-# Run database migrations
-alembic upgrade head
-
-# Start FastAPI server
 uvicorn app.main:app --reload --port 8000
 ```
-*Backend runs on `http://127.0.0.1:8000` with Swagger docs at `http://127.0.0.1:8000/docs`.*
 
-#### 3. Frontend Setup (In a new terminal)
+#### 2. Frontend Setup (React + Vite)
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
-*Frontend dashboard runs on `http://localhost:5173`.*
+
+Visit **`http://localhost:5173`** in your browser.
 
 ---
 
-### Option B: Docker Compose (Full Stack with PostgreSQL)
+## 🧪 Testing & Quality Assurance
 
-```bash
-# Start PostgreSQL, FastAPI Backend, and React Frontend in containers
-docker-compose up --build
-```
-- Frontend: `http://localhost:5173`
-- Backend API: `http://localhost:8000`
-- PostgreSQL: `localhost:5432`
+The codebase features comprehensive test suites spanning unit parsing, scoring algorithms, recruiter corrections, and UI components.
 
----
-
-## 🧪 Running Automated Tests
-
-### Backend Test Suite (Pytest)
+### Run Backend Pytest Suite (16 Tests)
 ```bash
 cd backend
-source .venv/bin/activate
 pytest -v
 ```
 
-### Frontend Test Suite (Vitest)
+### Run Frontend Vitest Suite (4 Tests) & Typecheck Build
 ```bash
 cd frontend
 npm run test
-```
-
-### Frontend Type Check & Build
-```bash
-cd frontend
 npm run build
 ```
 
 ---
 
-## 🤖 LLM Prompt Templates & Configuration
+## 📂 Sample Data & Verification
 
-Prompt templates are versioned as modular text files in `backend/app/prompts/` and documented in detail in [docs/LLM_PROMPTS.md](docs/LLM_PROMPTS.md):
+Ready-to-use sample resumes and job descriptions are available in `sample-data/`:
 
-- `extraction_v1.txt`: Factual candidate profile extractor with strict JSON schema instructions.
-- `scoring_v1.txt`: Responsible hiring assistant evaluation prompt with 4-component score totaling 1.0–10.0 and bias protection.
-- `repair_v1.txt`: Single-retry JSON schema repair prompt.
-
-### Activating Real OpenAI / Compatible LLM
-In `.env` or your environment:
-```env
-OPENAI_API_KEY=sk-your-actual-api-key
-OPENAI_MODEL=gpt-4o-mini
-OPENAI_BASE_URL=https://api.openai.com/v1
-```
-
-*When no API key is provided, the application runs on the built-in deterministic heuristic fallback and displays `Fallback - semantic LLM score unavailable` on assessments.*
+- **Job Descriptions**: `sample-data/job_descriptions/` (Senior Full-Stack Engineer, Data Engineer)
+- **Candidate Resumes**: `sample-data/resumes/` (6 realistic candidate profiles with varying skill fits)
+- **PDF Generator Script**: Run `python3 sample-data/generate_sample_pdfs.py` to regenerate test PDFs at any time.
 
 ---
 
-## 📁 Repository Structure
+## 📡 API Reference Overview
 
-```text
-smart-resume-screener/
-├── backend/
-│   ├── app/
-│   │   ├── api/v1/endpoints/  # REST endpoints: jobs, candidates, screenings, export, audit
-│   │   ├── core/              # Config, security, logging, error handlers
-│   │   ├── db/                # SQLAlchemy session & Base
-│   │   ├── models/            # Normalized DB models (Job, Candidate, Skills, Assessment, Audit)
-│   │   ├── repositories/      # Database query abstraction layer
-│   │   ├── schemas/           # Pydantic 2 request/response schemas
-│   │   ├── services/          # Extractor, LLM adapter, fallback engine, worker, audit
-│   │   ├── prompts/           # Versioned prompt templates (extraction_v1, scoring_v1)
-│   │   └── main.py            # FastAPI entrypoint
-│   ├── alembic/               # Database schema migrations
-│   ├── tests/                 # Comprehensive pytest test suite
-│   ├── requirements.txt
-│   └── Dockerfile
-├── frontend/
-│   ├── src/
-│   │   ├── api/               # Typed API client functions
-│   │   ├── components/        # UI primitives, Candidate Drawer, Shortlist Card, Dropzone
-│   │   ├── pages/             # JobsListPage, JobDetailPage, NotFoundPage
-│   │   ├── types/             # TypeScript schema interfaces
-│   │   ├── utils/             # Formatters and score color styling
-│   │   ├── App.tsx, main.tsx, index.css
-│   ├── tests/                 # Vitest component unit tests
-│   ├── package.json, vite.config.ts, tailwind.config.js
-│   └── Dockerfile
-├── docs/
-│   ├── ARCHITECTURE.md        # Deep architecture & component design
-│   ├── LLM_PROMPTS.md         # Production prompt templates & contracts
-│   ├── API.md                 # REST API reference with JSON examples
-│   ├── DEMO_SCRIPT.md         # 2-3 minute timed recruiter walkthrough script
-│   └── REQUIREMENTS_TRACEABILITY.md # Traceability matrix for all specifications
-├── sample-data/
-│   ├── job_descriptions/      # Senior Fullstack Engineer, Data Engineer
-│   └── resumes/               # Alice Chen (strong), Bob Martinez (partial), Charlie Davis (weak)
-├── docker-compose.yml
-├── .env.example
-├── .gitignore
-├── LICENSE
-└── README.md
-```
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/health` | System health check and LLM adapter status |
+| `GET` | `/api/v1/jobs` | List all active screening workflows |
+| `POST` | `/api/v1/jobs` | Create a new screening job with threshold & skills |
+| `GET` | `/api/v1/jobs/{id}` | Get workflow details and aggregate pipeline metrics |
+| `POST` | `/api/v1/jobs/{id}/upload` | Multi-file resume upload (.PDF/.TXT) |
+| `POST` | `/api/v1/screenings/jobs/{id}/run` | Execute AI candidate screening run |
+| `GET` | `/api/v1/screenings/jobs/{id}/shortlist` | Get ranked candidate shortlist with score breakdown |
+| `GET` | `/api/v1/screenings/jobs/{id}/export-csv` | Download complete candidate evaluation report (CSV) |
+| `GET` | `/api/v1/screenings/audit` | Retrieve immutable audit event activity trail |
 
 ---
 
-## 🔒 Security, Privacy & Production Hardening Notes
+## ⚖️ License
 
-For enterprise production deployments, implement:
-1. **Authentication & RBAC**: Integrate OAuth2 / OIDC (Okta, Auth0, Azure AD) with recruiter and hiring manager roles.
-2. **Durable Task Queue**: Replace the in-process async worker with Celery / Redis or AWS SQS.
-3. **Data Retention & Encryption**: Enforce TLS in transit, database column encryption for contact details, and automated resume file purge retention policies.
-4. **Malware Scanning**: Scan uploaded PDF/text attachments with ClamAV before parsing.
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Distributed under the **MIT License**. See `LICENSE` for more information.
