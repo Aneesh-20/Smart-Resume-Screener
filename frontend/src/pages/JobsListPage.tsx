@@ -106,14 +106,14 @@ export const JobsListPage: React.FC = () => {
 
           <div className="space-y-4 relative z-10">
             <div className="glass-badge-rosegold">
-              <Sparkles className="w-3.5 h-3.5 text-rose-700 animate-pulse" />
+              <Sparkles className="w-3.5 h-3.5 text-[#ff0844] animate-pulse" />
               <span>Auditable AI Candidate Screening</span>
             </div>
 
             <div>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-stone-950 tracking-tight leading-tight">
                 Resume Intelligence <br className="hidden sm:inline" />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-600 to-amber-600">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-40% to-[#ff7300]">
                   Command Center
                 </span>
               </h1>
@@ -127,7 +127,7 @@ export const JobsListPage: React.FC = () => {
             <Button
               onClick={() => setIsCreateModalOpen(true)}
               size="md"
-              leftIcon={<Plus className="w-4 h-4" />}
+              leftIcon={<Plus className="w-4 h-4 stroke-[3]" />}
             >
               Create Screening Job
             </Button>
@@ -150,7 +150,7 @@ export const JobsListPage: React.FC = () => {
           <div>
             <div className="flex items-center justify-between pb-3.5 border-b-2 border-stone-900">
               <span className="text-xs font-black uppercase tracking-wider text-stone-900 flex items-center gap-2">
-                <Cpu className="w-4 h-4 text-rose-600" />
+                <Cpu className="w-4 h-4 text-[#ff0844]" />
                 <span>Evaluation Framework</span>
               </span>
               <span className="glass-badge-emerald">
@@ -161,7 +161,7 @@ export const JobsListPage: React.FC = () => {
             <div className="mt-4 space-y-2.5">
               <div className="p-3 glass-inner-box flex items-center justify-between text-xs">
                 <span className="text-stone-700 font-bold">Scoring Standard</span>
-                <span className="font-mono font-black text-rose-700">
+                <span className="font-mono font-black text-[#ff0844]">
                   1.0 – 10.0 Normalized
                 </span>
               </div>
@@ -185,13 +185,13 @@ export const JobsListPage: React.FC = () => {
       </div>
 
       {/* ========================================================================= */}
-      {/* BRUTAL BENTO GRID: STATS METRICS STRIP (4 Hard-Shadow Tactile Cells) */}
+      {/* BRUTAL BENTO GRID: STATS METRICS STRIP */}
       {/* ========================================================================= */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="brutal-card p-4 bg-white hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#1c1917] transition-all">
+        <div className="brutal-card p-4 bg-white hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000000] transition-all">
           <div className="flex items-center justify-between text-xs">
             <span className="font-black text-stone-900 uppercase">Active Jobs</span>
-            <div className="p-1.5 rounded-lg bg-rose-100 text-rose-900 border-2 border-stone-900 shadow-[1.5px_1.5px_0px_0px_#1c1917]">
+            <div className="p-1.5 rounded-lg bg-gradient-to-r from-[#ff0844] via-[#ff2a54] to-[#ff7300] text-white border-2 border-black shadow-[1.5px_1.5px_0px_0px_#000000]">
               <Briefcase className="w-3.5 h-3.5" />
             </div>
           </div>
@@ -201,10 +201,10 @@ export const JobsListPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="brutal-card p-4 bg-white hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#1c1917] transition-all">
+        <div className="brutal-card p-4 bg-white hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000000] transition-all">
           <div className="flex items-center justify-between text-xs">
             <span className="font-black text-stone-900 uppercase">Candidate Pool</span>
-            <div className="p-1.5 rounded-lg bg-amber-100 text-amber-900 border-2 border-stone-900 shadow-[1.5px_1.5px_0px_0px_#1c1917]">
+            <div className="p-1.5 rounded-lg bg-amber-100 text-amber-900 border-2 border-black shadow-[1.5px_1.5px_0px_0px_#000000]">
               <Users className="w-3.5 h-3.5" />
             </div>
           </div>
@@ -214,23 +214,23 @@ export const JobsListPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="brutal-card p-4 bg-white hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#1c1917] transition-all">
+        <div className="brutal-card p-4 bg-white hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000000] transition-all">
           <div className="flex items-center justify-between text-xs">
             <span className="font-black text-stone-900 uppercase">Scored Resumes</span>
-            <div className="p-1.5 rounded-lg bg-rose-100 text-rose-900 border-2 border-stone-900 shadow-[1.5px_1.5px_0px_0px_#1c1917]">
+            <div className="p-1.5 rounded-lg bg-gradient-to-r from-[#ff0844] via-[#ff2a54] to-[#ff7300] text-white border-2 border-black shadow-[1.5px_1.5px_0px_0px_#000000]">
               <TrendingUp className="w-3.5 h-3.5" />
             </div>
           </div>
           <div className="mt-3 flex items-baseline gap-2">
-            <span className="text-3xl font-black text-rose-700 tracking-tight">{totalScored}</span>
+            <span className="text-3xl font-black text-[#ff0844] tracking-tight">{totalScored}</span>
             <span className="text-[11px] font-bold text-stone-600">evaluated</span>
           </div>
         </div>
 
-        <div className="brutal-card p-4 bg-white hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#1c1917] transition-all">
+        <div className="brutal-card p-4 bg-white hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0px_0px_#000000] transition-all">
           <div className="flex items-center justify-between text-xs">
             <span className="font-black text-stone-900 uppercase">Shortlisted</span>
-            <div className="p-1.5 rounded-lg bg-emerald-100 text-emerald-900 border-2 border-stone-900 shadow-[1.5px_1.5px_0px_0px_#1c1917]">
+            <div className="p-1.5 rounded-lg bg-emerald-100 text-emerald-900 border-2 border-black shadow-[1.5px_1.5px_0px_0px_#000000]">
               <Award className="w-3.5 h-3.5" />
             </div>
           </div>
@@ -247,7 +247,7 @@ export const JobsListPage: React.FC = () => {
       <div>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-base font-black text-stone-950 flex items-center gap-2">
-            <Compass className="w-4 h-4 text-rose-600" />
+            <Compass className="w-4 h-4 text-[#ff0844]" />
             <span>Screening Workspaces</span>
           </h2>
           {searchQuery && (
@@ -260,14 +260,14 @@ export const JobsListPage: React.FC = () => {
         {/* Loading State */}
         {isLoading && (
           <div className="flex flex-col items-center justify-center py-20 gap-3">
-            <Spinner size="lg" className="text-rose-600" />
+            <Spinner size="lg" className="text-[#ff0844]" />
             <p className="text-xs font-bold text-stone-600">Loading screening workflows...</p>
           </div>
         )}
 
         {/* Error State */}
         {error && (
-          <div className="p-6 rounded-2xl bg-rose-100 border-2 border-stone-900 shadow-[4px_4px_0px_0px_#1c1917] text-rose-950 flex items-center gap-3">
+          <div className="p-6 rounded-2xl bg-rose-100 border-2 border-black shadow-[4px_4px_0px_0px_#000000] text-rose-950 flex items-center gap-3">
             <AlertCircle className="w-5 h-5 shrink-0 text-rose-700" />
             <div>
               <p className="font-black text-sm">Failed to load jobs</p>
@@ -279,7 +279,7 @@ export const JobsListPage: React.FC = () => {
         {/* Empty State */}
         {!isLoading && !error && filteredJobs && filteredJobs.length === 0 && (
           <div className="brutal-card text-center py-16 px-6 space-y-4">
-            <div className="w-14 h-14 rounded-2xl bg-rose-100 text-rose-700 border-2 border-stone-900 shadow-[3px_3px_0px_0px_#1c1917] flex items-center justify-center mx-auto">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-r from-[#ff0844] via-[#ff2a54] to-[#ff7300] text-white border-2 border-black shadow-[3px_3px_0px_0px_#000000] flex items-center justify-center mx-auto">
               <Briefcase className="w-7 h-7" />
             </div>
             <div>
@@ -293,7 +293,7 @@ export const JobsListPage: React.FC = () => {
             <Button
               onClick={() => setIsCreateModalOpen(true)}
               size="sm"
-              leftIcon={<Plus className="w-4 h-4" />}
+              leftIcon={<Plus className="w-4 h-4 stroke-[3]" />}
             >
               Create Job Now
             </Button>
@@ -324,7 +324,7 @@ export const JobsListPage: React.FC = () => {
                               {job.department}
                             </span>
                           )}
-                          <h3 className="text-base font-black text-stone-950 group-hover:text-rose-600 transition-colors">
+                          <h3 className="text-base font-black text-stone-950 group-hover:text-[#ff0844] transition-colors">
                             {job.title}
                           </h3>
                         </div>
@@ -347,7 +347,7 @@ export const JobsListPage: React.FC = () => {
                               key={idx}
                               className="inline-flex items-center gap-1 text-[10px] font-bold px-2.5 py-0.5 rounded-md bg-stone-100 text-stone-900 border border-stone-900 shadow-[1px_1px_0px_0px_#1c1917]"
                             >
-                              <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#ff0844]" />
                               {skill}
                             </span>
                           ))}
@@ -370,7 +370,7 @@ export const JobsListPage: React.FC = () => {
                           <span className="text-[10px] text-stone-600 font-bold">Total</span>
                         </div>
                         <div className="p-2 glass-inner-box">
-                          <span className="block font-black text-rose-700 text-xs">
+                          <span className="block font-black text-[#ff0844] text-xs">
                             {stats.scored_candidates}
                           </span>
                           <span className="text-[10px] text-stone-600 font-bold">Scored</span>
@@ -385,7 +385,7 @@ export const JobsListPage: React.FC = () => {
 
                       <div className="flex items-center justify-between text-[11px] font-bold text-stone-600 pt-1">
                         <span>Created {formatDate(job.created_at)}</span>
-                        <span className="inline-flex items-center gap-1 font-black text-rose-600 group-hover:translate-x-1 transition-transform">
+                        <span className="inline-flex items-center gap-1 font-black text-[#ff0844] group-hover:translate-x-1 transition-transform">
                           Open Hub <ArrowRight className="w-3.5 h-3.5" />
                         </span>
                       </div>
@@ -411,7 +411,7 @@ export const JobsListPage: React.FC = () => {
         >
           <form onSubmit={handleCreateSubmit} className="space-y-4">
             {formError && (
-              <div className="p-3 rounded-xl bg-rose-100 border-2 border-stone-900 text-rose-950 text-xs font-bold flex items-center gap-2 shadow-[2px_2px_0px_0px_#1c1917]">
+              <div className="p-3 rounded-xl bg-rose-100 border-2 border-black text-rose-950 text-xs font-bold flex items-center gap-2 shadow-[2px_2px_0px_0px_#000000]">
                 <AlertCircle className="w-4 h-4 shrink-0 text-rose-700" />
                 <span>{formError}</span>
               </div>
@@ -420,7 +420,7 @@ export const JobsListPage: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
                 <label className="block text-xs font-black text-stone-900">
-                  Job Title <span className="text-rose-600">*</span>
+                  Job Title <span className="text-[#ff0844]">*</span>
                 </label>
                 <input
                   type="text"
@@ -481,7 +481,7 @@ export const JobsListPage: React.FC = () => {
 
             <div className="space-y-1.5">
               <label className="block text-xs font-black text-stone-900">
-                Job Description <span className="text-rose-600">*</span>
+                Job Description <span className="text-[#ff0844]">*</span>
               </label>
               <textarea
                 required
@@ -493,7 +493,7 @@ export const JobsListPage: React.FC = () => {
               />
             </div>
 
-            <div className="pt-3 border-t-2 border-stone-900 flex items-center justify-end gap-2">
+            <div className="pt-3 border-t-2 border-black flex items-center justify-end gap-2">
               <Button
                 type="button"
                 variant="ghost"
@@ -508,7 +508,7 @@ export const JobsListPage: React.FC = () => {
                 variant="primary"
                 size="sm"
                 isLoading={createMutation.isPending}
-                leftIcon={<Plus className="w-3.5 h-3.5" />}
+                leftIcon={<Plus className="w-3.5 h-3.5 stroke-[3]" />}
               >
                 Create Screening Job
               </Button>

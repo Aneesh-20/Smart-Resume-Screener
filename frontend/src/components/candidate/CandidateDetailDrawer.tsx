@@ -78,9 +78,9 @@ export const CandidateDetailDrawer: React.FC<CandidateDetailDrawerProps> = ({
         />
 
         <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
-          <div className="w-screen max-w-2xl bg-white border-l-[3px] border-stone-900 shadow-2xl flex flex-col">
+          <div className="w-screen max-w-2xl bg-white border-l-[3px] border-black shadow-2xl flex flex-col">
             {/* Header */}
-            <div className="p-6 border-b-2 border-stone-900 bg-stone-50 space-y-4">
+            <div className="p-6 border-b-2 border-black bg-stone-50 space-y-4">
               <div className="flex items-start justify-between">
                 <div>
                   <div className="flex items-center gap-2 flex-wrap">
@@ -102,7 +102,7 @@ export const CandidateDetailDrawer: React.FC<CandidateDetailDrawerProps> = ({
                 <div className="flex items-center gap-2">
                   <button
                     onClick={onClose}
-                    className="p-1.5 rounded-lg border-2 border-stone-900 bg-white text-stone-900 hover:bg-stone-100 shadow-[2px_2px_0px_0px_#1c1917] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all cursor-pointer"
+                    className="p-1.5 rounded-xl border-2 border-black bg-white text-stone-900 hover:bg-stone-100 shadow-[2px_2px_0px_0px_#000000] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all cursor-pointer"
                   >
                     <X className="w-5 h-5" />
                   </button>
@@ -130,7 +130,7 @@ export const CandidateDetailDrawer: React.FC<CandidateDetailDrawerProps> = ({
                   </div>
                 )}
                 {candidate.total_experience_years && (
-                  <div className="px-2 py-0.5 rounded-md bg-stone-100 border border-stone-900 text-stone-900 font-mono font-black shadow-[1px_1px_0px_0px_#1c1917]">
+                  <div className="px-2 py-0.5 rounded-md bg-stone-100 border border-black text-stone-900 font-mono font-black shadow-[1px_1px_0px_0px_#000000]">
                     ~{candidate.total_experience_years.toFixed(1)} yrs exp
                   </div>
                 )}
@@ -142,7 +142,7 @@ export const CandidateDetailDrawer: React.FC<CandidateDetailDrawerProps> = ({
                   variant="outline"
                   size="sm"
                   onClick={() => setIsCorrectionsOpen(true)}
-                  leftIcon={<Edit3 className="w-3.5 h-3.5 text-rose-600" />}
+                  leftIcon={<Edit3 className="w-3.5 h-3.5 text-[#ff0844]" />}
                 >
                   Recruiter Edit
                 </Button>
@@ -175,12 +175,12 @@ export const CandidateDetailDrawer: React.FC<CandidateDetailDrawerProps> = ({
               </div>
 
               {/* Tabs Navigation */}
-              <div className="flex items-center gap-2 border-b-2 border-stone-900 -mb-6 pt-2">
+              <div className="flex items-center gap-2 border-b-2 border-black -mb-6 pt-2">
                 <button
                   onClick={() => setActiveTab('assessment')}
-                  className={`pb-2.5 px-3 text-xs font-black border-b-2 transition-colors ${
+                  className={`pb-2.5 px-3 text-xs font-black border-b-2 transition-colors cursor-pointer ${
                     activeTab === 'assessment'
-                      ? 'border-rose-600 text-rose-700'
+                      ? 'border-[#ff0844] text-[#ff0844]'
                       : 'border-transparent text-stone-600 hover:text-stone-950'
                   }`}
                 >
@@ -188,9 +188,9 @@ export const CandidateDetailDrawer: React.FC<CandidateDetailDrawerProps> = ({
                 </button>
                 <button
                   onClick={() => setActiveTab('profile')}
-                  className={`pb-2.5 px-3 text-xs font-black border-b-2 transition-colors ${
+                  className={`pb-2.5 px-3 text-xs font-black border-b-2 transition-colors cursor-pointer ${
                     activeTab === 'profile'
-                      ? 'border-rose-600 text-rose-700'
+                      ? 'border-[#ff0844] text-[#ff0844]'
                       : 'border-transparent text-stone-600 hover:text-stone-950'
                   }`}
                 >
@@ -198,9 +198,9 @@ export const CandidateDetailDrawer: React.FC<CandidateDetailDrawerProps> = ({
                 </button>
                 <button
                   onClick={() => setActiveTab('evidence')}
-                  className={`pb-2.5 px-3 text-xs font-black border-b-2 transition-colors ${
+                  className={`pb-2.5 px-3 text-xs font-black border-b-2 transition-colors cursor-pointer ${
                     activeTab === 'evidence'
-                      ? 'border-rose-600 text-rose-700'
+                      ? 'border-[#ff0844] text-[#ff0844]'
                       : 'border-transparent text-stone-600 hover:text-stone-950'
                   }`}
                 >
@@ -212,7 +212,7 @@ export const CandidateDetailDrawer: React.FC<CandidateDetailDrawerProps> = ({
             {/* Content Body */}
             <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-stone-50">
               {candidate.parse_warnings && candidate.parse_warnings.length > 0 && (
-                <div className="p-3.5 rounded-xl bg-amber-100 border-2 border-stone-900 shadow-[2px_2px_0px_0px_#1c1917] text-xs text-amber-950 space-y-1">
+                <div className="p-3.5 rounded-xl bg-amber-100 border-2 border-black shadow-[2px_2px_0px_0px_#000000] text-xs text-amber-950 space-y-1">
                   <div className="flex items-center gap-1.5 font-black">
                     <AlertTriangle className="w-4 h-4 text-amber-700" />
                     <span>Parsing Warnings</span>
@@ -231,7 +231,7 @@ export const CandidateDetailDrawer: React.FC<CandidateDetailDrawerProps> = ({
                   {assessment ? (
                     <>
                       {/* Tile: Fit Score & Rationale */}
-                      <div className="p-5 rounded-2xl bg-white border-2 border-stone-900 shadow-[3px_3px_0px_0px_#1c1917] space-y-3">
+                      <div className="p-5 rounded-2xl bg-white border-2 border-black shadow-[3px_3px_0px_0px_#000000] space-y-3">
                         <div className="flex items-center justify-between">
                           <div>
                             <span className="text-[11px] uppercase font-black tracking-wider text-stone-600 block mb-1">
@@ -251,14 +251,14 @@ export const CandidateDetailDrawer: React.FC<CandidateDetailDrawerProps> = ({
                         </div>
 
                         {assessment.is_fallback && (
-                          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-100 border-2 border-stone-900 text-amber-950 text-xs font-black shadow-[1.5px_1.5px_0px_0px_#1c1917]">
+                          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-100 border-2 border-black text-amber-950 text-xs font-black shadow-[1.5px_1.5px_0px_0px_#000000]">
                             <Cpu className="w-3.5 h-3.5 text-amber-700" />
                             <span>Fallback - semantic LLM score unavailable</span>
                           </div>
                         )}
 
-                        <div className="pt-2 border-t-2 border-stone-900">
-                          <span className="text-xs font-black text-rose-700 block mb-1">
+                        <div className="pt-2 border-t-2 border-black">
+                          <span className="text-xs font-black text-[#ff0844] block mb-1">
                             Summary Justification:
                           </span>
                           <p className="text-xs font-bold text-stone-800 leading-relaxed">
@@ -268,7 +268,7 @@ export const CandidateDetailDrawer: React.FC<CandidateDetailDrawerProps> = ({
                       </div>
 
                       {/* Tile: 4 Components Score Breakdown */}
-                      <div className="p-5 rounded-2xl bg-white border-2 border-stone-900 shadow-[3px_3px_0px_0px_#1c1917] space-y-3">
+                      <div className="p-5 rounded-2xl bg-white border-2 border-black shadow-[3px_3px_0px_0px_#000000] space-y-3">
                         <h3 className="text-xs font-black uppercase tracking-wider text-stone-900">
                           Score Breakdown Components (10.0 Scale)
                         </h3>
@@ -276,7 +276,7 @@ export const CandidateDetailDrawer: React.FC<CandidateDetailDrawerProps> = ({
                       </div>
                     </>
                   ) : (
-                    <div className="p-8 text-center rounded-2xl bg-white border-2 border-stone-900 shadow-[3px_3px_0px_0px_#1c1917] space-y-3">
+                    <div className="p-8 text-center rounded-2xl bg-white border-2 border-black shadow-[3px_3px_0px_0px_#000000] space-y-3">
                       <Sparkles className="w-8 h-8 mx-auto text-stone-400" />
                       <p className="text-sm text-stone-900 font-black">Candidate has not been scored yet.</p>
                       <Button size="sm" onClick={handleRescore} isLoading={isRescoring}>
@@ -296,7 +296,7 @@ export const CandidateDetailDrawer: React.FC<CandidateDetailDrawerProps> = ({
                       <h4 className="text-xs font-black uppercase tracking-wider text-stone-900">
                         Professional Summary
                       </h4>
-                      <p className="text-xs font-bold text-stone-800 leading-relaxed bg-white p-4 rounded-xl border-2 border-stone-900 shadow-[2px_2px_0px_0px_#1c1917]">
+                      <p className="text-xs font-bold text-stone-800 leading-relaxed bg-white p-4 rounded-xl border-2 border-black shadow-[2px_2px_0px_0px_#000000]">
                         {candidate.summary}
                       </p>
                     </div>
@@ -307,7 +307,7 @@ export const CandidateDetailDrawer: React.FC<CandidateDetailDrawerProps> = ({
                     <h4 className="text-xs font-black uppercase tracking-wider text-stone-900">
                       Normalized Skills ({candidate.skills.length})
                     </h4>
-                    <div className="p-4 rounded-xl bg-white border-2 border-stone-900 shadow-[2px_2px_0px_0px_#1c1917]">
+                    <div className="p-4 rounded-xl bg-white border-2 border-black shadow-[2px_2px_0px_0px_#000000]">
                       <SkillsTagList skills={candidate.skills} showCategory />
                     </div>
                   </div>
@@ -327,13 +327,13 @@ export const CandidateDetailDrawer: React.FC<CandidateDetailDrawerProps> = ({
                     </h4>
                     <div className="space-y-2">
                       {candidate.education_entries.map((edu, idx) => (
-                        <div key={idx} className="p-3.5 rounded-xl bg-white border-2 border-stone-900 shadow-[2px_2px_0px_0px_#1c1917] text-xs">
+                        <div key={idx} className="p-3.5 rounded-xl bg-white border-2 border-black shadow-[2px_2px_0px_0px_#000000] text-xs">
                           <span className="font-black text-stone-950 block">{edu.degree} in {edu.field_of_study}</span>
                           <span className="text-stone-600 font-bold">{edu.institution} • {edu.end_year || 'Year N/A'}</span>
                         </div>
                       ))}
                       {candidate.certifications.map((cert, idx) => (
-                        <div key={idx} className="p-3.5 rounded-xl bg-white border-2 border-stone-900 shadow-[2px_2px_0px_0px_#1c1917] text-xs">
+                        <div key={idx} className="p-3.5 rounded-xl bg-white border-2 border-black shadow-[2px_2px_0px_0px_#000000] text-xs">
                           <span className="font-black text-stone-950 block">Cert: {cert.name}</span>
                           <span className="text-stone-600 font-bold">{cert.issuer || ''} ({cert.year || 'N/A'})</span>
                         </div>
