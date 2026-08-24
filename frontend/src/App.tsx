@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ThemeProvider } from './context/ThemeContext';
 import { Navbar } from './components/layout/Navbar';
 import { SplashScreen } from './components/layout/SplashScreen';
 import { JobsListPage } from './pages/JobsListPage';
@@ -21,34 +20,32 @@ const queryClient = new QueryClient({
 export const App: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
-        <BrowserRouter>
-          {/* 2-Second Animated Entrance Splash Screen */}
-          <SplashScreen durationMs={2000} />
+      <BrowserRouter>
+        {/* 2-Second Animated Entrance Splash Screen */}
+        <SplashScreen durationMs={2000} />
 
-          <div className="min-h-screen flex flex-col bg-[#faf7f5] dark:bg-[#09090b] text-stone-900 dark:text-stone-100 selection:bg-rose-500 selection:text-white relative overflow-x-hidden font-sans transition-colors duration-200">
-            {/* Interactive 3D Ambient Constellation Background */}
-            <InteractiveBackground3D />
+        <div className="min-h-screen flex flex-col bg-[#faf7f5] text-stone-900 selection:bg-rose-500 selection:text-white relative overflow-x-hidden font-sans">
+          {/* Interactive 3D Ambient Constellation Background */}
+          <InteractiveBackground3D />
 
-            <Navbar />
-            <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
-              <Routes>
-                <Route path="/" element={<JobsListPage />} />
-                <Route path="/jobs/:jobId" element={<JobDetailPage />} />
-                <Route path="*" element={<NotFoundPage />} />
-              </Routes>
-            </main>
-            <footer className="border-t-2 border-stone-900 dark:border-stone-700 py-6 text-center text-xs text-stone-600 dark:text-stone-400 relative z-10 bg-white dark:bg-stone-900 transition-colors duration-200">
-              <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2 font-bold">
-                <p className="text-stone-900 dark:text-white">Smart Resume Screener • Explainable 3D AI Candidate Intelligence</p>
-                <p className="text-[11px] text-stone-500 dark:text-stone-400">
-                  Notice: Recruiter decision-support system. Final hiring determinations require human authorization.
-                </p>
-              </div>
-            </footer>
-          </div>
-        </BrowserRouter>
-      </ThemeProvider>
+          <Navbar />
+          <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
+            <Routes>
+              <Route path="/" element={<JobsListPage />} />
+              <Route path="/jobs/:jobId" element={<JobDetailPage />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </main>
+          <footer className="border-t-2 border-stone-900 py-6 text-center text-xs text-stone-600 relative z-10 bg-white">
+            <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2 font-bold">
+              <p className="text-stone-900">Smart Resume Screener • Explainable 3D AI Candidate Intelligence</p>
+              <p className="text-[11px] text-stone-500">
+                Notice: Recruiter decision-support system. Final hiring determinations require human authorization.
+              </p>
+            </div>
+          </footer>
+        </div>
+      </BrowserRouter>
     </QueryClientProvider>
   );
 };
