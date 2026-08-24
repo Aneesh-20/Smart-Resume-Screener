@@ -12,12 +12,31 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
 }) => {
   const [isFadingOut, setIsFadingOut] = useState(false);
   const [isMounted, setIsMounted] = useState(true);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    // Animate progress percentage from 0 to 100%
+    const startTime = performance.now();
+    let animationFrameId: number;
+
+    const updateProgress = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const pct = Math.min(100, Math.round((elapsed / (durationMs - 200)) * 100));
+      setProgress(pct);
+
+      if (elapsed < durationMs - 200) {
+        animationFrameId = requestAnimationFrame(updateProgress);
+      } else {
+        setProgress(100);
+      }
+    };
+
+    animationFrameId = requestAnimationFrame(updateProgress);
+
     // Start fade out slightly before completion
     const fadeTimer = setTimeout(() => {
       setIsFadingOut(true);
-    }, durationMs - 400);
+    }, durationMs - 350);
 
     // Completely unmount splash after duration
     const finishTimer = setTimeout(() => {
@@ -26,6 +45,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
     }, durationMs);
 
     return () => {
+      cancelAnimationFrame(animationFrameId);
       clearTimeout(fadeTimer);
       clearTimeout(finishTimer);
     };
@@ -35,7 +55,7 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-[#faf7f5] transition-all duration-400 select-none ${
+      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-[#faf7f5] transition-all duration-350 select-none ${
         isFadingOut ? 'opacity-0 scale-105 pointer-events-none' : 'opacity-100 scale-100'
       }`}
       style={{
@@ -74,32 +94,23 @@ export const SplashScreen: React.FC<SplashScreenProps> = ({
           </p>
         </div>
 
-        {/* 2-Second Animated Progress Bar */}
+        {/* Animated Progress Bar & Percentage */}
         <div className="w-full max-w-xs space-y-2 pt-2">
           <div className="h-3 w-full rounded-full bg-stone-100 border-2 border-black overflow-hidden shadow-[2px_2px_0px_0px_#000000] p-0.5">
             <div
-              className="h-full rounded-full bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300]"
+              className="h-full rounded-full bg-gradient-to-r from-[#ff0844] via-[#ff2a54] via-60% to-[#ff7300] transition-all duration-75"
               style={{
-                animation: `splashProgress ${durationMs}ms cubic-bezier(0.1, 0.7, 0.1, 1) forwards`,
+                width: `${progress}%`,
               }}
             />
           </div>
 
-          <div className="flex items-center justify-between text-[11px] font-black text-stone-500 uppercase tracking-wider px-1">
+          <div className="flex items-center justify-between text-[11px] font-black uppercase tracking-wider px-1">
             <span className="text-[#ff0844]">Loading Workspace</span>
-            <span className="font-mono">2.0s</span>
+            <span className="font-mono text-stone-950 font-black">{progress}%</span>
           </div>
         </div>
       </div>
-
-      <style>{`
-        @keyframes splashProgress {
-          0% { width: 0%; }
-          30% { width: 45%; }
-          70% { width: 85%; }
-          100% { width: 100%; }
-        }
-      `}</style>
     </div>
   );
 };
