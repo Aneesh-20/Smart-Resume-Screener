@@ -73,18 +73,18 @@ export const CandidateDetailDrawer: React.FC<CandidateDetailDrawerProps> = ({
       <div className="fixed inset-0 z-50 overflow-hidden">
         {/* Backdrop */}
         <div
-          className="fixed inset-0 bg-stone-900/40 backdrop-blur-sm transition-opacity"
+          className="fixed inset-0 bg-stone-950/50 backdrop-blur-xs transition-opacity"
           onClick={onClose}
         />
 
         <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
-          <div className="w-screen max-w-2xl bg-white border-l border-stone-200 shadow-2xl flex flex-col">
+          <div className="w-screen max-w-2xl bg-white border-l-[3px] border-stone-900 shadow-2xl flex flex-col">
             {/* Header */}
-            <div className="p-6 border-b border-stone-200 bg-stone-50/80 backdrop-blur-md space-y-4">
+            <div className="p-6 border-b-2 border-stone-900 bg-stone-50 space-y-4">
               <div className="flex items-start justify-between">
                 <div>
                   <div className="flex items-center gap-2 flex-wrap">
-                    <h2 className="text-xl font-bold text-stone-900 tracking-tight">
+                    <h2 className="text-xl font-black text-stone-950 tracking-tight">
                       {candidate.candidate_name || 'Anonymous Candidate'}
                     </h2>
                     <Badge variant={statusBadge.color.includes('emerald') ? 'success' : 'default'} size="sm" dot>
@@ -96,13 +96,13 @@ export const CandidateDetailDrawer: React.FC<CandidateDetailDrawerProps> = ({
                       </Badge>
                     )}
                   </div>
-                  <p className="text-xs text-stone-500 mt-1">Source: {candidate.original_filename}</p>
+                  <p className="text-xs font-bold text-stone-500 mt-1">Source: {candidate.original_filename}</p>
                 </div>
 
                 <div className="flex items-center gap-2">
                   <button
                     onClick={onClose}
-                    className="p-1.5 rounded-lg text-stone-400 hover:text-stone-700 hover:bg-stone-200 transition-colors"
+                    className="p-1.5 rounded-lg border-2 border-stone-900 bg-white text-stone-900 hover:bg-stone-100 shadow-[2px_2px_0px_0px_#1c1917] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all cursor-pointer"
                   >
                     <X className="w-5 h-5" />
                   </button>
@@ -110,27 +110,27 @@ export const CandidateDetailDrawer: React.FC<CandidateDetailDrawerProps> = ({
               </div>
 
               {/* Contact and Metadata Strip */}
-              <div className="flex flex-wrap items-center gap-4 text-xs text-stone-600">
+              <div className="flex flex-wrap items-center gap-4 text-xs font-bold text-stone-700">
                 {candidate.email && (
                   <div className="flex items-center gap-1.5">
-                    <Mail className="w-3.5 h-3.5 text-stone-400" />
+                    <Mail className="w-3.5 h-3.5 text-stone-500" />
                     <span>{candidate.email}</span>
                   </div>
                 )}
                 {candidate.phone && (
                   <div className="flex items-center gap-1.5">
-                    <Phone className="w-3.5 h-3.5 text-stone-400" />
+                    <Phone className="w-3.5 h-3.5 text-stone-500" />
                     <span>{candidate.phone}</span>
                   </div>
                 )}
                 {candidate.location && (
                   <div className="flex items-center gap-1.5">
-                    <MapPin className="w-3.5 h-3.5 text-stone-400" />
+                    <MapPin className="w-3.5 h-3.5 text-stone-500" />
                     <span>{candidate.location}</span>
                   </div>
                 )}
                 {candidate.total_experience_years && (
-                  <div className="px-2 py-0.5 rounded-md bg-stone-100 text-stone-700 font-semibold">
+                  <div className="px-2 py-0.5 rounded-md bg-stone-100 border border-stone-900 text-stone-900 font-mono font-black shadow-[1px_1px_0px_0px_#1c1917]">
                     ~{candidate.total_experience_years.toFixed(1)} yrs exp
                   </div>
                 )}
@@ -150,7 +150,7 @@ export const CandidateDetailDrawer: React.FC<CandidateDetailDrawerProps> = ({
                   variant="outline"
                   size="sm"
                   onClick={() => setIsRawTextOpen(true)}
-                  leftIcon={<FileText className="w-3.5 h-3.5 text-stone-500" />}
+                  leftIcon={<FileText className="w-3.5 h-3.5 text-stone-700" />}
                 >
                   Raw Text
                 </Button>
@@ -168,40 +168,40 @@ export const CandidateDetailDrawer: React.FC<CandidateDetailDrawerProps> = ({
                   size="sm"
                   onClick={handleDelete}
                   isLoading={isDeleting}
-                  className="text-rose-600 hover:text-rose-700 ml-auto"
+                  className="text-rose-700 hover:text-rose-950 ml-auto"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
                 </Button>
               </div>
 
               {/* Tabs Navigation */}
-              <div className="flex items-center gap-2 border-b border-stone-200 -mb-6 pt-2">
+              <div className="flex items-center gap-2 border-b-2 border-stone-900 -mb-6 pt-2">
                 <button
                   onClick={() => setActiveTab('assessment')}
-                  className={`pb-2.5 px-3 text-xs font-bold border-b-2 transition-colors ${
+                  className={`pb-2.5 px-3 text-xs font-black border-b-2 transition-colors ${
                     activeTab === 'assessment'
                       ? 'border-rose-600 text-rose-700'
-                      : 'border-transparent text-stone-500 hover:text-stone-800'
+                      : 'border-transparent text-stone-600 hover:text-stone-950'
                   }`}
                 >
                   Match Assessment
                 </button>
                 <button
                   onClick={() => setActiveTab('profile')}
-                  className={`pb-2.5 px-3 text-xs font-bold border-b-2 transition-colors ${
+                  className={`pb-2.5 px-3 text-xs font-black border-b-2 transition-colors ${
                     activeTab === 'profile'
                       ? 'border-rose-600 text-rose-700'
-                      : 'border-transparent text-stone-500 hover:text-stone-800'
+                      : 'border-transparent text-stone-600 hover:text-stone-950'
                   }`}
                 >
                   Extracted Profile & Skills
                 </button>
                 <button
                   onClick={() => setActiveTab('evidence')}
-                  className={`pb-2.5 px-3 text-xs font-bold border-b-2 transition-colors ${
+                  className={`pb-2.5 px-3 text-xs font-black border-b-2 transition-colors ${
                     activeTab === 'evidence'
                       ? 'border-rose-600 text-rose-700'
-                      : 'border-transparent text-stone-500 hover:text-stone-800'
+                      : 'border-transparent text-stone-600 hover:text-stone-950'
                   }`}
                 >
                   Evidence & Gaps
@@ -210,14 +210,14 @@ export const CandidateDetailDrawer: React.FC<CandidateDetailDrawerProps> = ({
             </div>
 
             {/* Content Body */}
-            <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-stone-50/40">
+            <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-stone-50">
               {candidate.parse_warnings && candidate.parse_warnings.length > 0 && (
-                <div className="p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-800 space-y-1">
-                  <div className="flex items-center gap-1.5 font-bold">
-                    <AlertTriangle className="w-4 h-4 text-amber-600" />
+                <div className="p-3.5 rounded-xl bg-amber-100 border-2 border-stone-900 shadow-[2px_2px_0px_0px_#1c1917] text-xs text-amber-950 space-y-1">
+                  <div className="flex items-center gap-1.5 font-black">
+                    <AlertTriangle className="w-4 h-4 text-amber-700" />
                     <span>Parsing Warnings</span>
                   </div>
-                  <ul className="list-disc pl-5 space-y-0.5 text-amber-700">
+                  <ul className="list-disc pl-5 space-y-0.5 font-bold text-amber-900">
                     {candidate.parse_warnings.map((w, idx) => (
                       <li key={idx}>{w}</li>
                     ))}
@@ -225,23 +225,23 @@ export const CandidateDetailDrawer: React.FC<CandidateDetailDrawerProps> = ({
                 </div>
               )}
 
-              {/* Tab 1: Assessment Bento Grid */}
+              {/* Tab 1: Assessment Brutal Grid */}
               {activeTab === 'assessment' && (
                 <div className="space-y-5">
                   {assessment ? (
                     <>
-                      {/* Bento Tile: Fit Score & Rationale */}
-                      <div className="p-5 rounded-2xl bg-white border border-stone-200 shadow-sm space-y-3">
+                      {/* Tile: Fit Score & Rationale */}
+                      <div className="p-5 rounded-2xl bg-white border-2 border-stone-900 shadow-[3px_3px_0px_0px_#1c1917] space-y-3">
                         <div className="flex items-center justify-between">
                           <div>
-                            <span className="text-[11px] uppercase font-bold tracking-wider text-stone-500 block mb-1">
+                            <span className="text-[11px] uppercase font-black tracking-wider text-stone-600 block mb-1">
                               Semantic Fit Score
                             </span>
                             <ScoreBadge score={assessment.fit_score} size="lg" />
                           </div>
 
                           <div className="text-right">
-                            <span className="text-[11px] uppercase font-bold tracking-wider text-stone-500 block mb-1">
+                            <span className="text-[11px] uppercase font-black tracking-wider text-stone-600 block mb-1">
                               Confidence
                             </span>
                             <Badge variant={assessment.confidence === 'high' ? 'success' : 'warning'} size="md">
@@ -251,34 +251,34 @@ export const CandidateDetailDrawer: React.FC<CandidateDetailDrawerProps> = ({
                         </div>
 
                         {assessment.is_fallback && (
-                          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-50 border border-amber-200 text-amber-800 text-xs font-bold">
-                            <Cpu className="w-3.5 h-3.5 text-amber-600" />
+                          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-100 border-2 border-stone-900 text-amber-950 text-xs font-black shadow-[1.5px_1.5px_0px_0px_#1c1917]">
+                            <Cpu className="w-3.5 h-3.5 text-amber-700" />
                             <span>Fallback - semantic LLM score unavailable</span>
                           </div>
                         )}
 
-                        <div className="pt-2 border-t border-stone-100">
-                          <span className="text-xs font-bold text-rose-700 block mb-1">
+                        <div className="pt-2 border-t-2 border-stone-900">
+                          <span className="text-xs font-black text-rose-700 block mb-1">
                             Summary Justification:
                           </span>
-                          <p className="text-xs text-stone-700 leading-relaxed">
+                          <p className="text-xs font-bold text-stone-800 leading-relaxed">
                             {assessment.summary_justification}
                           </p>
                         </div>
                       </div>
 
-                      {/* Bento Tile: 4 Components Score Breakdown */}
-                      <div className="p-5 rounded-2xl bg-white border border-stone-200 shadow-sm space-y-3">
-                        <h3 className="text-xs font-bold uppercase tracking-wider text-stone-700">
+                      {/* Tile: 4 Components Score Breakdown */}
+                      <div className="p-5 rounded-2xl bg-white border-2 border-stone-900 shadow-[3px_3px_0px_0px_#1c1917] space-y-3">
+                        <h3 className="text-xs font-black uppercase tracking-wider text-stone-900">
                           Score Breakdown Components (10.0 Scale)
                         </h3>
                         <ScoreBreakdownBars breakdown={assessment.score_breakdown} />
                       </div>
                     </>
                   ) : (
-                    <div className="p-8 text-center rounded-2xl bg-white border border-stone-200 shadow-sm space-y-3">
+                    <div className="p-8 text-center rounded-2xl bg-white border-2 border-stone-900 shadow-[3px_3px_0px_0px_#1c1917] space-y-3">
                       <Sparkles className="w-8 h-8 mx-auto text-stone-400" />
-                      <p className="text-sm text-stone-700 font-semibold">Candidate has not been scored yet.</p>
+                      <p className="text-sm text-stone-900 font-black">Candidate has not been scored yet.</p>
                       <Button size="sm" onClick={handleRescore} isLoading={isRescoring}>
                         Score Candidate Now
                       </Button>
@@ -287,34 +287,34 @@ export const CandidateDetailDrawer: React.FC<CandidateDetailDrawerProps> = ({
                 </div>
               )}
 
-              {/* Tab 2: Extracted Profile Bento */}
+              {/* Tab 2: Extracted Profile Brutal Tiles */}
               {activeTab === 'profile' && (
                 <div className="space-y-5">
                   {/* Summary */}
                   {candidate.summary && (
                     <div className="space-y-2">
-                      <h4 className="text-xs font-bold uppercase tracking-wider text-stone-700">
+                      <h4 className="text-xs font-black uppercase tracking-wider text-stone-900">
                         Professional Summary
                       </h4>
-                      <p className="text-xs text-stone-700 leading-relaxed bg-white p-4 rounded-xl border border-stone-200 shadow-sm">
+                      <p className="text-xs font-bold text-stone-800 leading-relaxed bg-white p-4 rounded-xl border-2 border-stone-900 shadow-[2px_2px_0px_0px_#1c1917]">
                         {candidate.summary}
                       </p>
                     </div>
                   )}
 
-                  {/* Skills Bento Tile */}
+                  {/* Skills Tile */}
                   <div className="space-y-2">
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-stone-700">
+                    <h4 className="text-xs font-black uppercase tracking-wider text-stone-900">
                       Normalized Skills ({candidate.skills.length})
                     </h4>
-                    <div className="p-4 rounded-xl bg-white border border-stone-200 shadow-sm">
+                    <div className="p-4 rounded-xl bg-white border-2 border-stone-900 shadow-[2px_2px_0px_0px_#1c1917]">
                       <SkillsTagList skills={candidate.skills} showCategory />
                     </div>
                   </div>
 
                   {/* Experience Timeline */}
                   <div className="space-y-2">
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-stone-700">
+                    <h4 className="text-xs font-black uppercase tracking-wider text-stone-900">
                       Work Experience Timeline
                     </h4>
                     <ExperienceTimeline entries={candidate.experience_entries} />
@@ -322,20 +322,20 @@ export const CandidateDetailDrawer: React.FC<CandidateDetailDrawerProps> = ({
 
                   {/* Education & Certs */}
                   <div className="space-y-2">
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-stone-700">
+                    <h4 className="text-xs font-black uppercase tracking-wider text-stone-900">
                       Education & Certifications
                     </h4>
                     <div className="space-y-2">
                       {candidate.education_entries.map((edu, idx) => (
-                        <div key={idx} className="p-3.5 rounded-xl bg-white border border-stone-200 shadow-sm text-xs">
-                          <span className="font-bold text-stone-900 block">{edu.degree} in {edu.field_of_study}</span>
-                          <span className="text-stone-500">{edu.institution} • {edu.end_year || 'Year N/A'}</span>
+                        <div key={idx} className="p-3.5 rounded-xl bg-white border-2 border-stone-900 shadow-[2px_2px_0px_0px_#1c1917] text-xs">
+                          <span className="font-black text-stone-950 block">{edu.degree} in {edu.field_of_study}</span>
+                          <span className="text-stone-600 font-bold">{edu.institution} • {edu.end_year || 'Year N/A'}</span>
                         </div>
                       ))}
                       {candidate.certifications.map((cert, idx) => (
-                        <div key={idx} className="p-3.5 rounded-xl bg-white border border-stone-200 shadow-sm text-xs">
-                          <span className="font-bold text-stone-900 block">Cert: {cert.name}</span>
-                          <span className="text-stone-500">{cert.issuer || ''} ({cert.year || 'N/A'})</span>
+                        <div key={idx} className="p-3.5 rounded-xl bg-white border-2 border-stone-900 shadow-[2px_2px_0px_0px_#1c1917] text-xs">
+                          <span className="font-black text-stone-950 block">Cert: {cert.name}</span>
+                          <span className="text-stone-600 font-bold">{cert.issuer || ''} ({cert.year || 'N/A'})</span>
                         </div>
                       ))}
                     </div>
@@ -343,7 +343,7 @@ export const CandidateDetailDrawer: React.FC<CandidateDetailDrawerProps> = ({
                 </div>
               )}
 
-              {/* Tab 3: Evidence & Gaps Bento */}
+              {/* Tab 3: Evidence & Gaps */}
               {activeTab === 'evidence' && (
                 <div>
                   {assessment ? (
@@ -354,7 +354,7 @@ export const CandidateDetailDrawer: React.FC<CandidateDetailDrawerProps> = ({
                       followUpQuestions={assessment.follow_up_questions}
                     />
                   ) : (
-                    <p className="text-xs text-stone-500 italic text-center py-8">
+                    <p className="text-xs text-stone-500 font-bold italic text-center py-8">
                       Evidence matching available once candidate is scored.
                     </p>
                   )}

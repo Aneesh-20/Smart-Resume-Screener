@@ -27,7 +27,7 @@ export const ScoreBreakdownBars: React.FC<ScoreBreakdownBarsProps> = ({
       key: 'education_certifications',
       label: 'Education & Certs',
       data: breakdown.education_certifications,
-      color: 'bg-emerald-600',
+      color: 'bg-emerald-500',
     },
     {
       key: 'role_specific_criteria',
@@ -46,22 +46,22 @@ export const ScoreBreakdownBars: React.FC<ScoreBreakdownBarsProps> = ({
         return (
           <div key={item.key} className="space-y-1">
             <div className="flex items-center justify-between text-xs">
-              <span className="font-bold text-stone-700">{item.label}</span>
-              <span className="font-mono font-bold text-stone-900">
-                {item.data.score.toFixed(1)} <span className="text-stone-400 text-[10px]">/ {item.data.max_score.toFixed(1)}</span>
+              <span className="font-black text-stone-900">{item.label}</span>
+              <span className="font-mono font-black text-stone-950">
+                {item.data.score.toFixed(1)} <span className="text-stone-500 text-[10px]">/ {item.data.max_score.toFixed(1)}</span>
               </span>
             </div>
 
-            {/* Progress Track */}
-            <div className="h-2 w-full rounded-full bg-stone-100 border border-stone-200/80 overflow-hidden">
+            {/* Progress Track with Brutal Border */}
+            <div className="h-2.5 w-full rounded-md bg-stone-100 border-2 border-stone-900 overflow-hidden shadow-[1px_1px_0px_0px_#1c1917]">
               <div
-                className={`h-full rounded-full ${item.color} transition-all duration-500`}
+                className={`h-full ${item.color} transition-all duration-300`}
                 style={{ width: `${pct}%` }}
               />
             </div>
 
             {!compact && item.data.rationale && (
-              <p className="text-[11px] text-stone-600 leading-relaxed">
+              <p className="text-[11px] font-bold text-stone-700 leading-relaxed">
                 {item.data.rationale}
               </p>
             )}

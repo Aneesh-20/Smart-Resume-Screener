@@ -20,7 +20,7 @@ export const App: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <div className="min-h-screen flex flex-col bg-[#faf7f5] text-stone-800 selection:bg-rose-500 selection:text-white relative overflow-x-hidden">
+        <div className="min-h-screen flex flex-col bg-[#faf7f5] text-stone-900 selection:bg-rose-500 selection:text-white relative overflow-x-hidden font-sans">
           {/* Interactive 3D Ambient Constellation Background */}
           <InteractiveBackground3D />
 
@@ -32,9 +32,9 @@ export const App: React.FC = () => {
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </main>
-          <footer className="border-t border-stone-200/80 py-6 text-center text-xs text-stone-500 relative z-10 bg-white/70 backdrop-blur-md">
-            <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-              <p className="font-medium text-stone-600">Smart Resume Screener • Explainable 3D AI Candidate Intelligence</p>
+          <footer className="border-t-2 border-stone-900 py-6 text-center text-xs text-stone-600 relative z-10 bg-white">
+            <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2 font-bold">
+              <p className="text-stone-900">Smart Resume Screener • Explainable 3D AI Candidate Intelligence</p>
               <p className="text-[11px] text-stone-500">
                 Notice: Recruiter decision-support system. Final hiring determinations require human authorization.
               </p>

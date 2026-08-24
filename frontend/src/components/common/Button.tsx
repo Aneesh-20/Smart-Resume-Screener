@@ -21,14 +21,14 @@ export const Button: React.FC<ButtonProps> = ({
   disabled,
   ...props
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-stone-100 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer active:scale-[0.98]';
+  const baseStyles = 'inline-flex items-center justify-center font-bold rounded-xl border-2 border-stone-900 transition-all duration-150 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer active:translate-x-0.5 active:translate-y-0.5 active:shadow-[1px_1px_0px_0px_#1c1917]';
 
   const variantStyles = {
-    primary: 'bg-gradient-to-r from-rose-600 via-rose-500 to-amber-600 hover:from-rose-700 hover:to-amber-700 text-white shadow-md shadow-rose-500/20 border border-rose-400/40 focus:ring-rose-500',
-    secondary: 'bg-white hover:bg-stone-50 text-stone-700 border border-stone-300 shadow-sm focus:ring-stone-400',
-    outline: 'bg-white/80 hover:bg-white text-stone-700 border border-stone-300/90 hover:border-rose-400/60 shadow-sm focus:ring-rose-400',
-    danger: 'bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 focus:ring-rose-500',
-    ghost: 'text-stone-600 hover:text-stone-900 hover:bg-stone-100/70 focus:ring-stone-400',
+    primary: 'bg-gradient-to-r from-rose-500 via-rose-500 to-amber-500 hover:from-rose-600 hover:to-amber-600 text-white shadow-[3px_3px_0px_0px_#1c1917] hover:shadow-[5px_5px_0px_0px_#1c1917] hover:-translate-x-0.5 hover:-translate-y-0.5',
+    secondary: 'bg-white hover:bg-stone-50 text-stone-900 shadow-[3px_3px_0px_0px_#1c1917] hover:shadow-[5px_5px_0px_0px_#1c1917] hover:-translate-x-0.5 hover:-translate-y-0.5',
+    outline: 'bg-white hover:bg-rose-50 text-stone-900 shadow-[3px_3px_0px_0px_#1c1917] hover:shadow-[5px_5px_0px_0px_#1c1917] hover:-translate-x-0.5 hover:-translate-y-0.5',
+    danger: 'bg-rose-100 hover:bg-rose-200 text-rose-900 shadow-[3px_3px_0px_0px_#1c1917] hover:shadow-[5px_5px_0px_0px_#1c1917] hover:-translate-x-0.5 hover:-translate-y-0.5',
+    ghost: 'border-transparent hover:border-stone-900 text-stone-700 hover:text-stone-950 hover:bg-stone-100/90 shadow-none hover:shadow-[2px_2px_0px_0px_#1c1917]',
   };
 
   const sizeStyles = {

@@ -124,17 +124,17 @@ export const JobDetailPage: React.FC = () => {
     return (
       <div className="flex flex-col items-center justify-center py-24 gap-3">
         <Spinner size="lg" className="text-rose-600" />
-        <p className="text-xs text-stone-500 font-medium">Loading screening workspace...</p>
+        <p className="text-xs font-bold text-stone-600">Loading screening workspace...</p>
       </div>
     );
   }
 
   if (jobError || !job) {
     return (
-      <div className="p-8 text-center space-y-4">
+      <div className="p-8 text-center space-y-4 brutal-card bg-white">
         <AlertCircle className="w-10 h-10 text-rose-600 mx-auto" />
-        <h2 className="text-lg font-bold text-stone-900">Job not found</h2>
-        <p className="text-xs text-stone-500">The requested screening job could not be loaded.</p>
+        <h2 className="text-lg font-black text-stone-900">Job not found</h2>
+        <p className="text-xs font-bold text-stone-500">The requested screening job could not be loaded.</p>
         <Link to="/">
           <Button variant="secondary" size="sm" leftIcon={<ArrowLeft className="w-4 h-4" />}>
             Back to Jobs
@@ -157,23 +157,23 @@ export const JobDetailPage: React.FC = () => {
     : 0;
 
   return (
-    <div className="space-y-5 animate-in fade-in duration-300">
+    <div className="space-y-5 animate-in fade-in duration-200">
       {/* ========================================================================= */}
-      {/* BENTO GRID: ROW 1 (Command Hub + Pipeline Metrics) */}
+      {/* BRUTAL BENTO GRID: ROW 1 (Command Hub + Pipeline Metrics) */}
       {/* ========================================================================= */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
         {/* Bento Tile 1: Primary Job Focus & Quick Actions */}
-        <div className="lg:col-span-8 glass-hero p-6 sm:p-7 flex flex-col justify-between relative overflow-hidden">
+        <div className="lg:col-span-8 brutal-hero p-6 sm:p-7 flex flex-col justify-between relative overflow-hidden">
           <div className="space-y-4 relative z-10">
             <Link
               to="/"
-              className="inline-flex items-center gap-1.5 text-xs text-stone-500 hover:text-rose-600 transition-colors font-medium"
+              className="inline-flex items-center gap-1.5 text-xs text-stone-700 hover:text-rose-600 transition-colors font-black"
             >
               <ArrowLeft className="w-3.5 h-3.5" /> Back to Screening Hub
             </Link>
 
             <div className="flex flex-wrap items-center gap-2.5">
-              <h1 className="text-2xl sm:text-3xl font-black text-stone-900 tracking-tight">
+              <h1 className="text-2xl sm:text-3xl font-black text-stone-950 tracking-tight">
                 {job.title}
               </h1>
               {job.department && (
@@ -181,18 +181,18 @@ export const JobDetailPage: React.FC = () => {
                   {job.department}
                 </span>
               )}
-              <span className="glass-badge-rosegold font-mono">
+              <span className="glass-badge-rosegold font-mono font-black">
                 Threshold: {job.min_score_threshold.toFixed(1)}/10
               </span>
             </div>
 
             {/* Responsible AI Banner */}
-            <div className="p-3.5 rounded-xl bg-stone-50/90 border border-stone-200 text-xs text-stone-700 flex items-center justify-between gap-3 backdrop-blur-md">
+            <div className="p-3.5 rounded-xl bg-white border-2 border-stone-900 shadow-[2px_2px_0px_0px_#1c1917] text-xs font-bold text-stone-800 flex items-center justify-between gap-3">
               <span className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
                 <span>Notice: Human decision-support tool. Final hiring determinations require recruiter confirmation.</span>
               </span>
-              <span className="text-rose-700 font-bold uppercase tracking-wider text-[10px] shrink-0">
+              <span className="text-rose-700 font-black uppercase tracking-wider text-[10px] shrink-0">
                 Audited Mode
               </span>
             </div>
@@ -213,23 +213,23 @@ export const JobDetailPage: React.FC = () => {
             <a
               href={jobsApi.exportCsvUrl(job.id)}
               download
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white hover:bg-stone-50 text-stone-700 border border-stone-300 text-xs font-bold transition-all shadow-sm"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white hover:bg-stone-50 text-stone-900 border-2 border-stone-900 text-xs font-black transition-all shadow-[3px_3px_0px_0px_#1c1917] hover:shadow-[5px_5px_0px_0px_#1c1917] hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0.5 active:translate-y-0.5 active:shadow-[1px_1px_0px_0px_#1c1917]"
             >
-              <Download className="w-3.5 h-3.5 text-stone-500" />
+              <Download className="w-3.5 h-3.5 text-stone-700" />
               <span>Export CSV</span>
             </a>
           </div>
         </div>
 
         {/* Bento Tile 2: Live Pipeline Telemetry Gauge */}
-        <div className="lg:col-span-4 glass-panel p-6 flex flex-col justify-between">
+        <div className="lg:col-span-4 brutal-card p-6 flex flex-col justify-between bg-white">
           <div>
-            <div className="flex items-center justify-between pb-3.5 border-b border-stone-200/80">
-              <span className="text-xs font-bold uppercase tracking-wider text-stone-800 flex items-center gap-1.5">
+            <div className="flex items-center justify-between pb-3.5 border-b-2 border-stone-900">
+              <span className="text-xs font-black uppercase tracking-wider text-stone-900 flex items-center gap-1.5">
                 <Layers className="w-3.5 h-3.5 text-rose-600" />
                 <span>Pipeline Telemetry</span>
               </span>
-              <span className="text-xs font-mono font-bold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200 shadow-sm">
+              <span className="text-xs font-mono font-black text-emerald-950 bg-emerald-100 px-2.5 py-0.5 rounded-full border-2 border-stone-900 shadow-[1.5px_1.5px_0px_0px_#1c1917]">
                 {shortlistPercent}% Shortlisted
               </span>
             </div>
@@ -237,45 +237,45 @@ export const JobDetailPage: React.FC = () => {
             {/* 4-Cell Telemetry Grid */}
             <div className="grid grid-cols-2 gap-2.5 mt-4">
               <div className="p-3 glass-inner-box text-center">
-                <span className="text-xl font-black text-stone-900 block">{stats.total_candidates}</span>
-                <span className="text-[10px] text-stone-500 uppercase font-medium">Uploaded</span>
+                <span className="text-xl font-black text-stone-950 block">{stats.total_candidates}</span>
+                <span className="text-[10px] text-stone-600 uppercase font-black">Uploaded</span>
               </div>
               <div className="p-3 glass-inner-box text-center">
                 <span className="text-xl font-black text-rose-700 block">{stats.parsed_candidates}</span>
-                <span className="text-[10px] text-stone-500 uppercase font-medium">Parsed</span>
+                <span className="text-[10px] text-stone-600 uppercase font-black">Parsed</span>
               </div>
               <div className="p-3 glass-inner-box text-center">
                 <span className="text-xl font-black text-amber-700 block">{stats.scored_candidates}</span>
-                <span className="text-[10px] text-stone-500 uppercase font-medium">Scored</span>
+                <span className="text-[10px] text-stone-600 uppercase font-black">Scored</span>
               </div>
               <div className="p-3 glass-inner-box text-center">
                 <span className="text-xl font-black text-emerald-700 block">{stats.shortlisted_candidates}</span>
-                <span className="text-[10px] text-stone-500 uppercase font-medium">Shortlisted</span>
+                <span className="text-[10px] text-stone-600 uppercase font-black">Shortlisted</span>
               </div>
             </div>
           </div>
 
-          <div className="pt-3 border-t border-stone-200/80 flex items-center justify-between text-[11px] text-stone-500">
+          <div className="pt-3 border-t-2 border-stone-900 flex items-center justify-between text-[11px] font-bold text-stone-600">
             <span>Errors: {stats.failed_candidates}</span>
-            <span className="text-rose-700 font-semibold">Model: scoring_v1</span>
+            <span className="text-rose-700 font-black">Model: scoring_v1</span>
           </div>
         </div>
       </div>
 
       {/* ========================================================================= */}
-      {/* BENTO GRID: ROW 2 (Job Requirements + Multi-File Upload Dropzone) */}
+      {/* BRUTAL BENTO GRID: ROW 2 (Job Requirements + Multi-File Upload Dropzone) */}
       {/* ========================================================================= */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
         {/* Bento Tile 3: Tech Stack & Criteria Snapshot */}
-        <div className="lg:col-span-5 glass-panel p-5 space-y-4">
+        <div className="lg:col-span-5 brutal-card p-5 space-y-4 bg-white">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-stone-800 flex items-center gap-1.5">
+            <span className="text-xs font-black uppercase tracking-wider text-stone-900 flex items-center gap-1.5">
               <Briefcase className="w-3.5 h-3.5 text-rose-600" />
               <span>Must-Have Tech Stack</span>
             </span>
             <button
               onClick={() => setIsJdExpanded(!isJdExpanded)}
-              className="text-[11px] text-rose-700 hover:text-rose-800 font-bold flex items-center gap-0.5"
+              className="text-[11px] text-rose-700 hover:text-rose-800 font-black flex items-center gap-0.5"
             >
               <span>{isJdExpanded ? 'Collapse' : 'View Description'}</span>
               <ChevronRight className={`w-3 h-3 transition-transform ${isJdExpanded ? 'rotate-90' : ''}`} />
@@ -287,7 +287,7 @@ export const JobDetailPage: React.FC = () => {
             {job.must_have_skills.map((skill, idx) => (
               <span
                 key={idx}
-                className="inline-flex items-center gap-1.5 text-xs px-3 py-1 rounded-xl bg-stone-100/90 text-stone-800 border border-stone-200 font-medium shadow-sm"
+                className="inline-flex items-center gap-1.5 text-xs px-3 py-1 rounded-xl bg-stone-100 text-stone-900 border-2 border-stone-900 font-bold shadow-[2px_2px_0px_0px_#1c1917]"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
                 {skill}
@@ -297,36 +297,36 @@ export const JobDetailPage: React.FC = () => {
 
           {/* Expanded Job Description Box */}
           {isJdExpanded && (
-            <div className="p-3.5 rounded-xl bg-stone-50 border border-stone-200 text-xs text-stone-700 max-h-56 overflow-y-auto leading-relaxed font-mono whitespace-pre-wrap">
+            <div className="p-3.5 rounded-xl bg-stone-50 border-2 border-stone-900 text-xs text-stone-800 max-h-56 overflow-y-auto leading-relaxed font-mono font-semibold whitespace-pre-wrap shadow-inner">
               {job.description}
             </div>
           )}
         </div>
 
         {/* Bento Tile 4: Multi-File Resume Dropzone */}
-        <div className="lg:col-span-7 glass-panel p-5 space-y-3">
+        <div className="lg:col-span-7 brutal-card p-5 space-y-3 bg-white">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider text-stone-800 flex items-center gap-1.5">
+            <span className="text-xs font-black uppercase tracking-wider text-stone-900 flex items-center gap-1.5">
               <UploadCloud className="w-3.5 h-3.5 text-rose-600" />
               <span>Multi-File Resume Ingestion</span>
             </span>
-            <span className="text-[11px] text-stone-500">Supports .PDF & .TXT up to 15MB</span>
+            <span className="text-[11px] font-bold text-stone-500">Supports .PDF & .TXT up to 15MB</span>
           </div>
 
           <Dropzone onUpload={handleUploadResumes} isLoading={isUploading} />
 
           {uploadResults && (
-            <div className="p-3 rounded-xl bg-stone-50 border border-stone-200 space-y-1.5 text-xs">
+            <div className="p-3 rounded-xl bg-stone-50 border-2 border-stone-900 space-y-1.5 text-xs shadow-[2px_2px_0px_0px_#1c1917]">
               {uploadResults.uploadedCount > 0 && (
-                <p className="text-emerald-700 font-bold">
+                <p className="text-emerald-800 font-black">
                   ✓ Successfully queued {uploadResults.uploadedCount} resume(s) for background parsing.
                 </p>
               )}
               {uploadResults.errors.length > 0 && (
                 <div className="space-y-0.5">
-                  <span className="font-bold text-rose-700 block">Upload issues / skipped files:</span>
+                  <span className="font-black text-rose-700 block">Upload issues / skipped files:</span>
                   {uploadResults.errors.map((err, idx) => (
-                    <p key={idx} className="text-rose-700 text-[11px]">
+                    <p key={idx} className="text-rose-800 font-bold text-[11px]">
                       • {err.filename}: {err.error}
                     </p>
                   ))}
@@ -338,24 +338,24 @@ export const JobDetailPage: React.FC = () => {
       </div>
 
       {/* ========================================================================= */}
-      {/* BENTO GRID: ROW 3 (Workspace Navigation & Command Center Hub) */}
+      {/* BRUTAL BENTO GRID: ROW 3 (Workspace Navigation & Command Center Hub) */}
       {/* ========================================================================= */}
       <div className="space-y-4">
-        {/* View Switcher Floating Glass Pills */}
-        <div className="flex items-center justify-between flex-wrap gap-3 p-1.5 rounded-2xl bg-white/90 border border-stone-200/90 backdrop-blur-2xl shadow-glass-sm">
+        {/* View Switcher Floating Pills */}
+        <div className="flex items-center justify-between flex-wrap gap-3 p-1.5 rounded-2xl bg-white border-[2.5px] border-stone-900 shadow-[3px_3px_0px_0px_#1c1917]">
           <div className="flex items-center gap-1.5">
             <button
               onClick={() => setActiveView('shortlist')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+              className={`px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-2 border-2 border-stone-900 ${
                 activeView === 'shortlist'
-                  ? 'bg-gradient-to-r from-rose-600 via-rose-500 to-amber-600 text-white shadow-sm shadow-rose-500/20'
-                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100/60'
+                  ? 'bg-rose-500 text-white shadow-[2px_2px_0px_0px_#1c1917]'
+                  : 'bg-white text-stone-700 hover:bg-stone-100 shadow-none'
               }`}
             >
               <Award className="w-3.5 h-3.5 text-amber-200" />
               <span>Ranked Shortlist</span>
               {shortlist && (
-                <span className="text-[10px] px-2 py-0.5 rounded-full bg-white text-rose-700 font-mono font-bold shadow-xs">
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-stone-900 text-white font-mono font-black">
                   {shortlist.shortlisted_count}
                 </span>
               )}
@@ -363,28 +363,28 @@ export const JobDetailPage: React.FC = () => {
 
             <button
               onClick={() => setActiveView('candidates')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+              className={`px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-2 border-2 border-stone-900 ${
                 activeView === 'candidates'
-                  ? 'bg-gradient-to-r from-rose-600 via-rose-500 to-amber-600 text-white shadow-sm shadow-rose-500/20'
-                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100/60'
+                  ? 'bg-rose-500 text-white shadow-[2px_2px_0px_0px_#1c1917]'
+                  : 'bg-white text-stone-700 hover:bg-stone-100 shadow-none'
               }`}
             >
               <Users className="w-3.5 h-3.5 text-stone-200" />
               <span>Candidate Pool</span>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-stone-100 text-stone-700 font-mono font-bold">
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-stone-900 text-white font-mono font-black">
                 {stats.total_candidates}
               </span>
             </button>
 
             <button
               onClick={() => setActiveView('audit')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+              className={`px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-2 border-2 border-stone-900 ${
                 activeView === 'audit'
-                  ? 'bg-gradient-to-r from-rose-600 via-rose-500 to-amber-600 text-white shadow-sm shadow-rose-500/20'
-                  : 'text-stone-600 hover:text-stone-900 hover:bg-stone-100/60'
+                  ? 'bg-rose-500 text-white shadow-[2px_2px_0px_0px_#1c1917]'
+                  : 'bg-white text-stone-700 hover:bg-stone-100 shadow-none'
               }`}
             >
-              <Clock className="w-3.5 h-3.5 text-stone-400" />
+              <Clock className="w-3.5 h-3.5 text-stone-500" />
               <span>Audit Activity Log</span>
             </button>
           </div>
@@ -396,24 +396,24 @@ export const JobDetailPage: React.FC = () => {
         {activeView === 'shortlist' && (
           <div className="space-y-4">
             {/* Filter & Rule Control Strip */}
-            <div className="glass-panel p-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="brutal-card p-4 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white">
               <div>
-                <span className="text-xs font-bold text-emerald-800 flex items-center gap-1.5">
+                <span className="text-xs font-black text-emerald-800 flex items-center gap-1.5">
                   <Award className="w-4 h-4 text-emerald-600" /> Auditable Decision Rule:
                 </span>
-                <p className="text-xs text-stone-600 mt-0.5">
-                  Qualifying Condition: <code className="px-2 py-0.5 rounded-md bg-stone-100 font-mono text-rose-800 text-[11px] border border-stone-200">Fit Score &gt;= {job.min_score_threshold.toFixed(1)}</code> and <code className="px-2 py-0.5 rounded-md bg-stone-100 font-mono text-emerald-800 text-[11px] border border-stone-200">Recommendation == 'shortlist'</code>
+                <p className="text-xs font-bold text-stone-700 mt-0.5">
+                  Qualifying Condition: <code className="px-2 py-0.5 rounded-md bg-stone-100 font-mono text-rose-800 text-[11px] border border-stone-900">Fit Score &gt;= {job.min_score_threshold.toFixed(1)}</code> and <code className="px-2 py-0.5 rounded-md bg-stone-100 font-mono text-emerald-800 text-[11px] border border-stone-900">Recommendation == 'shortlist'</code>
                 </p>
               </div>
 
               {/* Sub-Tier Filter Buttons */}
-              <div className="flex items-center gap-1.5 bg-stone-100/80 p-1.5 rounded-2xl border border-stone-200">
+              <div className="flex items-center gap-1.5 bg-stone-100 p-1.5 rounded-2xl border-2 border-stone-900">
                 <button
                   onClick={() => setShortlistFilter('shortlisted')}
-                  className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                  className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 border border-stone-900 ${
                     shortlistFilter === 'shortlisted'
-                      ? 'bg-emerald-600 text-white shadow-sm'
-                      : 'text-stone-600 hover:text-stone-900'
+                      ? 'bg-emerald-600 text-white shadow-[2px_2px_0px_0px_#1c1917]'
+                      : 'bg-white text-stone-700 hover:text-stone-950'
                   }`}
                 >
                   <span>Shortlisted</span>
@@ -422,10 +422,10 @@ export const JobDetailPage: React.FC = () => {
 
                 <button
                   onClick={() => setShortlistFilter('review')}
-                  className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                  className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 border border-stone-900 ${
                     shortlistFilter === 'review'
-                      ? 'bg-amber-600 text-white shadow-sm'
-                      : 'text-stone-600 hover:text-stone-900'
+                      ? 'bg-amber-600 text-white shadow-[2px_2px_0px_0px_#1c1917]'
+                      : 'bg-white text-stone-700 hover:text-stone-950'
                   }`}
                 >
                   <span>Needs Review</span>
@@ -434,10 +434,10 @@ export const JobDetailPage: React.FC = () => {
 
                 <button
                   onClick={() => setShortlistFilter('do_not_shortlist')}
-                  className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                  className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 border border-stone-900 ${
                     shortlistFilter === 'do_not_shortlist'
-                      ? 'bg-rose-600 text-white shadow-sm'
-                      : 'text-stone-600 hover:text-stone-900'
+                      ? 'bg-rose-600 text-white shadow-[2px_2px_0px_0px_#1c1917]'
+                      : 'bg-white text-stone-700 hover:text-stone-950'
                   }`}
                 >
                   <span>Not Shortlisted</span>
@@ -458,12 +458,12 @@ export const JobDetailPage: React.FC = () => {
                 {shortlistFilter === 'shortlisted' && (
                   <>
                     {shortlist.shortlisted.length === 0 ? (
-                      <div className="glass-panel text-center py-12 px-6 space-y-3">
+                      <div className="brutal-card text-center py-12 px-6 space-y-3 bg-white">
                         <Award className="w-8 h-8 mx-auto text-stone-400" />
-                        <p className="text-sm font-bold text-stone-800">
+                        <p className="text-sm font-black text-stone-900">
                           No candidates currently meet the minimum threshold ({job.min_score_threshold.toFixed(1)}/10).
                         </p>
-                        <p className="text-xs text-stone-500">
+                        <p className="text-xs font-bold text-stone-500">
                           Check the "Needs Review" tab or click "Start Screening Run" to evaluate newly uploaded resumes.
                         </p>
                       </div>
@@ -483,9 +483,9 @@ export const JobDetailPage: React.FC = () => {
                 {shortlistFilter === 'review' && (
                   <>
                     {shortlist.review.length === 0 ? (
-                      <div className="glass-panel text-center py-12 px-6 space-y-2">
+                      <div className="brutal-card text-center py-12 px-6 space-y-2 bg-white">
                         <CheckCircle2 className="w-8 h-8 mx-auto text-emerald-600" />
-                        <p className="text-sm font-bold text-stone-800">No candidates requiring manual recruiter review.</p>
+                        <p className="text-sm font-black text-stone-900">No candidates requiring manual recruiter review.</p>
                       </div>
                     ) : (
                       shortlist.review.map((cand, idx) => (
@@ -503,8 +503,8 @@ export const JobDetailPage: React.FC = () => {
                 {shortlistFilter === 'do_not_shortlist' && (
                   <>
                     {shortlist.do_not_shortlist.length === 0 ? (
-                      <div className="glass-panel text-center py-12 px-6 space-y-2">
-                        <p className="text-sm font-bold text-stone-800">No candidates in this tier.</p>
+                      <div className="brutal-card text-center py-12 px-6 space-y-2 bg-white">
+                        <p className="text-sm font-black text-stone-900">No candidates in this tier.</p>
                       </div>
                     ) : (
                       shortlist.do_not_shortlist.map((cand, idx) => (
@@ -531,7 +531,7 @@ export const JobDetailPage: React.FC = () => {
             {/* Search & Filter Bar */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div className="relative flex-1 max-w-sm">
-                <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400" />
+                <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-900" />
                 <input
                   type="text"
                   placeholder="Search candidates by name, email, or file..."
@@ -566,12 +566,12 @@ export const JobDetailPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Candidate Table Glass Panel */}
-            <div className="glass-panel overflow-hidden">
+            {/* Candidate Table Brutal Card */}
+            <div className="brutal-card overflow-hidden bg-white">
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs border-collapse">
                   <thead>
-                    <tr className="border-b border-stone-200 bg-stone-100/70 text-stone-600 font-bold uppercase tracking-wider text-[10px]">
+                    <tr className="border-b-2 border-stone-900 bg-stone-100 text-stone-900 font-black uppercase tracking-wider text-[10px]">
                       <th className="py-3.5 px-4">Candidate / Filename</th>
                       <th className="py-3.5 px-4">Experience</th>
                       <th className="py-3.5 px-4">Parsed Skills</th>
@@ -580,19 +580,19 @@ export const JobDetailPage: React.FC = () => {
                       <th className="py-3.5 px-4 text-right">Actions</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-stone-100 text-stone-700">
+                  <tbody className="divide-y-2 divide-stone-100 text-stone-800">
                     {isCandidatesLoading && (
                       <tr>
                         <td colSpan={6} className="py-12 text-center text-stone-500">
                           <Spinner size="md" className="mx-auto text-rose-600 mb-2" />
-                          <span>Loading candidate pool...</span>
+                          <span className="font-bold">Loading candidate pool...</span>
                         </td>
                       </tr>
                     )}
 
                     {!isCandidatesLoading && (!candidates || candidates.length === 0) && (
                       <tr>
-                        <td colSpan={6} className="py-12 text-center text-stone-500">
+                        <td colSpan={6} className="py-12 text-center font-bold text-stone-500">
                           No candidates uploaded yet. Drag & drop resumes above to get started.
                         </td>
                       </tr>
@@ -605,26 +605,26 @@ export const JobDetailPage: React.FC = () => {
                       return (
                         <tr
                           key={cand.id}
-                          className="hover:bg-rose-50/40 transition-colors cursor-pointer"
+                          className="hover:bg-rose-50/50 transition-colors cursor-pointer font-bold"
                           onClick={() => handleOpenCandidateDrawer(cand.id)}
                         >
                           <td className="py-3.5 px-4">
                             <div className="flex items-center gap-3">
-                              <div className="w-8 h-8 rounded-full bg-rose-50 border border-rose-200 text-rose-700 font-bold flex items-center justify-center text-xs shrink-0 shadow-xs">
+                              <div className="w-8 h-8 rounded-full bg-rose-100 border-2 border-stone-900 text-rose-900 font-black flex items-center justify-center text-xs shrink-0 shadow-[1px_1px_0px_0px_#1c1917]">
                                 {getInitials(cand.candidate_name)}
                               </div>
                               <div>
-                                <span className="font-bold text-stone-900 block">
+                                <span className="font-black text-stone-950 block">
                                   {cand.candidate_name || 'Anonymous Candidate'}
                                 </span>
-                                <span className="text-[11px] text-stone-500">{cand.original_filename}</span>
+                                <span className="text-[11px] font-bold text-stone-500">{cand.original_filename}</span>
                               </div>
                             </div>
                           </td>
 
                           <td className="py-3.5 px-4 whitespace-nowrap">
                             {cand.total_experience_years !== null && cand.total_experience_years !== undefined ? (
-                              <span className="font-mono font-medium">~{cand.total_experience_years.toFixed(1)} yrs</span>
+                              <span className="font-mono font-bold">~{cand.total_experience_years.toFixed(1)} yrs</span>
                             ) : (
                               <span className="text-stone-400 italic">N/A</span>
                             )}
@@ -669,7 +669,7 @@ export const JobDetailPage: React.FC = () => {
                             {cand.latest_score !== null && cand.latest_score !== undefined ? (
                               <ScoreBadge score={cand.latest_score} size="md" />
                             ) : (
-                              <span className="text-stone-400 text-xs font-medium">Unscored</span>
+                              <span className="text-stone-400 text-xs font-bold">Unscored</span>
                             )}
                           </td>
 
@@ -697,15 +697,15 @@ export const JobDetailPage: React.FC = () => {
         {/* VIEW 3: AUDIT ACTIVITY LOG */}
         {/* ----------------------------------------------------------------------- */}
         {activeView === 'audit' && (
-          <div className="glass-panel p-5 space-y-4">
-            <h3 className="text-sm font-bold text-stone-900 flex items-center gap-2">
+          <div className="brutal-card p-5 space-y-4 bg-white">
+            <h3 className="text-sm font-black text-stone-950 flex items-center gap-2">
               <Clock className="w-4 h-4 text-rose-600" />
               <span>Immutable Audit Trail</span>
             </h3>
 
             <div className="space-y-2.5">
               {!auditEvents || auditEvents.length === 0 ? (
-                <p className="text-xs text-stone-500 italic py-6 text-center">No audit events recorded yet.</p>
+                <p className="text-xs font-bold text-stone-500 italic py-6 text-center">No audit events recorded yet.</p>
               ) : (
                 auditEvents.map((evt) => (
                   <div
@@ -717,13 +717,13 @@ export const JobDetailPage: React.FC = () => {
                         <Badge variant="primary" size="sm">
                           {evt.event_type}
                         </Badge>
-                        <span className="text-stone-500">by {evt.actor}</span>
+                        <span className="text-stone-600 font-bold">by {evt.actor}</span>
                       </div>
-                      <p className="text-stone-700 font-mono text-[11px]">
+                      <p className="text-stone-800 font-mono font-bold text-[11px]">
                         {JSON.stringify(evt.details)}
                       </p>
                     </div>
-                    <span className="text-[11px] text-stone-500 whitespace-nowrap font-mono">
+                    <span className="text-[11px] text-stone-600 whitespace-nowrap font-mono font-bold">
                       {formatDate(evt.timestamp)}
                     </span>
                   </div>
